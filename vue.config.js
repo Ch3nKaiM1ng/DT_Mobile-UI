@@ -8,10 +8,10 @@ const baseUrl = process.env.NODE_ENV === "production" ? "/" : "/"; //font scss�
 
 module.exports = {
 	//基本路径
-// 	baseUrl: './',
+	baseUrl: './',
 	publicPath:'./',//vue-cli3.3新版本
 	//输出文件目录
-	outputDir: 'vue-cli3.x-configure',
+	outputDir: 'dist',
 	// eslint-loader 是否在保存的时候检查
 	lintOnSave: true,
 	//放置生成的静态资源 (js、css、img、fonts) 的 (相对于 outputDir 的) 目录。

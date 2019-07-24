@@ -4,7 +4,7 @@
       <router-view></router-view>
     </keep-alive>
     <!-- 底部的导航 -->
-    <footer id="footer">
+    <footer id="footer" v-if="$route.meta.Deadad">
       <ul>
         <li>
           <a href="#">
@@ -45,7 +45,7 @@ export default {
 <style>
 #App {
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 </style>
 <style lang='scss'>
