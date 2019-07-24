@@ -5,7 +5,7 @@ import axios from 'axios'
 // import Vue from 'vue'
 
 // 设置基地址
-axios.defaults.baseURL = ''
+axios.defaults.baseURL = '172.16.19.101:8080/DTKQ'
 
 // 抽取网络请求的对象
 const request = {

@@ -78,7 +78,7 @@
     .header_nav {
         width: 7.1rem;
         height: .8rem;
-        background:rgba(54,54,54, 0.5);
+        background: rgba(54, 54, 54, 0.5);
         opacity: 0.99;
         margin: .28rem auto 0;
         border-radius: .06rem;
@@ -93,7 +93,8 @@
             align-items: center;
             color: #ffffff;
             font-size: .28rem;
-            &:first-child{
+
+            &:first-child {
                 font-size: .3rem;
                 font-weight: bold;
             }
@@ -563,7 +564,8 @@
                 div {
                     margin-right: 1.22rem;
                 }
-                .active{
+
+                .active {
                     background: url('../../src/assets/img/index/underline-big.png') no-repeat;
                     background-size: 100%;
                     background-position: 0 0.35rem;
@@ -592,7 +594,7 @@
                     font-weight: lighter;
                 }
 
-                .active{
+                .active {
                     background-color: #009965;
                     font-weight: normal;
                     color: #ffffff;
@@ -618,7 +620,7 @@
                     font-weight: lighter;
                 }
 
-                .active{
+                .active {
                     background-color: #64a28d;
                     font-weight: normal;
                     color: #ffffff;
@@ -668,7 +670,7 @@
                     .swiper-slide {
                         height: 1.78rem;
                         width: 1.78rem;
-                        margin-right: .1rem!important;
+                        margin-right: .1rem !important;
 
                         img {
                             width: 100%;
@@ -702,7 +704,7 @@
                     margin: 0 .32rem;
                 }
 
-                .active{
+                .active {
                     font-size: .32rem;
                     font-weight: bold;
                     color: #009965;
@@ -821,7 +823,7 @@
                             width: 3.9rem;
                             height: 2.2rem;
                             margin-left: .3rem;
-                       
+
                             .videoPlay {
                                 max-width: 3.9rem;
                                 border-radius: .1rem;
@@ -1184,6 +1186,7 @@
                         .question {
                             display: flex;
                             justify-content: center;
+
                             img {
                                 width: .5rem;
                                 height: .5rem;
@@ -1221,36 +1224,36 @@
                         align-items: flex-start;
                         justify-content: center;
                         padding-right: .2rem;
-    
+
                         .up {
                             width: 1rem;
                             margin-bottom: .1rem;
                             display: flex;
                             justify-content: flex-start;
                             align-items: center;
-    
+
                             span:nth-child(1) {
                                 font-size: .22rem;
                                 color: #969696;
                             }
-    
+
                             img {
                                 widows: 0.1em;
                                 height: 0.14rem;
                                 margin-left: .05rem;
                             }
-    
+
                             span:nth-child(3) {
                                 font-size: .18rem;
                                 color: #e12725;
                             }
                         }
-    
+
                         .down1 {
                             display: flex;
                             justify-content: center;
                             align-items: center;
-    
+
                             span {
                                 font-size: .2rem;
                             }
@@ -1264,53 +1267,53 @@
                         align-items: flex-end;
                         justify-content: center;
                         padding-right: .09rem;
-    
+
                         .up {
                             margin-right: .1rem;
                             margin-bottom: .1rem;
                             display: flex;
                             align-items: center;
-    
+
                             span:nth-child(1) {
                                 font-size: .22rem;
                                 color: #969696;
                             }
-    
+
                             img {
                                 width: 0.1rem;
                                 height: 0.14rem;
                                 margin-left: .05rem;
                             }
-    
+
                             span:nth-child(3) {
                                 font-size: .18rem;
                                 color: #e12725;
                             }
                         }
-    
+
                         .down2 {
                             display: flex;
                             justify-content: center;
                             align-items: center;
-    
+
                             span {
                                 font-size: .2rem;
                                 margin-right: .03rem;
                             }
-    
+
                             .girl {
                                 span:nth-child(2) {
                                     color: #Ed7a7a;
                                 }
                             }
-    
+
                             .man {
                                 span:nth-child(2) {
                                     color: #57b6f5;
                                 }
                             }
                         }
-                    } 
+                    }
                 }
             }
         }
@@ -1378,7 +1381,8 @@
         color: #ffffff;
         justify-content: space-between;
         padding: 0 .4rem;
-        .nav_list:first-child{
+
+        .nav_list:first-child {
             font-size: .3rem;
             font-weight: bold;
         }

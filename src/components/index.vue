@@ -19,12 +19,12 @@
       </div>
 
       <!-- 头-导航栏 -->
-      <div class="header_nav" v-show="navShow">
+      <div class="header_nav" v-show="navShow" ref="iconLeft">
         <div class="nav_list">首页</div>
         <div class="nav_list">优惠</div>
-        <div class="nav_list">预约</div>
-        <div class="nav_list">关于美莱</div>
-        <div class="nav_list">投诉建议</div>
+        <div class="nav_list"><router-link tag="div" to="/doctorList">预约</router-link></div>
+        <div class="nav_list">关于登特</div>
+        <div class="nav_list"><router-link tag="div" to="/complain">投诉建议</router-link></div>
       </div>
 
       <!-- 头-搜索框 -->
@@ -395,9 +395,57 @@
               </div>
             </div>
           </div>
+          <div class="user_list">
+            <!-- 内容展示区 -->
+            <div class="user_content">
+              <img src="../assets/img/index/user4.png" alt />
+              <div class="user_picture">
+                <img src="../assets/img/index/user5.png" alt />
+                <img src="../assets/img/index/user6.png" alt />
+              </div>
+              <div class="user_question">
+                <span>隐形牙齿矫正费用</span>
+              </div>
+            </div>
+            <!-- 点赞评论区 -->
+            <div class="zan">
+              <div class="zan_message">
+                <img src="../assets/img/index/zanMeg.png" alt />
+                <span>12.5万</span>
+              </div>
+              <div class="zan_heart">
+                <img src="../assets/img/index/heart1.png" alt />
+                <span>12.5万</span>
+              </div>
+            </div>
+          </div>
+          <div class="user_list">
+            <!-- 内容展示区 -->
+            <div class="user_content">
+              <img src="../assets/img/index/user4.png" alt />
+              <div class="user_picture">
+                <img src="../assets/img/index/user5.png" alt />
+                <img src="../assets/img/index/user6.png" alt />
+              </div>
+              <div class="user_question">
+                <span>隐形牙齿矫正费用</span>
+              </div>
+            </div>
+            <!-- 点赞评论区 -->
+            <div class="zan">
+              <div class="zan_message">
+                <img src="../assets/img/index/zanMeg.png" alt />
+                <span>12.5万</span>
+              </div>
+              <div class="zan_heart">
+                <img src="../assets/img/index/heart1.png" alt />
+                <span>12.5万</span>
+              </div>
+            </div>
+          </div>
           <div class="more">查看更多>></div>
           <div class="mask">
-            <img src="../assets/img/index/drop-down.png" alt />
+            <img src="../assets/img/index/drop-down.png" alt @click="userHigh" />
           </div>
         </div>
       </div>
@@ -1047,7 +1095,7 @@ export default {
     };
   },
   methods: {
-    // 滚动显示黑色搜索框
+    // 显示 黑色搜索框
     handleScroll(e) {
       // 获取当前滚动距离
       this.current_scrollTop =
@@ -1061,14 +1109,23 @@ export default {
         this.search_show = false;
       }
     },
-    // 显示隐藏头部导航栏
+
+    // 显示隐藏 头部导航栏
     showNav(){
-      this.navShow = !this.navShow;
+      // const navTop = this.$refs.iconLeft.offsetHeight;
+      // console.log(navTop);
+      // const navWidth = this.$refs.iconLeft.offsetWidth;
+      // // console.log(navWidth);
+      // if(this.navShow){
+      //   this.$refs.iconLeft.style.transform = 'translateY(-100%);';
+      // }
+      this.navShow=!this.navShow;
+    },
+
+    userHigh(){
+      this.userShow_scrollTop +=280;
+      this.$refs.userShow.style.height = this.userShow_scrollTop/100 +'rem';
     }
-    // glideDown(){
-    //   let userShow_newHeight = this.userShow_scrollTop + 2
-    //   this.$refs.userShow.style.height = userShow_newHeight +'rem';
-    // }
   },
   mounted() {
     // 获取 头部高度
@@ -1076,7 +1133,7 @@ export default {
     // console.log(this.header_scrollTop);
 
     // 获取 客户展示高度
-    // this.userShow_scrollTop = this.$refs.userShow.offsetHeight;
+    this.userShow_scrollTop = this.$refs.userShow.offsetHeight;
     // console.log(this.userShow_scrollTop);
 
     // 监听页面高度
