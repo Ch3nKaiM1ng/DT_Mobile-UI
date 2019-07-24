@@ -1,0 +1,282 @@
+html,
+body {
+  background: white;
+}
+.login {
+  width: 100%;
+  height: 100%;
+  background: white;
+  position: relative;
+  
+
+  .login_center {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 1);
+    .login_center_commercial {
+      width: 92%;
+      height: 2rem;
+      margin: 0.4rem auto 0 auto;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    span {
+      display: inline-block;
+    }
+    .login_center_title {
+      display: block;
+      margin-top: 0.4rem;
+      padding-left: 0.25rem;
+      font-weight: bold;
+      font-size: 0.36rem;
+    }
+    .login_center_nav {
+      font-size: 0.28rem;
+      margin-top: 0.3rem;
+      margin-bottom: 0.8rem;
+      padding-left: 0.25rem;
+    }
+    .login_center_input {
+      width: calc(100% - 0.7rem);
+      height: 0.7rem;
+      border-bottom: 1px solid rgba(183, 183, 183, 1);
+      text-align: center;
+      overflow: hidden;
+      margin-left: 0.25rem;
+      .login_center_input_icon {
+        display: inline-block;
+        margin-top: 0.2rem;
+        float: left;
+      }
+      input {
+        width: 90%;
+        height: 100%;
+        font-size: 0.28rem;
+        font-weight: 400;
+        color: #000000;
+        margin-left: 0.25rem;
+        float: left;
+      }
+
+      .login_code {
+        width: 1.8rem;
+        height: 0.5rem;
+        border: 1px solid #f79e1c;
+        font-size: 0.26rem;
+        line-height: 0.55rem;
+        color: rgba(102, 102, 102, 1);
+        font-weight: 400;
+        border-radius: 0.2rem;
+        float: right;
+      }
+    }
+    .login_btn {
+      width: 5rem;
+      height: 0.8rem;
+      background: rgba(247, 158, 28, 1);
+      border-radius: 0.4rem;
+      letter-spacing: 0.2rem;
+      text-align: center;
+      color: white;
+      line-height: 0.8rem;
+      margin: 0.8rem auto 0 auto;
+    }
+  }
+  .login_bottom {
+    width: 75%;
+    height: auto;
+    overflow: auto;
+    margin: 2rem auto 0 auto;
+    .login_bottom_span {
+      display: block;
+      font-size: 0.24rem;
+      font-weight: 400;
+      color: #999999;
+      position: relative;
+      text-align: center;
+    }
+    .login_bottom_span:before,
+    .login_bottom_span:after {
+      content: "";
+      position: absolute;
+      top: 52%;
+      background: #494949;
+      width: 10%;
+      height: 0.02rem;
+    }
+    .login_bottom_span:before {
+      left: 22%;
+    }
+    .login_bottom_span:after {
+      right: 22%;
+    }
+    .login_bottom_center {
+      width: 33.3%;
+      height: 1.25rem;
+      float: left;
+    }
+  }
+  @media only screen and (min-width: 300px) and (max-width: 400px) {
+    .login_bottom {
+      margin: 1rem auto 0 auto;
+    }
+  }
+  //   6-4版本
+  .login_log {
+    width: 2.14rem;
+    height: 2.03rem;
+    margin: 0.6rem auto;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .login_from {
+    width: 100%;
+    height: auto;
+    margin: 1rem auto 0 auto;
+    .login_from_span {
+      display: block;
+      width: 78%;
+      font-size: 0.26rem;
+      font-weight: 600;
+      color: #333333;
+      line-height: 0.4rem;
+      margin: 0 auto 0.15rem auto;
+    }
+    .login_from_iphone {
+      width: 78%;
+      height: auto;
+      margin: 0 auto 0.6rem auto;
+      border-bottom: 0.01rem solid rgba(242, 242, 242, 1);
+      input {
+        display: block;
+        width: 100%;
+        padding: 0.2rem 0;
+        font-size: 0.28rem;
+        color: #333333;
+      }
+    }
+    .login_from_password {
+      width: 78%;
+      height: auto;
+      overflow: auto;
+      margin: 0 auto 0.6rem auto;
+      border-bottom: 0.01rem solid rgba(242, 242, 242, 1);
+      input {
+        display: block;
+        width: 70%;
+        padding: 0.2rem 0;
+        font-size: 0.26rem;
+        color: #858585;
+        float: left;
+      }
+      .login_from_password_btn {
+        width: 30%;
+        padding: 0.2rem 0;
+        font-size: 0.26rem;
+        color: #79b2ed;
+        float: left;
+      }
+    }
+  }
+  .login_btn {
+    width: 78%;
+    height: 0.74rem;
+    margin: 0 auto;
+    border-radius: 0.37rem;
+    box-shadow: 0 0 0.21rem 0.03rem rgba(63, 154, 70, 0.3);
+    background-color: #67b16d;
+    font-size: 0.28rem;
+    color: #f2f2f2;
+    line-height: 0.74rem;
+    text-align: center;
+  }
+  .login_botem {
+    width: 100%;
+    height: 1.8rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    .login_botem_img {
+      width: 100%;
+      height: 1.8rem;
+      position: absolute;
+      bottom: 0rem;
+      left: 0rem;
+      background: url("../../src/assets/img/login/bottom.png") no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+}
+.login_mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 1);
+  opacity: 0.3;
+}
+.login_code1 {
+  width: 80%;
+  height: 4.5rem;
+  background: white;
+  border-radius: 0.25rem;
+  position: fixed;
+  top: 35%;
+  left: 10%;
+  z-index: 2;
+  box-shadow: 0 0 0.21rem 0.03rem rgba(63, 154, 70, 0.3);
+  .login_code_down {
+    width: calc(100% - 0.3rem);
+    height: 0.5rem;
+    margin-right: 0.3rem;
+    padding-top: 0.3rem;
+    text-align: right;
+  }
+  .login_code_title {
+    width: 100%;
+    font-size: 0.32rem;
+    text-align: center;
+    font-weight: 500;
+    margin: 0 auto 0.6rem auto;
+  }
+  .login_code_input {
+    width: calc(100% - 0.5rem);
+    height: 0.65rem;
+    margin: 0.3rem auto 0 auto;
+    border-bottom: 0.01rem solid #c0c0c0;
+    input {
+      width: 70%;
+      height: 0.45rem;
+      margin: 0.05rem 0;
+      float: left;
+    }
+    .login_code_nav {
+      width: 30%;
+      height: 0.45rem;
+      margin: 0.05rem 0;
+      float: left;
+    }
+  }
+  .login_code_btn {
+    width: 50%;
+    height: 0.55rem;
+    margin: 0.6rem auto 0.2rem auto;
+    border-radius: 0.3rem;
+    background-color: #84ba09;
+    box-shadow: 0 0 0.21rem 0.03rem rgba(63, 154, 70, 0.3);
+    color: #f2f2f2;
+    font-size: 0.3rem;
+    text-align: center;
+    line-height: 0.55rem;
+  }
+}

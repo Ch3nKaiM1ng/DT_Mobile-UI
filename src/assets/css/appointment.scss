@@ -1,0 +1,65 @@
+.appointment_bar{
+    padding: 0 .2rem;
+    width: 100%;
+    height: .64rem;
+    display: flex;
+    background-color: #ffffff;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .3rem;
+    color: #333333;
+    .nav_list{
+        margin: 0 .2rem;
+        height: .46rem;
+    }
+    .active{
+        background: url('../../src/assets/img/index/appointment/underline.png') no-repeat;
+        background-size: .88rem .16rem;
+        background-position: 50% 100%;
+    }
+}
+
+.select_list{
+    background-color: #ffffff;
+    padding: .5rem .2rem .2rem;
+    .presentation{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: .9rem;
+        margin-bottom: .9rem;
+        .doc_img{
+            width: .9rem;
+            height: .9rem;
+            border-radius: 50%;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .doc_information{
+            margin-left: .2rem;
+            height: .9rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: #333333;
+            .doc_name{
+                font-size: .32rem;
+            }
+            .doc_title{
+                font-size: .24rem;
+                font-weight: lighter;
+            }
+        }
+        .particulars_img{
+            width: 1.52rem;
+            height: .56rem;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
