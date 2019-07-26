@@ -3,13 +3,18 @@
     <!-- 搜索头 -->
     <div class="search_bar">
       <div class="icon_friend"></div>
+       <router-link to="/search">
       <div class="search_box">
+       
         <img src="../assets/img/index/glass.png" alt />
         <span>搜索</span>
+        
       </div>
+      </router-link>
     </div>
     <!-- 消息列表 -->
     <div class="message_list">
+      <router-link to="/systemMessage">
       <div class="notification message">
         <div class="left_not"></div>
         <div class="right">
@@ -23,6 +28,7 @@
           </div>
         </div>
       </div>
+      </router-link>
       <div class="service message">
         <div class="left_ser"></div>
         <div class="right">
@@ -36,35 +42,6 @@
         </div>
       </div>
     </div>
-    <!-- 底部的导航 -->
-    <footer id="footer" v-if="$route.meta.Deadad">
-      <ul>
-        <li>
-          <a href="#">
-            <img src="../assets/img/Bottom_bar/house1.png" alt />
-            <span>首頁</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <img src="../assets/img/Bottom_bar/location1.png" alt />
-            <span>附近</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <img src="../assets/img/Bottom_bar/message1.png" alt />
-            <span>消息</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <img src="../assets/img/Bottom_bar/mine1.png" alt />
-            <span>我的</span>
-          </a>
-        </li>
-      </ul>
-    </footer>
   </div>
 </template>
 

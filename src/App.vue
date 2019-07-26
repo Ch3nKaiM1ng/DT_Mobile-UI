@@ -7,33 +7,32 @@
     <footer id="footer" v-if="$route.meta.Deadad">
       <ul>
         <li>
-          <a href="#">
-            <img src='./assets/img/Bottom_bar/house1.png' alt />
-            <span>首頁</span>
-          </a>
+          <router-link to="/">
+            <div class="icon" :class="[$route.name == 'index' ? 'house2' : 'house1']"></div>
+            <span :class="[$route.name == 'index' ? 'sp1' : '']">首頁</span>
+          </router-link>
         </li>
         <li>
-          <a href="#">
-            <img src='./assets/img/Bottom_bar/location1.png' alt />
-            <span>附近</span>
-          </a>
+          <router-link to="/">
+            <div class="icon" :class="[$route.name == 'index' ? 'location2' : 'location1']"></div>
+            <span :class="[$route.name == 'index' ? 'sp1' : '']">附近</span>
+          </router-link>
         </li>
         <li>
-          <a href="#">
-            <img src='./assets/img/Bottom_bar/message1.png' alt />
-            <span>消息</span>
-          </a>
+          <router-link to="/inform">
+            <div class="icon" :class="[$route.name == 'inform' ? 'message2' : 'message1']"></div>
+            <span :class="[$route.name == 'inform' ? 'sp1' : '']">消息</span>
+          </router-link>
         </li>
         <li>
-          <a href="#">
-            <img src='./assets/img/Bottom_bar/mine1.png' alt />
-            <span>我的</span>
-          </a>
+          <router-link to="/">
+            <div class="icon" :class="[$route.name == 'index' ? 'mine2' : 'mine1']"></div>
+            <span :class="[$route.name == 'index' ? 'sp1' : '']">我的</span>
+          </router-link>
         </li>
       </ul>
     </footer>
   </div>
-  
 </template>
 
 <script>

@@ -2,7 +2,7 @@
   <div id="system_message">
     <!-- 通用头 -->
     <div class="login_header">
-      <div class="header_return">
+      <div class="header_return" @click="back">
         <div class="icon_return"></div>
       </div>
       <div class="header_title">通知消息</div>
@@ -46,7 +46,12 @@
 
 <script>
 export default {
-  name: "system_message"
+  name: "system_message",
+  methods: {
+    back(){
+      this.$router.go(-1);
+    }
+  }
 };
 </script>
 

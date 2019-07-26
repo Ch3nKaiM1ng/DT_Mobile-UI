@@ -1,7 +1,7 @@
 <template>
   <div id="doctor">
     <div class="login_header">
-      <div class="header_return">
+      <div class="header_return" @click="back">
         <div class="icon_return"></div>
       </div>
       <div class="header_title">医生团队</div>
@@ -127,7 +127,12 @@
 
 <script>
 export default {
-  name: "doctor"
+  name: "doctor",
+  methods: {
+    back(){
+      this.$router.go(-1);
+    }
+  }
 };
 </script>
 <style>

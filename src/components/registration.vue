@@ -1,7 +1,7 @@
 <template>
   <div id="registration">
     <div class="login_header">
-      <div class="header_return">
+      <div class="header_return" @click="back">
         <div class="icon_return"></div>
       </div>
       <div class="header_title">预约挂号</div>
@@ -38,7 +38,12 @@
 
 <script>
 export default {
-  name: "registration"
+  name: "registration",
+  methods: {
+    back(){
+      this.$router.go(-1);
+    }
+  }
 };
 </script>
 
