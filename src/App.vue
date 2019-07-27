@@ -14,8 +14,8 @@
         </li>
         <li>
           <router-link to="/">
-            <div class="icon" :class="[$route.name == 'index' ? 'location2' : 'location1']"></div>
-            <span :class="[$route.name == 'index' ? 'sp1' : '']">附近</span>
+            <div class="icon" :class="[$route.name == 'nearby' ? 'location2' : 'location1']"></div>
+            <span :class="[$route.name == 'nearby' ? 'sp1' : '']">附近</span>
           </router-link>
         </li>
         <li>
@@ -26,8 +26,8 @@
         </li>
         <li>
           <router-link to="/">
-            <div class="icon" :class="[$route.name == 'index' ? 'mine2' : 'mine1']"></div>
-            <span :class="[$route.name == 'index' ? 'sp1' : '']">我的</span>
+            <div class="icon" :class="[$route.name == 'mine' ? 'mine2' : 'mine1']"></div>
+            <span :class="[$route.name == 'mine' ? 'sp1' : '']">我的</span>
           </router-link>
         </li>
       </ul>

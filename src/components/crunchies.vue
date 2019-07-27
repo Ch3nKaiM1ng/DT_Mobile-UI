@@ -14,10 +14,11 @@
       </div>
     </div>
     <div class="crunchies_nav">
-      <div class="nav_list">热搜榜</div>
+      <div class="nav_list active" :class="[$route.name == 'hot_crunchies' ? 'active' : '']">热搜榜</div>
       <div class="line"></div>
       <div class="nav_list" @click="pullDown">
-        问大家<i class="icon" ref="bg"></i>
+        问大家
+        <i class="icon" ref="bg"></i>
         <div class="pullDown_list" v-if="pullDown_show">
           <div class="list">矫正案例</div>
           <div class="list">矫正案例</div>
@@ -27,9 +28,9 @@
         </div>
       </div>
       <div class="line"></div>
-      <div class="nav_list active">矫正案例</div>
+      <div class="nav_list" @click="tiao" :class="[$route.name == 'correctCase' ? 'active' : '']">矫正案例</div>
       <div class="line"></div>
-      <div class="nav_list">专家</div>
+      <div class="nav_list" @click="tiao1" :class="[$route.name == 'doctorList' ? 'active' : '']">专家</div>
     </div>
     <router-view></router-view>
   </div>
@@ -40,7 +41,7 @@ export default {
   name: "crunchies",
   data() {
     return {
-      pullDown_show:false,
+      pullDown_show: false,
       headerValue: 0,
       headerOption: [
         { text: "矫正榜", value: 0 },
@@ -50,15 +51,25 @@ export default {
       ]
     };
   },
-  methods:{
-    pullDown(){
-       this.pullDown_show = !this.pullDown_show;
+  methods: {
+    pullDown() {
+      this.pullDown_show = !this.pullDown_show;
       //  if(this.pullDown_show){
       //    this.$refs.bg.style.background = url('../assets/img/index/crunchies/return_top.png') + 'no-repeat';
       //  }
     },
-    back(){
+    back() {
       this.$router.go(-1);
+    },
+    tiao() {
+      this.$router.push({
+        path: "/crunchies/correctCase" //路径
+      });
+    },
+    tiao1() {
+      this.$router.push({
+        path: "/doctorList" //路径
+      });
     }
   }
 };

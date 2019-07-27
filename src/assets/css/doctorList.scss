@@ -23,7 +23,7 @@
         height: 100%;
     }
 
-    .active{
+    .active {
         background-color: #009965;
         color: #ffffff;
     }
@@ -33,7 +33,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding:.3rem .2rem .48rem;
+    padding: .3rem .2rem .48rem;
     flex-wrap: wrap;
 
     .doctor_synopsis {
@@ -73,6 +73,15 @@
             justify-content: center;
             align-items: center;
             color: #ffffff;
+
+            .EN {
+                overflow: hidden;
+                word-break: break-all;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+            }
         }
     }
 }

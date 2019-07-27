@@ -18,7 +18,7 @@
             </form>
           </div>
         </div>
-        <router-link tag="span" to="/" class="search_header_input_cancel">取消</router-link>
+        <span @click="back" class="search_header_input_cancel">取消</span>
         <!-- <div class="search_header_input_cancel" v-on:click="shous">搜索</div> -->
       </div>
 
@@ -229,6 +229,9 @@ export default {
         path: "/searchResult",
         query: { value: this.state4 }
       });
+    },
+    back(){
+      this.$router.go(-1);
     }
   },
   components: {}

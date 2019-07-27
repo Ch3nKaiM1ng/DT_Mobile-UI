@@ -5,15 +5,10 @@ import axios from 'axios'
 // import Vue from 'vue'
 
 // 设置基地址
-axios.defaults.baseURL = 'http://172.16.19.101:8080/DTKQ'
+axios.defaults.baseURL = 'http://172.16.19.161:8080/DTKQ'
 
 // 抽取网络请求的对象
 const request = {
-  // 医生专家banner图
-  getbanner() {
-    return axios.get('/Banner/findAll');
-  },
-
   // 头部背景图
   getheaderBg() {
     return axios.post('/TopImg/findAll');
@@ -29,6 +24,11 @@ const request = {
     return axios.post('/classAskArticle/selectHot',{belong:params.hot});
   },
 
+  // 医生专家banner图
+  getbanner() {
+    return axios.get('/Banner/findAll');
+  },
+
   // 不同人群(所有)
   getAll_differentPersons(params) {
     return axios.post('/ClassObj/WebFindAllClass',params);
@@ -37,6 +37,11 @@ const request = {
   // 获取蓝色标签数据
   getDifferentPersonsBlue_byId(id) {
     return axios.post('/ClassObj/FindClassObjById',{linkClassId:id});
+  },
+
+  // 矫正100榜
+  getOneHundredList(params) {
+    return axios.post('/classAskArticle/selectHot',{belong:params.oneHundred});
   }
 }
 

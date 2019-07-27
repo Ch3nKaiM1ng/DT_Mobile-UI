@@ -46,20 +46,24 @@ const routes = [
     children:[
       {
         path: 'correctCase',
-        component: correctCase
+        name:'correctCase',
+        component: correctCase,
       },
       {
         path: '',
+        name: 'hot_crunchies',
         component: hot_crunchies
       },
       {
         path: 'askPeople',
+        name: 'askPeople',
         component: askPeople
       }
     ]
   },
   {
     path: '/doctorList',
+    name: 'doctorList',
     component: doctorList,
     meta:{
       Deadad: false
@@ -74,6 +78,7 @@ const routes = [
   },
   {
     path: '/complain',
+    name: 'complain',
     component: complain ,
     meta:{
       Deadad: false

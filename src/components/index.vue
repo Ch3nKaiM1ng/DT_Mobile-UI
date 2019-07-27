@@ -48,51 +48,81 @@
           <h3>#矫正热搜榜#</h3>
 
           <!-- 热搜问题 -->
-          <div class="hot_question" v-for="item in getHotList" :key="item.acId">
-            <!-- 问题(左) -->
-            <div class="left" v-if="item.ac_artId!=null">
-              <span>{{item.article.artTitle}}</span>
-              <img src="../assets/img/index/new.png" v-if="item.article.label=='新'" alt />
-              <img src="../assets/img/index/bomb.png" v-else-if="item.article.label=='爆'" alt />
-              <img src="../assets/img/index/hot.png" v-else-if="item.article.label=='热'" alt />
-            </div>
-            <div class="left" v-else>
-              <span>{{item.ask.askTitle}}</span>
-              <img src="../assets/img/index/new.png" v-if="item.ask.label=='新'" alt />
-              <img src="../assets/img/index/bomb.png" v-else-if="item.ask.label=='爆'" alt />
-              <img src="../assets/img/index/hot.png" v-else-if="item.ask.label=='热'" alt />
-            </div>
-            <!-- 讨论(右) -->
-            <!-- <div class="discussion2">
-              <div class="up">
-                <span>3.9W</span>
-                <img src="../assets/img/index/up.png" alt />
-                <span>+6</span>
+          <div class="hot_modules" v-for="(item,index) in getHotList" :key="index">
+            <div class="hot_question2" v-if="index==2">
+              <!-- 问题(左) -->
+              <div class="left" v-if="item.ac_artId!=null">
+                <span>{{item.article.artTitle}}</span>
+                <img src="../assets/img/index/new.png" v-if="item.article.label=='新'" alt />
+                <img src="../assets/img/index/bomb.png" v-else-if="item.article.label=='爆'" alt />
+                <img src="../assets/img/index/hot.png" v-else-if="item.article.label=='热'" alt />
               </div>
-              <div class="down2">
-                <div class="girl">
-                  <span>#</span>
-                  <span>女</span>
-                  <span>1234</span>
+              <div class="left" v-else>
+                <span>{{item.ask.askTitle}}</span>
+                <img src="../assets/img/index/new.png" v-if="item.ask.label=='新'" alt />
+                <img src="../assets/img/index/bomb.png" v-else-if="item.ask.label=='爆'" alt />
+                <img src="../assets/img/index/hot.png" v-else-if="item.ask.label=='热'" alt />
+              </div>
+              <!-- 讨论(右) -->
+              <div class="discussion2">
+                <div class="up">
+                  <span>3.9W</span>
+                  <img src="../assets/img/index/up.png" alt />
+                  <span>+6</span>
                 </div>
-                <div class="man">
-                  <span>#</span>
-                  <span>男</span>
-                  <span>1234</span>
+                <div class="down2">
+                  <div class="girl">
+                    <span>#</span>
+                    <span>女</span>
+                    <span>1234</span>
+                  </div>
+                  <div class="man">
+                    <span>#</span>
+                    <span>男</span>
+                    <span>1234</span>
+                  </div>
+                  <span>讨论</span>
                 </div>
-                <span>讨论</span>
               </div>
-            </div>-->
-            <div class="discussion1">
-              <div class="up">
-                <span>9.9W</span>
-                <img src="../assets/img/index/up.png" alt />
-                <span>+3</span>
+            </div>
+            <div class="hot_question" v-else>
+              <!-- 问题(左) -->
+              <div class="left" v-if="item.ac_artId!=null">
+                <span>{{item.article.artTitle}}</span>
+                <img src="../assets/img/index/new.png" v-if="item.article.label=='新'" alt />
+                <img src="../assets/img/index/bomb.png" v-else-if="item.article.label=='爆'" alt />
+                <img src="../assets/img/index/hot.png" v-else-if="item.article.label=='热'" alt />
               </div>
+              <div class="left" v-else>
+                <span>{{item.ask.askTitle}}</span>
+                <img src="../assets/img/index/new.png" v-if="item.ask.label=='新'" alt />
+                <img src="../assets/img/index/bomb.png" v-else-if="item.ask.label=='爆'" alt />
+                <img src="../assets/img/index/hot.png" v-else-if="item.ask.label=='热'" alt />
+              </div>
+              <!-- 讨论(右) -->
+              <div class="discussion" v-if="item.ac_artId!=null">
+                <div class="up">
+                  <span>{{item.article.checkNum}}W</span>
+                  <img src="../assets/img/index/up.png" alt />
+                  <span>+{{message}}</span>
+                </div>
 
-              <div class="down1">
-                <span>#2026</span>
-                <span>讨论</span>
+                <div class="down1">
+                  <span>#2026</span>
+                  <span>讨论</span>
+                </div>
+              </div>
+              <div class="discussion" v-else>
+                <div class="up">
+                  <span>9.9W</span>
+                  <img src="../assets/img/index/up.png" alt />
+                  <span>+3</span>
+                </div>
+
+                <div class="down1">
+                  <span>#2026</span>
+                  <span>讨论</span>
+                </div>
               </div>
             </div>
           </div>
@@ -100,7 +130,6 @@
             <router-link to="/crunchies">查看更多>></router-link>
           </div>
         </div>
-
         <!-- 专家 -->
         <div class="specialist">
           <!-- 专家上半区 -->
@@ -143,10 +172,10 @@
           <div class="user_list">
             <!-- 内容展示区 -->
             <div class="user_content">
-              <img src="../assets/img/index/user1.png" alt />
+              <img src="../assets/img/index/user1.png" preview="1" preview-text="展示图1" alt />
               <div class="user_picture">
-                <img src="../assets/img/index/user2.png" alt />
-                <img src="../assets/img/index/user3.png" alt />
+                <img src="../assets/img/index/user2.png" preview="1" alt />
+                <img src="../assets/img/index/user3.png" preview="1" alt />
               </div>
               <div class="user_question">
                 <span>牙齿矫正多少钱？</span>
@@ -167,10 +196,10 @@
           <div class="user_list">
             <!-- 内容展示区 -->
             <div class="user_content">
-              <img src="../assets/img/index/user4.png" alt />
+              <img src="../assets/img/index/user4.png" preview="2" alt />
               <div class="user_picture">
-                <img src="../assets/img/index/user5.png" alt />
-                <img src="../assets/img/index/user6.png" alt />
+                <img src="../assets/img/index/user5.png" preview="2" alt />
+                <img src="../assets/img/index/user6.png" preview="2" alt />
               </div>
               <div class="user_question">
                 <span>隐形牙齿矫正费用</span>
@@ -191,10 +220,10 @@
           <div class="user_list">
             <!-- 内容展示区 -->
             <div class="user_content">
-              <img src="../assets/img/index/user1.png" alt />
+              <img src="../assets/img/index/user1.png" preview="3" alt />
               <div class="user_picture">
-                <img src="../assets/img/index/user2.png" alt />
-                <img src="../assets/img/index/user3.png" alt />
+                <img src="../assets/img/index/user2.png" preview="3" alt />
+                <img src="../assets/img/index/user3.png" preview="3" alt />
               </div>
               <div class="user_question">
                 <span>牙齿矫正多少钱？</span>
@@ -215,10 +244,10 @@
           <div class="user_list">
             <!-- 内容展示区 -->
             <div class="user_content">
-              <img src="../assets/img/index/user4.png" alt />
+              <img src="../assets/img/index/user4.png" preview="4" alt />
               <div class="user_picture">
-                <img src="../assets/img/index/user5.png" alt />
-                <img src="../assets/img/index/user6.png" alt />
+                <img src="../assets/img/index/user5.png" preview="4" alt />
+                <img src="../assets/img/index/user6.png" preview="4" alt />
               </div>
               <div class="user_question">
                 <span>隐形牙齿矫正费用</span>
@@ -239,10 +268,10 @@
           <div class="user_list">
             <!-- 内容展示区 -->
             <div class="user_content">
-              <img src="../assets/img/index/user4.png" alt />
+              <img src="../assets/img/index/user4.png" preview="5" alt />
               <div class="user_picture">
-                <img src="../assets/img/index/user5.png" alt />
-                <img src="../assets/img/index/user6.png" alt />
+                <img src="../assets/img/index/user5.png" preview="5" alt />
+                <img src="../assets/img/index/user6.png" preview="5" alt />
               </div>
               <div class="user_question">
                 <span>隐形牙齿矫正费用</span>
@@ -263,10 +292,10 @@
           <div class="user_list">
             <!-- 内容展示区 -->
             <div class="user_content">
-              <img src="../assets/img/index/user4.png" alt />
+              <img src="../assets/img/index/user4.png" preview="6" alt />
               <div class="user_picture">
-                <img src="../assets/img/index/user5.png" alt />
-                <img src="../assets/img/index/user6.png" alt />
+                <img src="../assets/img/index/user5.png" preview="6" alt />
+                <img src="../assets/img/index/user6.png" preview="6" alt />
               </div>
               <div class="user_question">
                 <span>隐形牙齿矫正费用</span>
@@ -284,7 +313,9 @@
               </div>
             </div>
           </div>
-          <div class="more">查看更多>></div>
+          <div class="more">
+            <router-link tag="div" to="/crunchies/correctCase">查看更多>></router-link>
+          </div>
           <div class="mask" v-if="currentIndex!=3" @click="showMoreBox">
             <img src="../assets/img/index/drop-down.png" alt />
           </div>
@@ -362,7 +393,7 @@
                   <img src="../assets/img/index/article.png" alt />
                 </div>
                 <div class="article_img">
-                  <img src="../assets/img/index/article1.png" alt />
+                  <img src="../assets/img/index/article1.png" preview="7" alt />
                 </div>
                 <div
                   class="article_details"
@@ -410,7 +441,7 @@
                   <img src="../assets/img/index/article.png" alt />
                 </div>
                 <div class="article_img">
-                  <img src="../assets/img/index/article3.png" alt />
+                  <img src="../assets/img/index/article3.png" preview="7" alt />
                 </div>
                 <div
                   class="article_details"
@@ -427,7 +458,7 @@
                 </div>
               </div>
               <div class="doc_module">
-                <img src="../assets/img/index/article_list_doc1.png" alt />
+                <img src="../assets/img/index/article_list_doc1.png" preview="8" alt />
                 <div class="doc_name">
                   <span>黄涛</span>
                   <span>正崎专家</span>
@@ -472,7 +503,7 @@
                 </div>
               </div>
               <div class="doc_module">
-                <img src="../assets/img/index/article_list_doc2.png" alt />
+                <img src="../assets/img/index/article_list_doc2.png" preview="8" alt />
                 <div class="doc_name">
                   <span>蔡英英</span>
                   <span>正崎专家</span>
@@ -503,7 +534,7 @@
                   <img src="../assets/img/index/article.png" alt />
                 </div>
                 <div class="article_img">
-                  <img src="../assets/img/index/article4.png" alt />
+                  <img src="../assets/img/index/article4.png" preview="7" alt />
                 </div>
                 <div class="article_details">
                   这是因为在进行牙齿矫正时，牙根表面也发生着吸收、增生这种重建活动。治疗后，牙根凭着自身修复能力而恢复正常，但如果治疗加力过大，会增加牙根吸...的危险性。
@@ -526,7 +557,7 @@
                   <img src="../assets/img/index/article.png" alt />
                 </div>
                 <div class="article_img">
-                  <img src="../assets/img/index/article5.png" alt />
+                  <img src="../assets/img/index/article5.png" preview="7" alt />
                 </div>
                 <div class="article_details"></div>
                 <div class="read_Num">
@@ -555,12 +586,12 @@
               <!-- 问题(左) -->
               <div class="left">
                 <div class="question">
-                  <span>1、問：深圳牙齒矯正全部下來要...</span>
+                  <span>1、問：深圳牙齒矯正全部下來要..圳牙齒矯正全部下來要.</span>
                 </div>
-                <div class="question_img">
-                  <img src alt />
-                  <img src alt />
-                  <img src alt />
+                 <div class="question_img">
+                  <img src="../assets/img/index/question_img1.png" preview="10" alt />
+                  <img src="../assets/img/index/question_img2.png" preview="10" alt />
+                  <img src="../assets/img/index/question_img3.png" preview="10" alt />
                 </div>
               </div>
               <!-- 讨论(右) -->
@@ -584,245 +615,15 @@
                   <span>讨论</span>
                 </div>
               </div>-->
-              <div class="discussion1">
+              <div class="discussion">
                 <div class="up">
                   <span>9.9W</span>
                   <img src="../assets/img/index/up.png" alt />
                   <span>+3</span>
                 </div>
 
-                <div class="down1">
+                <div class="down">
                   <span>#2026</span>
-                  <span>讨论</span>
-                </div>
-              </div>
-            </div>
-            <div class="question_list">
-              <!-- 问题(左) -->
-              <div class="left">
-                <div class="question">
-                  <span>2、問：深圳牙齒矯正全部下來要...</span>
-                </div>
-                <div class="question_img">
-                  <img src alt />
-                  <img src alt />
-                  <img src alt />
-                </div>
-              </div>
-              <!-- 讨论(右) -->
-              <!-- <div class="discussion2">
-                <div class="up">
-                  <span>3.9W</span>
-                  <img src="../assets/img/index/up.png" alt />
-                  <span>+6</span>
-                </div>
-                <div class="down2">
-                  <div class="girl">
-                    <span>#</span>
-                    <span>女</span>
-                    <span>1234</span>
-                  </div>
-                  <div class="man">
-                    <span>#</span>
-                    <span>男</span>
-                    <span>1234</span>
-                  </div>
-                  <span>讨论</span>
-                </div>
-              </div>-->
-              <div class="discussion1">
-                <div class="up">
-                  <span>5.3W</span>
-                  <img src alt />
-                  <span></span>
-                </div>
-
-                <div class="down1">
-                  <span>#1234</span>
-                  <span>讨论</span>
-                </div>
-              </div>
-            </div>
-            <div class="question_list">
-              <!-- 问题(左) -->
-              <div class="left">
-                <div class="question">
-                  <span>3、問：牙齿矫正大概需要多久？</span>
-                </div>
-                <div class="question_img">
-                  <img src="../assets/img/index/question_img1.png" alt />
-                  <img src="../assets/img/index/question_img2.png" alt />
-                  <img src="../assets/img/index/question_img3.png" alt />
-                </div>
-              </div>
-              <!-- 讨论(右) -->
-              <div class="discussion2">
-                <div class="up">
-                  <span>3.9W</span>
-                  <img src="../assets/img/index/up.png" alt />
-                  <span>+6</span>
-                </div>
-                <div class="down2">
-                  <div class="girl">
-                    <span>#</span>
-                    <span>女</span>
-                    <span>1234</span>
-                  </div>
-                  <div class="man">
-                    <span>#</span>
-                    <span>男</span>
-                    <span>1234</span>
-                  </div>
-                  <span>讨论</span>
-                </div>
-              </div>
-              <!-- <div class="discussion1">
-                <div class="up">
-                  <span>5.3W</span>
-                  <img src="" alt />
-                  <span></span>
-                </div>
-
-                <div class="down1">
-                  <span>#1234</span>
-                  <span>讨论</span>
-                </div>
-              </div>-->
-            </div>
-            <div class="question_list">
-              <!-- 问题(左) -->
-              <div class="left">
-                <div class="question">
-                  <span>4、問：牙齿矫正大概需要多久？</span>
-                </div>
-                <div class="question_img">
-                  <img src alt />
-                  <img src alt />
-                  <img src alt />
-                </div>
-              </div>
-              <!-- 讨论(右) -->
-              <!-- <div class="discussion2">
-                <div class="up">
-                  <span>3.9W</span>
-                  <img src="../assets/img/index/up.png" alt />
-                  <span>+6</span>
-                </div>
-                <div class="down2">
-                  <div class="girl">
-                    <span>#</span>
-                    <span>女</span>
-                    <span>1234</span>
-                  </div>
-                  <div class="man">
-                    <span>#</span>
-                    <span>男</span>
-                    <span>1234</span>
-                  </div>
-                  <span>讨论</span>
-                </div>
-              </div>-->
-              <div class="discussion1">
-                <div class="up">
-                  <span>3.5W</span>
-                  <img src="../assets/img/index/question_img4.png" alt />
-                  <span></span>
-                </div>
-
-                <div class="down1">
-                  <span>#1234</span>
-                  <span>讨论</span>
-                </div>
-              </div>
-            </div>
-            <div class="question_list">
-              <!-- 问题(左) -->
-              <div class="left">
-                <div class="question">
-                  <span>5、問：牙齿矫正大概需要多久？</span>
-                </div>
-                <div class="question_img">
-                  <img src alt />
-                  <img src alt />
-                  <img src alt />
-                </div>
-              </div>
-              <!-- 讨论(右) -->
-              <!-- <div class="discussion2">
-                <div class="up">
-                  <span>3.9W</span>
-                  <img src="../assets/img/index/up.png" alt />
-                  <span>+6</span>
-                </div>
-                <div class="down2">
-                  <div class="girl">
-                    <span>#</span>
-                    <span>女</span>
-                    <span>1234</span>
-                  </div>
-                  <div class="man">
-                    <span>#</span>
-                    <span>男</span>
-                    <span>1234</span>
-                  </div>
-                  <span>讨论</span>
-                </div>
-              </div>-->
-              <div class="discussion1">
-                <div class="up">
-                  <span>2.6W</span>
-                  <img src alt />
-                  <span>+6</span>
-                </div>
-
-                <div class="down1">
-                  <span>#1234</span>
-                  <span>讨论</span>
-                </div>
-              </div>
-            </div>
-            <div class="question_list">
-              <!-- 问题(左) -->
-              <div class="left">
-                <div class="question">
-                  <span>6、問：牙齿矫正大概需要多久？</span>
-                </div>
-                <div class="question_img">
-                  <img src alt />
-                  <img src alt />
-                  <img src alt />
-                </div>
-              </div>
-              <!-- 讨论(右) -->
-              <!-- <div class="discussion2">
-                <div class="up">
-                  <span>3.9W</span>
-                  <img src="../assets/img/index/up.png" alt />
-                  <span>+6</span>
-                </div>
-                <div class="down2">
-                  <div class="girl">
-                    <span>#</span>
-                    <span>女</span>
-                    <span>1234</span>
-                  </div>
-                  <div class="man">
-                    <span>#</span>
-                    <span>男</span>
-                    <span>1234</span>
-                  </div>
-                  <span>讨论</span>
-                </div>
-              </div>-->
-              <div class="discussion1">
-                <div class="up">
-                  <span>2.6W</span>
-                  <img src alt />
-                  <span>+6</span>
-                </div>
-
-                <div class="down1">
-                  <span>#1234</span>
                   <span>讨论</span>
                 </div>
               </div>
@@ -859,9 +660,13 @@ export default {
   name: "index",
   data() {
     return {
+      // 头部背景图
+      headerBg: "",
+      // 头部导航栏
+      headerNav: [],
       // 头部导航栏显示
       navShow: true,
-      // 消息红点提示
+      // 头部消息红点提示
       isMessage: false,
       // 头部高度
       header_scrollTop: 0,
@@ -870,9 +675,13 @@ export default {
       // 悬浮导航栏
       search_show: false,
       // 调取热搜榜数据
-      hotList: { hot: 1 },
+      allCrunchiesList: { hot: 1,oneHundred: 2 },
       // 拿到热搜榜数据
       getHotList: [],
+      // 拿到100榜数据
+      getOneHundredList: [],
+      // 热搜 +值
+      up_Num:1,
       // 显示框当前下标
       currentIndex: 1,
       // 专家 轮播图
@@ -888,6 +697,8 @@ export default {
           clickable: true
         }
       },
+      // 专家 banner图
+      bannerList: [],
       // 不同人群 轮播图
       swiperOption1: {
         slidesPerView: 3,
@@ -915,13 +726,7 @@ export default {
       // 蓝色标签数据
       blue_list: [],
       // 蓝色标签对应的swiper图片
-      blueimg_list: [],
-      // 医生专家banner图
-      bannerList: [],
-      // 头部背景图
-      headerBg: "",
-      // 头部导航栏
-      headerNav: []
+      blueimg_list: []
     };
   },
   methods: {
@@ -1002,16 +807,14 @@ export default {
     }
   },
   mounted() {
+    // 随机 + 值
+    this.message = parseInt(Math.random()*10)+1;
     // 获取 头部高度
     this.header_scrollTop = this.$refs.header.offsetHeight;
     // 监听 页面高度
     window.addEventListener("scroll", this.handleScroll);
   },
   created() {
-    // 医生专家banner图
-    this.$request.getbanner().then(res => {
-      this.bannerList = res.data.data;
-    });
     // 头部背景图
     this.$request.getheaderBg().then(res => {
       this.headerBg = res.data.data;
@@ -1020,9 +823,17 @@ export default {
     this.$request.getheaderNav().then(res => {
       this.headerNav = res.data.data;
     });
-    this.$request.getHotList(this.hotList).then(res => {
+    // 热搜榜单
+    this.$request.getHotList(this.allCrunchiesList).then(res => {
       this.getHotList = res.data.data;
-      console.log(this.getHotList);
+    });
+    // 矫正100榜单
+    this.$request.getOneHundredList(this.allCrunchiesList).then(res=>{
+      console.log(res);
+    })
+    // 医生专家banner图
+    this.$request.getbanner().then(res => {
+      this.bannerList = res.data.data;
     });
     // 不同人群(所有)
     this.$request

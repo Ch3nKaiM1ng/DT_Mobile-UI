@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="navigation_bar">
-      <div class="nav_list">全部</div>
+      <div class="nav_list active">全部</div>
       <div class="line"></div>
       <div class="nav_list">牙齿矫正</div>
       <div class="line"></div>

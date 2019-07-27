@@ -50,6 +50,7 @@
     </div>
 
     <div class="correctCase_show">
+       <router-link to="/crunchies/askPeople">
       <div class="correctCase_list">
         <img src="../assets/img/index/crunchies/show1.png" alt />
         <div class="content">
@@ -58,6 +59,7 @@
           <div class="show_btn">查看</div>
         </div>
       </div>
+      </router-link>
       <div class="correctCase_list">
         <img src="../assets/img/index/crunchies/show1.png" alt />
         <div class="content">

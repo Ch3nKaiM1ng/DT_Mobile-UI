@@ -21,6 +21,11 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 Vue.use(VueAwesomeSwiper)
 
+//图片预览
+import preview from 'vue-photo-preview'
+import 'vue-photo-preview/dist/skin.css'
+Vue.use(preview)
+
 // 导入Vant
 import { DropdownMenu,DropdownItem,Tab,Tabs,Popup,Button } from 'vant';
 Vue.use(DropdownMenu).use(DropdownItem);
