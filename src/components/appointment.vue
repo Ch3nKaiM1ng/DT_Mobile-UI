@@ -1,7 +1,7 @@
 <template>
   <div id="appointment">
     <div class="login_header">
-      <div class="header_return">
+      <div class="header_return" @click="back">
         <div class="icon_return"></div>
       </div>
       <div class="header_title">预约</div>
@@ -26,9 +26,11 @@
           <div class="doc_name">韩旭</div>
           <div class="doc_title">模特、艺人御用隐形矫正专家</div>
         </div>
+        <router-link to="/registration">
         <div class="particulars_img">
           <img src="../assets/img/index/appointment/appointment.png" alt="">
         </div>
+        </router-link>
       </div>
       <div class="presentation">
         <div class="doc_img">
@@ -84,7 +86,12 @@
 
 <script>
 export default {
-  name: "appointment"
+  name: "appointment",
+  methods: {
+    back(){
+      this.$router.go(-1);
+    }
+  }
 };
 </script>
 

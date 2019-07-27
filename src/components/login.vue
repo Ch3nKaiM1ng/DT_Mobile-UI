@@ -1,7 +1,7 @@
 <template>
   <div class="login" v-loading.fullscreen.lock="fullscreenLoading">
     <div class="login_header">
-      <div class="header_return">
+      <div class="header_return" @click="back">
           <div class="icon_return"></div>
       </div>
       <div class="header_title">登录</div>
@@ -183,6 +183,9 @@ export default {
         .then(res => {
           console.log(res);
         });
+    },
+    back(){
+      this.$router.go(-1);
     }
   },
   filters: {
