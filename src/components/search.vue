@@ -18,7 +18,7 @@
             </form>
           </div>
         </div>
-        <router-link tag="span" to="/inform" class="search_header_input_cancel">取消</router-link>
+        <router-link tag="span" to="/" class="search_header_input_cancel">取消</router-link>
         <!-- <div class="search_header_input_cancel" v-on:click="shous">搜索</div> -->
       </div>
 
