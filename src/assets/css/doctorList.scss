@@ -18,11 +18,15 @@
         text-align: center;
         line-height: .64rem;
         // background-color: #0d9e6d;
-        border-radius: .4rem;
+        border-radius: .2rem;
         width: 100%;
         height: 100%;
     }
 
+    .active{
+        background-color: #009965;
+        color: #ffffff;
+    }
 }
 
 .doctor_list {

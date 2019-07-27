@@ -1,7 +1,7 @@
 <template>
   <div class="login" v-loading.fullscreen.lock="fullscreenLoading">
     <div class="login_header">
-      <div class="header_return">
+      <div class="header_return" @click="back">
           <div class="icon_return"></div>
       </div>
       <div class="header_title">登录</div>
@@ -13,11 +13,11 @@
     <div class="login_from">
       <span class="login_from_span">手机号码</span>
       <div class="login_from_iphone">
-        <input type="number" placeholder="请输入手机号" v-model="ipone" />
+        <input type="number" placeholder="请输入手机号" v-model="ipone" onfocus="this.placeholder=''" onblur="this.placeholder='请输入手机号'" />
       </div>
       <span class="login_from_span">密码</span>
       <div class="login_from_password">
-        <input type="number" v-model="logincode" placeholder="请输入动态密码" />
+        <input type="number" v-model="logincode" placeholder="请输入动态密码" onfocus="this.placeholder=''" onblur="this.placeholder='请输入动态密码'" />
         <div class="login_from_password_btn" @click="onbtn">{{time | change}}</div>
       </div>
     </div>
@@ -183,6 +183,9 @@ export default {
         .then(res => {
           console.log(res);
         });
+    },
+    back(){
+      this.$router.go(-1);
     }
   },
   filters: {

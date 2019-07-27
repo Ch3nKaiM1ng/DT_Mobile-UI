@@ -1,7 +1,7 @@
 <template>
   <div id="complain">
     <div class="login_header">
-      <div class="header_return">
+      <div class="header_return" @click="back">
         <div class="icon_return"></div>
       </div>
       <div class="header_title">投诉建议</div>
@@ -37,7 +37,13 @@
         <div class="center_iphone-div display_flex1">
           <span>*</span>手机：
         </div>
-        <input type="number" v-model="phone" placeholder="投诉结果第一时间通过短信通知您" />
+        <input
+          type="number"
+          v-model="phone"
+          placeholder="投诉结果第一时间通过短信通知您"
+          onfocus="this.placeholder=''"
+          onblur="this.placeholder='投诉结果第一时间通过短信通知您'"
+        />
       </div>
     </div>
     <div class="suggest_center suggest_center_padding1">
@@ -49,7 +55,7 @@
 <script>
 import { print } from "util";
 export default {
-    namw:'complain',
+  namw: "complain",
   data() {
     return {
       data: { advise: "", phone: "", help: 1 },
@@ -61,7 +67,7 @@ export default {
   },
   mounted() {},
   methods: {
-    backs() {
+    back() {
       this.$router.go(-1); //返回上一层
     },
     radio() {

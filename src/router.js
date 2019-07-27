@@ -16,12 +16,15 @@ import appointment from './components/appointment.vue'
 import registration from './components/registration.vue'
 import hot_crunchies from './components/hot_crunchies.vue'
 import correctCase from './components/correctCase.vue'
+import askPeople from './components/askPeople.vue'
+import details_case from './components/details_case.vue'
 
 // 路由规则
 // Deadad 通用底部是否显示
 const routes = [
   {
     path: '/',
+    name: 'index',
     component: index,
     meta:{
       Deadad: true
@@ -42,12 +45,16 @@ const routes = [
     },
     children:[
       {
-        path: '',
+        path: 'correctCase',
         component: correctCase
       },
       {
-        path: 'hot_crunchies',
+        path: '',
         component: hot_crunchies
+      },
+      {
+        path: 'askPeople',
+        component: askPeople
       }
     ]
   },
@@ -74,6 +81,7 @@ const routes = [
   },
   {
     path: '/inform',
+    name: 'inform',
     component: inform,
     meta:{
       Deadad: true
@@ -99,12 +107,29 @@ const routes = [
     meta:{
       Deadad: false
     }
+  },
+  {
+    path: '/details_case',
+    component: details_case ,
+    meta:{
+      Deadad: false
+    }
   }
 ]
 
 // 实例化路由对象
 const router = new VueRouter({
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      if (from.meta.keepAlive) {
+        from.meta.savedPosition = document.body.scrollTop;
+      }
+      return { x: 0, y: to.meta.savedPosition || 0 }
+    }
+  }
 })
 
 

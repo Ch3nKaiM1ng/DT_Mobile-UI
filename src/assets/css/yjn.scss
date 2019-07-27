@@ -31,14 +31,72 @@
                 // 垂直排列
                 flex-direction: column;
 
-                img {
-                    width: .5rem;
+                .house1{
+                    width: .56rem;
+                    height: .54rem;
+                    background: url('../src/assets/img/Bottom_bar/house1.png') no-repeat;
+                    background-size: .56rem .54rem;
                 }
 
+                .house2{
+                    width: .56rem;
+                    height: .54rem;
+                    background: url('../src/assets/img/Bottom_bar/house2.png') no-repeat;
+                    background-size: .56rem .54rem;
+                }
+
+                .location1{
+                    width: .56rem;
+                    height: .54rem;
+                    background: url('../src/assets/img/Bottom_bar/location1.png') no-repeat;
+                    background-size: .56rem .54rem;
+                }
+
+                .location2{
+                    width: .56rem;
+                    height: .54rem;
+                    background: url('../src/assets/img/Bottom_bar/location2.png') no-repeat;
+                    background-size: .56rem .54rem;
+                }
+                
+                .message1{
+                    width: .56rem;
+                    height: .54rem;
+                    background: url('../src/assets/img/Bottom_bar/message1.png') no-repeat;
+                    background-size: .56rem .54rem;
+                }
+
+                .message2{
+                    width: .56rem;
+                    height: .54rem;
+                    background: url('../src/assets/img/Bottom_bar/message2.png') no-repeat;
+                    background-size: .56rem .54rem;
+                }
+
+                .mine1{
+                    width: .56rem;
+                    height: .54rem;
+                    background: url('../src/assets/img/Bottom_bar/mine1.png') no-repeat;
+                    background-size: .56rem .54rem;
+                }
+
+                .mine2{
+                    width: .56rem;
+                    height: .54rem;
+                    background: url('../src/assets/img/Bottom_bar/mine2.png') no-repeat;
+                    background-size: .56rem .54rem;
+                }
+                
                 span {
+                    font-size: .24rem;
+                    color: #717171;
                     margin-top: .1rem;
                     display: block;
                     text-align: center;
+                }
+
+                .sp1{
+                    color: #009965;
                 }
             }
 
@@ -70,9 +128,9 @@ $green1: rgba(125, 182, 0, 1);
 
         .icon_return {
             width: .17rem;
-            height: .35rem;
+            height: .32rem;
             background: url('../src/assets/img/login/return.png') no-repeat;
-            background-size: .3rem .4rem;
+            block-size: 100%;
         }
     }
 

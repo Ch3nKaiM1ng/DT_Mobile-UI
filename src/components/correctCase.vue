@@ -14,9 +14,9 @@
           <div class="age_title">年龄</div>
           <div class="age_segment">
             <div class="lowOrhigh">
-              <input class="most" type="number" placeholder="最低" />
+              <input class="most" type="number" placeholder="最低" onfocus="this.placeholder=''" onblur="this.placeholder='最低'"  />
               <div class="line"></div>
-              <input class="most" type="number" placeholder="最高" />
+              <input class="most" type="number" placeholder="最高" onfocus="this.placeholder=''" onblur="this.placeholder='最高'"  />
             </div>
           </div>
           <div class="age_select">

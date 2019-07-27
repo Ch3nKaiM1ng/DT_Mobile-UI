@@ -3,7 +3,7 @@
     <!-- 头部区域 -->
     <header class="header" ref="header">
       <!-- 头-背景 -->
-      <img class="header_bg" src="../assets/img/index/top_bg.jpg" alt />
+      <img class="header_bg" v-if="headerBg.length>0" :src="headerBg[0].bgImg" alt />
 
       <!-- 头-顶部 -->
       <div class="header_top">
@@ -12,28 +12,30 @@
         <div class="icon_right">
           <div class="icon_en"></div>
           <div class="message">
-            <div class="icon_message"></div>
-            <div class="message" v-if="isMessage">2</div>
+            <router-link to="/login">
+              <div class="icon_message"></div>
+              <div class="message" v-if="isMessage">2</div>
+            </router-link>
           </div>
         </div>
       </div>
 
       <!-- 头-导航栏 -->
-      <div class="header_nav" v-show="navShow">
-        <div class="nav_list">首页</div>
-        <div class="nav_list">优惠</div>
-        <div class="nav_list">预约</div>
-        <div class="nav_list">关于美莱</div>
-        <div class="nav_list">投诉建议</div>
+      <div class="header_nav" :class="navShow?'showAll':''">
+        <div class="nav_list" v-for="item in headerNav" :key="item.id">
+          <router-link :to="item.url">{{item.chName}}</router-link>
+        </div>
       </div>
 
       <!-- 头-搜索框 -->
-      <div class="header_search">
-        <div class="icon_glass">
-          <img src="../assets/img/index/glass.png" alt />
-          <span>搜索</span>
+      <router-link tag="div" to="/search">
+        <div class="header_search">
+          <div class="icon_glass">
+            <img src="../assets/img/index/glass.png" alt />
+            <span>搜索</span>
+          </div>
         </div>
-      </div>
+      </router-link>
     </header>
 
     <!-- 主体区域 -->
@@ -46,11 +48,19 @@
           <h3>#矫正热搜榜#</h3>
 
           <!-- 热搜问题 -->
-          <div class="hot_question">
+          <div class="hot_question" v-for="item in getHotList" :key="item.acId">
             <!-- 问题(左) -->
-            <div class="left">
-              <span>1、#牙齿矫正多少钱？</span>
-              <img src="../assets/img/index/hot.png" alt />
+            <div class="left" v-if="item.ac_artId!=null">
+              <span>{{item.article.artTitle}}</span>
+              <img src="../assets/img/index/new.png" v-if="item.article.label=='新'" alt />
+              <img src="../assets/img/index/bomb.png" v-else-if="item.article.label=='爆'" alt />
+              <img src="../assets/img/index/hot.png" v-else-if="item.article.label=='热'" alt />
+            </div>
+            <div class="left" v-else>
+              <span>{{item.ask.askTitle}}</span>
+              <img src="../assets/img/index/new.png" v-if="item.ask.label=='新'" alt />
+              <img src="../assets/img/index/bomb.png" v-else-if="item.ask.label=='爆'" alt />
+              <img src="../assets/img/index/hot.png" v-else-if="item.ask.label=='热'" alt />
             </div>
             <!-- 讨论(右) -->
             <!-- <div class="discussion2">
@@ -86,168 +96,8 @@
               </div>
             </div>
           </div>
-          <div class="hot_question">
-            <!-- 问题(左) -->
-            <div class="left">
-              <span>2、#30-35岁还可以做牙齿矫正吗？</span>
-              <img src="../assets/img/index/new.png" alt />
-            </div>
-            <!-- 讨论(右) -->
-            <!-- <div class="discussion2">
-              <div class="up">
-                <span>3.9W</span>
-                <img src="../assets/img/index/up.png" alt />
-                <span>+6</span>
-              </div>
-              <div class="down2">
-                <div class="girl">
-                  <span>#</span>
-                  <span>女</span>
-                  <span>1234</span>
-                </div>
-                <div class="man">
-                  <span>#</span>
-                  <span>男</span>
-                  <span>1234</span>
-                </div>
-                <span>讨论</span>
-              </div>
-            </div>-->
-            <div class="discussion1">
-              <div class="up">
-                <span>5.3W</span>
-                <img src alt />
-                <span></span>
-              </div>
-
-              <div class="down1">
-                <span>#2026</span>
-                <span>讨论</span>
-              </div>
-            </div>
-          </div>
-          <div class="hot_question">
-            <!-- 问题(左) -->
-            <div class="left">
-              <span>3、#牙齿不整齐怎么办？</span>
-              <img src="../assets/img/index/bomb.png" alt />
-            </div>
-            <!-- 讨论(右) -->
-            <div class="discussion2">
-              <div class="up">
-                <span>3.9W</span>
-                <img src="../assets/img/index/up.png" alt />
-                <span>+6</span>
-              </div>
-              <div class="down2">
-                <div class="girl">
-                  <span>#</span>
-                  <span>女</span>
-                  <span>1234</span>
-                </div>
-                <div class="man">
-                  <span>#</span>
-                  <span>男</span>
-                  <span>1234</span>
-                </div>
-                <span>讨论</span>
-              </div>
-            </div>
-            <!-- <div class="discussion1">
-              <div class="up">
-                <span>3.9W</span>
-                <img src="../assets/img/index/up.png" alt />
-                <span>+6</span>
-              </div>
-
-              <div class="down1">
-                <span>#2026</span>
-                <span>讨论</span>
-              </div>
-            </div>-->
-          </div>
-          <div class="hot_question">
-            <!-- 问题(左) -->
-            <div class="left">
-              <span>4、#隐形牙齿矫正费用</span>
-              <img src alt />
-            </div>
-            <!-- 讨论(右) -->
-            <!-- <div class="discussion2">
-              <div class="up">
-                <span>3.9W</span>
-                <img src="../assets/img/index/up.png" alt />
-                <span>+6</span>
-              </div>
-              <div class="down2">
-                <div class="girl">
-                  <span>#</span>
-                  <span>女</span>
-                  <span>1234</span>
-                </div>
-                <div class="man">
-                  <span>#</span>
-                  <span>男</span>
-                  <span>1234</span>
-                </div>
-                <span>讨论</span>
-              </div>
-            </div>-->
-            <div class="discussion1">
-              <div class="up">
-                <span>3.5W</span>
-                <img src alt />
-                <span></span>
-              </div>
-
-              <div class="down1">
-                <span>#1234</span>
-                <span>讨论</span>
-              </div>
-            </div>
-          </div>
-          <div class="hot_question">
-            <!-- 问题(左) -->
-            <div class="left">
-              <span>5、#隐形矫正的效果好吗？</span>
-              <img src alt />
-            </div>
-            <!-- 讨论(右) -->
-            <!-- <div class="discussion2">
-              <div class="up">
-                <span>3.9W</span>
-                <img src="../assets/img/index/up.png" alt />
-                <span>+6</span>
-              </div>
-              <div class="down2">
-                <div class="girl">
-                  <span>#</span>
-                  <span>女</span>
-                  <span>1234</span>
-                </div>
-                <div class="man">
-                  <span>#</span>
-                  <span>男</span>
-                  <span>1234</span>
-                </div>
-                <span>讨论</span>
-              </div>
-            </div>-->
-            <div class="discussion1">
-              <div class="up">
-                <span>2.6W</span>
-                <img src="../assets/img/index/up.png" alt />
-                <span>+6</span>
-              </div>
-
-              <div class="down1">
-                <span>#1234</span>
-                <span>讨论</span>
-              </div>
-            </div>
-          </div>
           <div class="more">
-            <a href="#">查看更多>></a>
+            <router-link to="/crunchies">查看更多>></router-link>
           </div>
         </div>
 
@@ -257,30 +107,21 @@
           <div class="specialist_up">
             <div class="left_swiper">
               <swiper :options="swiperOption">
-                <swiper-slide>
-                  <img src="../assets/img/index/specialist1.jpg" alt />
-                </swiper-slide>
-                <swiper-slide>
-                  <img src="../assets/img/index/specialist2.jpg" alt />
-                </swiper-slide>
-                <swiper-slide>
-                  <img src="../assets/img/index/specialist1.jpg" alt />
-                </swiper-slide>
-                <swiper-slide>
-                  <img src="../assets/img/index/specialist2.jpg" alt />
-                </swiper-slide>
-                <swiper-slide>
-                  <img src="../assets/img/index/specialist1.jpg" alt />
-                </swiper-slide>
-                <swiper-slide>
-                  <img src="../assets/img/index/specialist2.jpg" alt />
+                <swiper-slide v-for="item in bannerList" :key="item.id">
+                  <a :href="item.bannerUrl">
+                    <img :src="item.bannerImg" alt />
+                  </a>
                 </swiper-slide>
               </swiper>
               <div class="swiper-pagination" slot="pagination"></div>
             </div>
             <div class="contact_specialist">
-              <div class="we">联系我们</div>
-              <div class="doctor">医生专家</div>
+              <a href="tel:4008018088" class="tel">
+                <div class="we">联系我们</div>
+              </a>
+              <router-link tag="div" to="/doctorList">
+                <div class="doctor">医生专家</div>
+              </router-link>
             </div>
           </div>
           <!-- 专家下半区 -->
@@ -298,7 +139,7 @@
         </div>
 
         <!-- 客户展示 -->
-        <div class="user_show" ref="userShow">
+        <div class="user_show" :style="{height:scrollBoxHeight}">
           <div class="user_list">
             <!-- 内容展示区 -->
             <div class="user_content">
@@ -357,6 +198,54 @@
               </div>
               <div class="user_question">
                 <span>牙齿矫正多少钱？</span>
+              </div>
+            </div>
+            <!-- 点赞评论区 -->
+            <div class="zan">
+              <div class="zan_message">
+                <img src="../assets/img/index/zanMeg.png" alt />
+                <span>12.5万</span>
+              </div>
+              <div class="zan_heart">
+                <img src="../assets/img/index/heart1.png" alt />
+                <span>12.5万</span>
+              </div>
+            </div>
+          </div>
+          <div class="user_list">
+            <!-- 内容展示区 -->
+            <div class="user_content">
+              <img src="../assets/img/index/user4.png" alt />
+              <div class="user_picture">
+                <img src="../assets/img/index/user5.png" alt />
+                <img src="../assets/img/index/user6.png" alt />
+              </div>
+              <div class="user_question">
+                <span>隐形牙齿矫正费用</span>
+              </div>
+            </div>
+            <!-- 点赞评论区 -->
+            <div class="zan">
+              <div class="zan_message">
+                <img src="../assets/img/index/zanMeg.png" alt />
+                <span>12.5万</span>
+              </div>
+              <div class="zan_heart">
+                <img src="../assets/img/index/heart1.png" alt />
+                <span>12.5万</span>
+              </div>
+            </div>
+          </div>
+          <div class="user_list">
+            <!-- 内容展示区 -->
+            <div class="user_content">
+              <img src="../assets/img/index/user4.png" alt />
+              <div class="user_picture">
+                <img src="../assets/img/index/user5.png" alt />
+                <img src="../assets/img/index/user6.png" alt />
+              </div>
+              <div class="user_question">
+                <span>隐形牙齿矫正费用</span>
               </div>
             </div>
             <!-- 点赞评论区 -->
@@ -396,7 +285,7 @@
             </div>
           </div>
           <div class="more">查看更多>></div>
-          <div class="mask">
+          <div class="mask" v-if="currentIndex!=3" @click="showMoreBox">
             <img src="../assets/img/index/drop-down.png" alt />
           </div>
         </div>
@@ -406,95 +295,53 @@
         <!-- 不同人群 -->
         <div class="different_persons">
           <div class="persons_category">
-            <div class="youth active">青年</div>
-            <div class="old">老人</div>
-            <div class="children">儿童</div>
+            <div
+              @click="difPep(item.id,index)"
+              v-for="(item,index) in getAll_differentPersons"
+              :key="index"
+              :class="{'active':index==current}"
+            >{{item.chName}}</div>
           </div>
           <div class="title_level1">
-            <div class="level1_list active">矫正</div>
-            <div class="level1_list">拔牙</div>
-            <div class="level1_list">美白</div>
-            <div class="level1_list">治疗</div>
-            <div class="level1_list">修复</div>
-            <div class="level1_list">种植</div>
+            <div
+              class="level1_list"
+              @click="difPep1(item.id,index)"
+              v-for="(item,index) in sonList"
+              :key="index"
+              :class="{'active':index==current1}"
+            >{{item.chName}}</div>
           </div>
           <div class="title_level2">
-            <div class="level2_list active">
-              <span>专业回答</span>
-              <span>(20)</span>
+            <div
+              class="level2_list"
+              @click="difPep2(item.id,index)"
+              v-for="(item,index) in grandsonList"
+              :key="index"
+              :class="{'active':index==current2}"
+            >
+              <span>{{item.chName}}</span>
             </div>
-            <div class="level2_list">
-              <span>矫正问题</span>
-              <span>(20)</span>
-            </div>
-            <div class="level2_list">
-              <span>查看费用</span>
-              <span>(20)</span>
-            </div>
-            <div class="level2_list">
-              <span>效果图</span>
-              <span>(20)</span>
-            </div>
-            <div class="level2_list">
-              <span>年龄</span>
-              <span>(20)</span>
-            </div>
-            <div class="level2_list">
-              <span>年龄</span>
-              <span>(20)</span>
-            </div>
+            <div class="tip_level2" v-if="grandsonList.length==0">此处内容为空~~</div>
           </div>
           <div class="persons_question">
             <div class="persons_question_list">
-              <div class="question_details">
-                <a href="#">
-                  <span>牙齿矫正多少钱?>></span>
+              <div class="question_details" v-for="(item,index) in blue_list" :key="index">
+                <a :href="item.url">
+                  <span>{{item.title}}</span>
                 </a>
               </div>
-              <div class="question_details">
-                <a href="#">
-                  <span>龅牙>></span>
-                </a>
-              </div>
-              <div class="question_details">
-                <a href="#">
-                  <span>隐形牙齿矫正费用</span>
-                </a>
-              </div>
-              <div class="question_details">
-                <a href="#">
-                  <span>牙齿美白</span>
-                </a>
-              </div>
-              <div class="question_details">
-                <a href="#">
-                  <span>牙齿不整齐怎么办?</span>
-                </a>
-              </div>
-              <div class="question_details">
-                <a href="#">
-                  <span>35岁了还能做牙齿矫正吗?</span>
-                </a>
-              </div>
+              <div class="tip_question" v-if="blue_list.length==0"></div>
             </div>
-
             <div class="more">
               <a href="#">查看更多>></a>
             </div>
           </div>
-          <div class="tooth_swiper">
+          <div class="tooth_swiper" v-if="blueimg_list.length>0">
             <swiper :options="swiperOption1">
-              <swiper-slide>
-                <img src="../assets/img/index/article5.png" alt />
-              </swiper-slide>
-              <swiper-slide>
-                <img src="../assets/img/index/article5.png" alt />
-              </swiper-slide>
-              <swiper-slide>
-                <img src="../assets/img/index/tooth_swiper2.png" alt />
-              </swiper-slide>
-              <swiper-slide>
-                <img src="../assets/img/index/tooth_swiper2.png" alt />
+              <swiper-slide v-for="(item,index) in blueimg_list" :key="index">
+                <a :href="item.url">
+                  <img :src="item.img" alt />
+                </a>
               </swiper-slide>
             </swiper>
           </div>
@@ -537,9 +384,14 @@
                   <img src="../assets/img/index/video.png" alt />
                 </div>
                 <div class="article_img">
-                  <video class="videoPlay" src="" poster="../assets/img/index/article2.png" loop="loop" x-webkit-airplay="true" webkit-playsinline="true">
-                        您的浏览器暂不支持播放该视频，请升级至最新版浏览器。
-                    </video>
+                  <video
+                    class="videoPlay"
+                    src
+                    poster="../assets/img/index/article2.png"
+                    loop="loop"
+                    x-webkit-airplay="true"
+                    webkit-playsinline="true"
+                  >您的浏览器暂不支持播放该视频，请升级至最新版浏览器。</video>
                 </div>
                 <div class="read_Num">
                   <div class="left">
@@ -703,13 +555,12 @@
               <!-- 问题(左) -->
               <div class="left">
                 <div class="question">
-                  <img src="../assets/img/index/1.png" alt />
-                  <span>問：深圳牙齒矯正全部下來要...</span>
+                  <span>1、問：深圳牙齒矯正全部下來要...</span>
                 </div>
                 <div class="question_img">
-                  <img src='' alt />
-                  <img src='' alt />
-                  <img src='' alt />
+                  <img src alt />
+                  <img src alt />
+                  <img src alt />
                 </div>
               </div>
               <!-- 讨论(右) -->
@@ -732,7 +583,7 @@
                   </div>
                   <span>讨论</span>
                 </div>
-              </div> -->
+              </div>-->
               <div class="discussion1">
                 <div class="up">
                   <span>9.9W</span>
@@ -750,13 +601,12 @@
               <!-- 问题(左) -->
               <div class="left">
                 <div class="question">
-                  <img src="../assets/img/index/2.png" alt />
-                  <span>問：深圳牙齒矯正全部下來要...</span>
+                  <span>2、問：深圳牙齒矯正全部下來要...</span>
                 </div>
                 <div class="question_img">
-                  <img src='' alt />
-                  <img src='' alt />
-                  <img src='' alt />
+                  <img src alt />
+                  <img src alt />
+                  <img src alt />
                 </div>
               </div>
               <!-- 讨论(右) -->
@@ -779,11 +629,11 @@
                   </div>
                   <span>讨论</span>
                 </div>
-              </div> -->
+              </div>-->
               <div class="discussion1">
                 <div class="up">
                   <span>5.3W</span>
-                  <img src="" alt />
+                  <img src alt />
                   <span></span>
                 </div>
 
@@ -797,13 +647,12 @@
               <!-- 问题(左) -->
               <div class="left">
                 <div class="question">
-                  <img src="../assets/img/index/3.png" alt />
-                  <span>問：牙齿矫正大概需要多久？</span>
+                  <span>3、問：牙齿矫正大概需要多久？</span>
                 </div>
                 <div class="question_img">
-                  <img src='../assets/img/index/question_img1.png' alt />
-                  <img src='../assets/img/index/question_img2.png' alt />
-                  <img src='../assets/img/index/question_img3.png' alt />
+                  <img src="../assets/img/index/question_img1.png" alt />
+                  <img src="../assets/img/index/question_img2.png" alt />
+                  <img src="../assets/img/index/question_img3.png" alt />
                 </div>
               </div>
               <!-- 讨论(右) -->
@@ -838,19 +687,18 @@
                   <span>#1234</span>
                   <span>讨论</span>
                 </div>
-              </div> -->
+              </div>-->
             </div>
             <div class="question_list">
               <!-- 问题(左) -->
               <div class="left">
                 <div class="question">
-                  <img src="../assets/img/index/3.png" alt />
-                  <span>問：牙齿矫正大概需要多久？</span>
+                  <span>4、問：牙齿矫正大概需要多久？</span>
                 </div>
                 <div class="question_img">
-                  <img src='' alt />
-                  <img src='' alt />
-                  <img src='' alt />
+                  <img src alt />
+                  <img src alt />
+                  <img src alt />
                 </div>
               </div>
               <!-- 讨论(右) -->
@@ -873,7 +721,7 @@
                   </div>
                   <span>讨论</span>
                 </div>
-              </div> -->
+              </div>-->
               <div class="discussion1">
                 <div class="up">
                   <span>3.5W</span>
@@ -891,13 +739,12 @@
               <!-- 问题(左) -->
               <div class="left">
                 <div class="question">
-                  <img src="../assets/img/index/3.png" alt />
-                  <span>問：牙齿矫正大概需要多久？</span>
+                  <span>5、問：牙齿矫正大概需要多久？</span>
                 </div>
                 <div class="question_img">
-                  <img src='' alt />
-                  <img src='' alt />
-                  <img src='' alt />
+                  <img src alt />
+                  <img src alt />
+                  <img src alt />
                 </div>
               </div>
               <!-- 讨论(右) -->
@@ -920,11 +767,11 @@
                   </div>
                   <span>讨论</span>
                 </div>
-              </div> -->
+              </div>-->
               <div class="discussion1">
                 <div class="up">
                   <span>2.6W</span>
-                  <img src="" alt />
+                  <img src alt />
                   <span>+6</span>
                 </div>
 
@@ -938,13 +785,12 @@
               <!-- 问题(左) -->
               <div class="left">
                 <div class="question">
-                  <img src="../assets/img/index/3.png" alt />
-                  <span>問：牙齿矫正大概需要多久？</span>
+                  <span>6、問：牙齿矫正大概需要多久？</span>
                 </div>
                 <div class="question_img">
-                  <img src='' alt />
-                  <img src='' alt />
-                  <img src='' alt />
+                  <img src alt />
+                  <img src alt />
+                  <img src alt />
                 </div>
               </div>
               <!-- 讨论(右) -->
@@ -967,11 +813,11 @@
                   </div>
                   <span>讨论</span>
                 </div>
-              </div> -->
+              </div>-->
               <div class="discussion1">
                 <div class="up">
                   <span>2.6W</span>
-                  <img src="" alt />
+                  <img src alt />
                   <span>+6</span>
                 </div>
 
@@ -987,22 +833,22 @@
     </main>
 
     <!-- 悬浮search-->
-    <div class="suspend_search" v-show="search_show" ref="suspend">
+    <div class="suspend_search" v-show="search_show">
       <div class="search">
         <div class="mine_icon">
           <img src="../assets/img/index/mine.png" alt />
         </div>
-        <div class="search_box">
-          <img src="../assets/img/index/glass.png" alt />
-          <span>搜索</span>
-        </div>
+        <router-link to="/search">
+          <div class="search_box">
+            <img src="../assets/img/index/glass.png" alt />
+            <span>搜索</span>
+          </div>
+        </router-link>
       </div>
       <div class="search_nav">
-        <div class="nav_list">首页</div>
-        <div class="nav_list">优惠</div>
-        <div class="nav_list">预约</div>
-        <div class="nav_list">关于登特</div>
-        <div class="nav_list">投诉建议</div>
+        <div class="nav_list" v-for="item in headerNav" :key="item.id">
+          <router-link tag="div" :to="item.url">{{item.chName}}</router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -1014,17 +860,21 @@ export default {
   data() {
     return {
       // 头部导航栏显示
-      navShow:true,
+      navShow: true,
       // 消息红点提示
-      isMessage:false,
-      // 客户展示高度
-      // userShow_scrollTop:0,
+      isMessage: false,
       // 头部高度
       header_scrollTop: 0,
       // 当前滚动距离
       current_scrollTop: 0,
       // 悬浮导航栏
       search_show: false,
+      // 调取热搜榜数据
+      hotList: { hot: 1 },
+      // 拿到热搜榜数据
+      getHotList: [],
+      // 显示框当前下标
+      currentIndex: 1,
       // 专家 轮播图
       swiperOption: {
         autoplay: {
@@ -1043,44 +893,159 @@ export default {
         slidesPerView: 3,
         spaceBetween: 30,
         freeMode: true
-      }
+      },
+      //查询所有不同人群数据
+      queryAll_differentPersons: {
+        level: 1,
+        parentId: 0,
+        style: 3
+      },
+      // 一级按钮列表
+      getAll_differentPersons: [],
+      // 二级按钮列表
+      sonList: [],
+      // 三级按钮列表
+      grandsonList: [],
+      // 一级当前选中
+      current: "0",
+      // 二级当前选中
+      current1: "0",
+      // 三级当前选中
+      current2: "0",
+      // 蓝色标签数据
+      blue_list: [],
+      // 蓝色标签对应的swiper图片
+      blueimg_list: [],
+      // 医生专家banner图
+      bannerList: [],
+      // 头部背景图
+      headerBg: "",
+      // 头部导航栏
+      headerNav: []
     };
   },
   methods: {
-    // 滚动显示黑色搜索框
+    // 显示 黑色搜索框
     handleScroll(e) {
       // 获取当前滚动距离
       this.current_scrollTop =
         e.target.documentElement.scrollTop || e.target.body.scrollTop; // 执行代码
-      // console.log(this.current_scrollTop);
 
       if (this.current_scrollTop >= this.header_scrollTop) {
         this.search_show = true;
-        // this.$refs.suspend.style.transform = 'translateY(100%)'
       } else {
         this.search_show = false;
       }
     },
-    // 显示隐藏头部导航栏
-    showNav(){
+    // 显示隐藏 头部导航栏
+    showNav() {
       this.navShow = !this.navShow;
+    },
+    // 显示隐藏 白色点击展示更多
+    showMoreBox() {
+      if (this.currentIndex == 3) return;
+      this.currentIndex++;
+    },
+    // 判断 不同人群的一级标签数据
+    difPep(crid, index) {
+      this.current1 = "0";
+      this.current2 = "0";
+      this.current = index;
+      this.sonList = [];
+      this.grandsonList = [];
+      this.blue_list = [];
+      this.blueimg_list = [];
+      this.getAll_differentPersons.forEach(e => {
+        if (e.id == crid) {
+          this.sonList = e.sonList;
+          this.grandsonList = this.sonList[0].sonList;
+          if (!this.grandsonList[0]) {
+            return;
+          }
+          this.queryblue_byId(this.grandsonList[0].id);
+        }
+      });
+    },
+    // 判断 不同人群的二级标签数据
+    difPep1(crid1, index) {
+      this.current2 = "0";
+      this.current1 = index;
+      this.grandsonList = [];
+      this.blue_list = [];
+      this.sonList.forEach(e => {
+        if (e.id == crid1) {
+          this.grandsonList = e.sonList;
+          if (!this.grandsonList[0]) {
+            return;
+          }
+          this.queryblue_byId(this.grandsonList[0].id);
+        }
+      });
+    },
+    //判断 不同人群的三级标签数据
+    difPep2(crid2, index) {
+      this.blue_list = [];
+      this.blueimg_list = [];
+      this.current2 = index;
+      this.grandsonList.forEach(e => {
+        if (e.id == crid2) {
+          this.queryblue_byId(crid2);
+        }
+      });
+    },
+    // 根据第三级分类ID查询蓝色标签
+    queryblue_byId(id) {
+      this.$request.getDifferentPersonsBlue_byId(id).then(res => {
+        this.blue_list = res.data.data.dataList;
+        this.blueimg_list = res.data.data.imgList;
+      });
     }
-    // glideDown(){
-    //   let userShow_newHeight = this.userShow_scrollTop + 2
-    //   this.$refs.userShow.style.height = userShow_newHeight +'rem';
-    // }
   },
   mounted() {
     // 获取 头部高度
     this.header_scrollTop = this.$refs.header.offsetHeight;
-    // console.log(this.header_scrollTop);
-
-    // 获取 客户展示高度
-    // this.userShow_scrollTop = this.$refs.userShow.offsetHeight;
-    // console.log(this.userShow_scrollTop);
-
-    // 监听页面高度
+    // 监听 页面高度
     window.addEventListener("scroll", this.handleScroll);
+  },
+  created() {
+    // 医生专家banner图
+    this.$request.getbanner().then(res => {
+      this.bannerList = res.data.data;
+    });
+    // 头部背景图
+    this.$request.getheaderBg().then(res => {
+      this.headerBg = res.data.data;
+    });
+    // 头部导航栏
+    this.$request.getheaderNav().then(res => {
+      this.headerNav = res.data.data;
+    });
+    this.$request.getHotList(this.hotList).then(res => {
+      this.getHotList = res.data.data;
+      console.log(this.getHotList);
+    });
+    // 不同人群(所有)
+    this.$request
+      .getAll_differentPersons(this.queryAll_differentPersons)
+      .then(res => {
+        this.getAll_differentPersons = res.data.data;
+        this.sonList = this.getAll_differentPersons[0].sonList;
+        this.grandsonList = this.sonList[0].sonList;
+        if (!this.grandsonList[0]) {
+          return;
+        }
+        this.queryblue_byId(this.grandsonList[0].id);
+      });
+  },
+  computed: {
+    // 用户展示 点击计算
+    scrollBoxHeight() {
+      if (this.currentIndex < 3) {
+        return this.currentIndex * 4.47 + 2.235 + "rem";
+      } else {
+        return this.currentIndex * 4.47 + 0.9 + "rem";
+      }
+    }
   }
 };
 </script>
@@ -1091,7 +1056,7 @@ export default {
   height: 100%;
 }
 </style>
-<style lang='scss' scoped>
+<style lang='scss'>
 @import "../assets/css/index.scss";
 </style>
 

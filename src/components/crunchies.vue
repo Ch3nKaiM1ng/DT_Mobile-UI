@@ -1,7 +1,7 @@
 <template>
   <div id="crunchies">
     <div class="crunchies_header">
-      <div class="crunchies_return">
+      <div class="crunchies_return" @click="back">
         <div class="icon_return"></div>
       </div>
       <div class="crunchies_title">
@@ -56,6 +56,9 @@ export default {
       //  if(this.pullDown_show){
       //    this.$refs.bg.style.background = url('../assets/img/index/crunchies/return_top.png') + 'no-repeat';
       //  }
+    },
+    back(){
+      this.$router.go(-1);
     }
   }
 };
