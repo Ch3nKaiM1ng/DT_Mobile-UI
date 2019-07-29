@@ -1,13 +1,497 @@
 .beforetime_user{
-    background-color: #ffffff;
-    padding: .4rem 0 .5rem .2rem;
-    .title{
-        font-size: .3rem;
-        font-weight: normal;
+    width: 100%;
+    height: auto;
+    // 案例1
+    .CaseOne{
+        width: 100%;
+        background-color: #ffffff;
+        .case1{
+            width: 95%;
+            height: auto;
+            font:0.32rem "微软雅黑";
+            color:#333333;
+            margin:0.4rem 0 0.34rem 0.2rem;
+        }
+        .case1_Show{
+            width: 95%;
+            display: inline-block;
+            margin:0 0.2rem 0.5rem 0.2rem;
+            .case1_img1{
+                width: 1.5rem;
+                height: auto;
+                display: inline-block;
+                border: 1px solid #e6dfdf;
+                border-radius: 0.1rem;
+                margin: 0 0.34rem 0 0;
+                img{
+                    width: 100%;
+                }
+            }
+            .case1_img2{
+                width: 1.5rem;
+                height: auto;
+                display: inline-block;
+                border: 1px solid #e6dfdf;
+                border-radius: 0.1rem;
+                margin: 0 0.34rem 0 0;
+                img{
+                    width: 100%;
+                }
+            }
+            .case1_img3{
+                width: 1.5rem;
+                height: auto;
+                display: inline-block;
+                border: 1px solid #e6dfdf;
+                border-radius: 0.1rem;
+                margin: 0 0.34rem 0 0;
+                img{
+                    width: 100%;
+                }
+            }
+            .case1_img4{
+                width: 1.5rem;
+                height: auto;
+                display: inline-block;
+                border: 1px solid #e6dfdf;
+                border-radius: 0.1rem;
+                position: relative;
+                img{
+                    width: 100%;
+                }
+                span{
+                    width: 100%;
+                    font:0.26rem "微软雅黑";
+                    color:#7c7c7c;
+                    position: absolute;
+                    top: 0.55rem;
+                    left: 0rem;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    .Case_nav{
+        width: 95%;
+        background-color: white;
+        font: 0.3rem "\5FAE\8F6F\96C5\9ED1";
         color: #333333;
-        margin-bottom: .3rem;
+        margin: 0.56rem 0 0.4rem 0.2rem;
+    }    
+    .Case{
+        width: 100%;
+        background-color: white;
+    // 案例2  1张图片
+    .CaseTwo{
+        width: 100%;
+        background-color: #ffffff;
+        margin-left: 0.2rem;
+        .case2_lf{
+            width:30%;
+            float: left;
+            .case2_nav{
+                width:100%;
+                img{
+                    width:15%;
+                }
+                span{
+                    width:100%;
+                    font:lighter 0.26rem "微软雅黑";
+                    color:#333333;
+                    margin-left: 0.1rem;
+                }
+                p{
+                    width:50%;
+                    font:lighter 0.22rem "微软雅黑";
+                    color:#7c7c7c;
+                    border: 1px solid #c0c0c0;
+                    text-align: center;
+                    margin: 0.16rem 0.4rem;
+                    border-radius: 0.05rem;
+                }
+            }
+            .case2_day{
+                width:100%;
+                display: inline-block;
+                margin: 1.5rem 0 3.82rem 0;
+                p{
+                    width: 100%;
+                    text-align: center;
+                    font:0.72rem "微软雅黑";
+                    color:#333333;
+                    span{
+                        text-align: center;
+                        font:0.28rem "微软雅黑";
+                        color:#7c7c7c;
+                    }
+                }
+                
+            }
+        }
+        .case2_rf{
+            width:70%;
+            float: right;
+            .case2_img{
+                width:95%;
+                margin-top: 0.6rem;
+                border:1px solid #ffffff;
+                border-radius: 0.2rem;
+                img{
+                     width:100%;
+                }
+            }
+            .case2_label{
+                width: 90%;
+                margin-top: 0.1rem;
+                span{
+                    width: 100%;
+                    font:lighter 0.24rem "微软雅黑";
+                    color:#eaa656;
+                    border: 1px solid #fff5db;
+                    background-color: #fff5db;
+                    border-radius: 0.1rem;
+                }
+                
+            }
+            .case2_conten{
+                width: 95%;
+                margin-top: 0.1rem;
+                font: lighter 0.3rem "\5FAE\8F6F\96C5\9ED1";
+                color: #333333;
+                
+            }
+        }
+         
     }
-    .userImg_show{
-
+    // 案例3  2张图片
+    .CaseThree{
+        width: 100%;
+        background-color: #ffffff;
+        margin-left: 0.2rem;
+        .case3_lf{
+            width:30%;
+            float: left;
+            .case3_nav{
+                width:100%;
+                img{
+                    width:15%;
+                }
+                span{
+                    width:100%;
+                    font:lighter 0.26rem "微软雅黑";
+                    color:#333333;
+                    margin-left: 0.1rem;
+                }
+                p{
+                    width:50%;
+                    font:lighter 0.22rem "微软雅黑";
+                    color:#7c7c7c;
+                    border: 1px solid #c0c0c0;
+                    text-align: center;
+                    margin: 0.16rem 0.4rem;
+                    border-radius: 0.05rem;
+                }
+            }
+            .case3_day{
+                width:100%;
+                display: inline-block;
+                margin: 1.5rem 0 3.82rem 0;
+                p{
+                    width: 100%;
+                    text-align: center;
+                    font:0.72rem "微软雅黑";
+                    color:#333333;
+                    span{
+                        text-align: center;
+                        font:0.28rem "微软雅黑";
+                        color:#7c7c7c;
+                    }
+                }
+                
+            }
+        }
+        .case3_rf{
+            width:70%;
+            float: right;
+            .case2_img{
+                width:95%;
+                margin-top: 0.6rem;
+                border:1px solid #ffffff;
+                border-radius: 0.2rem;
+                img{
+                     width:100%;
+                }
+            }
+            .case3_label{
+                width: 90%;
+                margin-top: 0.1rem;
+                span{
+                    width: 100%;
+                    font:lighter 0.24rem "微软雅黑";
+                    color:#eaa656;
+                    border: 1px solid #fff5db;
+                    background-color: #fff5db;
+                    border-radius: 0.1rem;
+                }
+                
+            }
+            .case3_conten{
+                width: 95%;
+                margin-top: 0.1rem;
+                font: lighter 0.3rem "\5FAE\8F6F\96C5\9ED1";
+                color: #333333;
+                
+            }
+        }
+         
     }
+    // 案例4  3-4张图片
+    .CaseFour{
+        width: 100%;
+        background-color: #ffffff;
+        margin-left: 0.2rem;
+        .case4_lf{
+            width:30%;
+            float: left;
+            .case4_nav{
+                width:100%;
+                img{
+                    width:15%;
+                }
+                span{
+                    width:100%;
+                    font:lighter 0.26rem "微软雅黑";
+                    color:#333333;
+                    margin-left: 0.1rem;
+                }
+                p{
+                    width:50%;
+                    font:lighter 0.22rem "微软雅黑";
+                    color:#7c7c7c;
+                    border: 1px solid #c0c0c0;
+                    text-align: center;
+                    margin: 0.16rem 0.4rem;
+                    border-radius: 0.05rem;
+                }
+            }
+            .case4_day{
+                width:100%;
+                display: inline-block;
+                margin: 1.5rem 0 3.82rem 0;
+                p{
+                    width: 100%;
+                    text-align: center;
+                    font:0.72rem "微软雅黑";
+                    color:#333333;
+                    span{
+                        text-align: center;
+                        font:0.28rem "微软雅黑";
+                        color:#7c7c7c;
+                    }
+                }
+                
+            }
+        }
+        .case4_rf{
+            width:70%;
+            float: right;
+            .case2_img{
+                width:95%;
+                margin-top: 0.6rem;
+                border:1px solid #ffffff;
+                border-radius: 0.2rem;
+                img{
+                     width:100%;
+                }
+            }
+            .case4_label{
+                width: 90%;
+                margin-top: 0.1rem;
+                span{
+                    width: 100%;
+                    font:lighter 0.24rem "微软雅黑";
+                    color:#eaa656;
+                    border: 1px solid #fff5db;
+                    background-color: #fff5db;
+                    border-radius: 0.1rem;
+                }
+                
+            }
+            .case4_conten{
+                width: 95%;
+                margin-top: 0.1rem;
+                font: lighter 0.3rem "\5FAE\8F6F\96C5\9ED1";
+                color: #333333;
+                
+            }
+        }
+         
+    }
+    // 案例5  5-6张图片
+    .CaseFive{
+        width: 100%;
+        background-color: #ffffff;
+        margin-left: 0.2rem;
+        .case5_lf{
+            width:30%;
+            float: left;
+            .case5_nav{
+                width:100%;
+                img{
+                    width:15%;
+                }
+                span{
+                    width:100%;
+                    font:lighter 0.26rem "微软雅黑";
+                    color:#333333;
+                    margin-left: 0.1rem;
+                }
+                p{
+                    width:50%;
+                    font:lighter 0.22rem "微软雅黑";
+                    color:#7c7c7c;
+                    border: 1px solid #c0c0c0;
+                    text-align: center;
+                    margin: 0.16rem 0.4rem;
+                    border-radius: 0.05rem;
+                }
+            }
+            .case5_day{
+                width:100%;
+                display: inline-block;
+                margin: 1.5rem 0 3.82rem 0;
+                p{
+                    width: 100%;
+                    text-align: center;
+                    font:0.72rem "微软雅黑";
+                    color:#333333;
+                    span{
+                        text-align: center;
+                        font:0.28rem "微软雅黑";
+                        color:#7c7c7c;
+                    }
+                }
+                
+            }
+        }
+        .case5_rf{
+            width:70%;
+            float: right;
+            .case2_img{
+                width:95%;
+                margin-top: 0.6rem;
+                border:1px solid #ffffff;
+                border-radius: 0.2rem;
+                img{
+                     width:100%;
+                }
+            }
+            .case5_label{
+                width: 90%;
+                margin-top: 0.1rem;
+                span{
+                    width: 100%;
+                    font:lighter 0.24rem "微软雅黑";
+                    color:#eaa656;
+                    border: 1px solid #fff5db;
+                    background-color: #fff5db;
+                    border-radius: 0.1rem;
+                }
+                
+            }
+            .case5_conten{
+                width: 95%;
+                margin-top: 0.1rem;
+                font: lighter 0.3rem "\5FAE\8F6F\96C5\9ED1";
+                color: #333333;
+                
+            }
+        }
+         
+    }
+    // 案例6  7-9张图片
+    .CaseSix{
+        width: 100%;
+        background-color: #ffffff;
+        margin-left: 0.2rem;
+        .case6_lf{
+            width:30%;
+            float: left;
+            .case6_nav{
+                width:100%;
+                img{
+                    width:15%;
+                }
+                span{
+                    width:100%;
+                    font:lighter 0.26rem "微软雅黑";
+                    color:#333333;
+                    margin-left: 0.1rem;
+                }
+                p{
+                    width:50%;
+                    font:lighter 0.22rem "微软雅黑";
+                    color:#7c7c7c;
+                    border: 1px solid #c0c0c0;
+                    text-align: center;
+                    margin: 0.16rem 0.4rem;
+                    border-radius: 0.05rem;
+                }
+            }
+            .case6_day{
+                width:100%;
+                display: inline-block;
+                margin: 1.5rem 0 3.82rem 0;
+                p{
+                    width: 100%;
+                    text-align: center;
+                    font:0.72rem "微软雅黑";
+                    color:#333333;
+                    span{
+                        text-align: center;
+                        font:0.28rem "微软雅黑";
+                        color:#7c7c7c;
+                    }
+                }
+                
+            }
+        }
+        .case6_rf{
+            width:70%;
+            float: right;
+            .case2_img{
+                width:95%;
+                margin-top: 0.6rem;
+                border:1px solid #ffffff;
+                border-radius: 0.2rem;
+                img{
+                     width:100%;
+                }
+            }
+            .case6_label{
+                width: 90%;
+                margin-top: 0.1rem;
+                span{
+                    width: 100%;
+                    font:lighter 0.24rem "微软雅黑";
+                    color:#eaa656;
+                    border: 1px solid #fff5db;
+                    background-color: #fff5db;
+                    border-radius: 0.1rem;
+                }
+                
+            }
+            .case6_conten{
+                width: 95%;
+                margin-top: 0.1rem;
+                font: lighter 0.3rem "\5FAE\8F6F\96C5\9ED1";
+                color: #333333;
+                
+            }
+        }
+         
+    }
+    }
+    
+    
 }

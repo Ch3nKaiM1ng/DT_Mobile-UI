@@ -18,7 +18,7 @@ import hot_crunchies from './components/hot_crunchies.vue'
 import correctCase from './components/correctCase.vue'
 import askPeople from './components/askPeople.vue'
 import details_case from './components/details_case.vue'
-
+import article from './components/article.vue'
 // 路由规则
 // Deadad 通用底部是否显示
 const routes = [
@@ -55,6 +55,10 @@ const routes = [
       {
         path: 'askPeople',
         component: askPeople
+      },
+      {
+        path:'article',
+        component:article
       }
     ]
   },
