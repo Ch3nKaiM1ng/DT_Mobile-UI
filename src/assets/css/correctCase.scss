@@ -15,10 +15,14 @@
         line-height: .6rem;
     }
 
+    .van-button--normal{
+        padding: 0;
+    }
+
     .van-popup {
         height: 100%;
         width: 60%;
-        padding: 0 .3rem;
+        padding: 0 0 0 .3rem;
         .gender {
             text-align: left;
             padding-top: 1.3rem;
@@ -123,8 +127,8 @@
             .label_box{
                 display: flex;
                 flex-wrap: wrap;
+                font-size: .3rem;
                 .label_list{
-                    font-size: .3rem;
                     font-weight: lighter;
                     color: #333333;
                     background-color: #f2f2f2;
@@ -138,7 +142,6 @@
 
         .bottom_btn{
             display: flex;
-            justify-content: space-between;
             margin-top: 1.6rem;
             .cancel{
                 width:1.62rem;
@@ -150,6 +153,7 @@
             }
     
             .confirm{
+                margin-left: .55rem;
                 width:1.62rem;
                 height:.6rem;
                 background:rgba(0,154,100,1);

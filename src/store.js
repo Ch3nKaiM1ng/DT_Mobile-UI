@@ -7,11 +7,17 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   // 数据
   state: {
-    
+    artDetails:{},
+    askDetails:{},
   },
   // 修改的方法
   mutations: {
-    
+    getArtDetails(state,newData) {
+      state.artDetails = newData;
+    },
+    getAskDetails(state,newData) {
+      state.askDetails = newData;
+    },
   }
 })
 // 暴露出去

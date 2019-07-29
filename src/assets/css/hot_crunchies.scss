@@ -27,21 +27,23 @@
                 color: #d33936;
                 display: flex;
                 justify-content: start;
-                align-items: center;
                 width: 6rem;
                 height: .35rem;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                display: -webkit-box;
-                -webkit-line-clamp: 1;
 
                 .title {
                     margin-right: .1rem;
+                    overflow: hidden;
+                    word-break: break-all;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 1;
                 }
 
                 img {
                     width: .3rem;
                     height: .3rem;
+                    margin-top: .05rem;
                 }
             }
 
@@ -80,10 +82,44 @@
                     font-size: .24rem;
                     color: #626262;
                     height: .34rem;
+                    width: 64%;
 
                     .discuss1 {
                         margin-right: .5rem
                     }
+
+                    .hot {
+                        display: flex;
+                        justify-content: start;
+                        align-items: center;
+
+                        span:nth-child(1) {
+                            font-size: .24rem;
+                            color: #626262;
+                        }
+
+                        img {
+                            height: .14rem;
+                            width: .1rem;
+                            margin-left: .1rem;
+                        }
+
+                        span:nth-child(3) {
+                            font-size: .2rem;
+                            color: #e32626;
+                            font-weight: lighter;
+                        }
+
+
+                    }
+                }
+
+                .right2 {
+                    display: flex;
+                    align-items: center;
+                    font-size: .24rem;
+                    color: #626262;
+                    height: .34rem;
 
                     .discuss2 {
                         display: flex;
@@ -92,13 +128,13 @@
                         .girl {
                             margin-right: .1rem;
 
-                            span {
+                            span:nth-child(2) {
                                 color: #f27676;
                             }
                         }
 
                         .man {
-                            span {
+                            span:nth-child(2) {
                                 color: #5fa7f0;
                             }
                         }
@@ -108,18 +144,25 @@
                         display: flex;
                         justify-content: start;
                         align-items: center;
-                        width: 2rem;
 
-                        span {
+                        span:nth-child(1) {
+                            font-size: .24rem;
+                            color: #626262;
+                        }
+
+                        img {
+                            height: .14rem;
+                            width: .1rem;
+                            margin-left: .1rem;
+                        }
+
+                        span:nth-child(3) {
                             font-size: .2rem;
                             color: #e32626;
                             font-weight: lighter;
                         }
 
-                        img {
-                            margin-left: .1rem;
-                            height: .14rem;
-                        }
+
                     }
                 }
             }
@@ -181,6 +224,9 @@
                 }
 
                 .zan {
+                    font-size: .24rem;
+                    font-weight: normal;
+                    color: #333333;
                     display: flex;
                     align-items: center;
 
@@ -264,13 +310,15 @@
                         color: #e5a458;
                         padding: .1rem .2rem;
                     }
-                    .zan{
+
+                    .zan {
                         display: flex;
                         align-items: center;
                         margin-right: .2rem;
                         font-size: .24rem;
                         color: #333333;
-                        img{
+
+                        img {
                             width: .3rem;
                             height: .3rem;
                             margin-right: 0;

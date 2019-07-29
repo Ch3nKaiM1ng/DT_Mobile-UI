@@ -14,6 +14,7 @@
                 placeholder="查询服务或门诊名称"
                 @select="handleSelect"
                 @keyup.enter.native="Keybtn"
+                 onfocus="this.placeholder=''" onblur="this.placeholder='查询服务或门诊名称'"
               ></el-autocomplete>
             </form>
           </div>

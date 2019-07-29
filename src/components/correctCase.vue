@@ -103,6 +103,8 @@ export default {
   }
 };
 </script>
+<style>
+</style>
 
 <style lang='scss'>
 @import "../assets/css/correctCase.scss";

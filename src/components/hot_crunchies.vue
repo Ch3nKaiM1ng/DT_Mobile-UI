@@ -14,12 +14,8 @@
           </div>
           <div class="right">
             <div class="discuss1">#3015讨论</div>
-            <!-- <div class="discuss2">
-              <div class="girl">#<span>女</span> 210</div>
-              <div class="man">#<span>男</span> 3015讨论</div>
-            </div>-->
             <div class="hot">
-              热度 90020
+              <span>热度90020</span>
               <img src="../assets/img/index/crunchies/up.png" alt />
               <span>+3</span>
             </div>
@@ -41,12 +37,8 @@
           </div>
           <div class="right">
             <div class="discuss1">#3015讨论</div>
-            <!-- <div class="discuss2">
-              <div class="girl">#<span>女</span> 210</div>
-              <div class="man">#<span>男</span> 3015讨论</div>
-            </div>-->
             <div class="hot">
-              热度 90020
+              <span>热度90020</span>
               <img src="../assets/img/index/crunchies/up.png" alt />
               <span>+3</span>
             </div>
@@ -67,12 +59,8 @@
           </div>
           <div class="right">
             <div class="discuss1">#3015讨论</div>
-            <!-- <div class="discuss2">
-              <div class="girl">#<span>女</span> 210</div>
-              <div class="man">#<span>男</span> 3015讨论</div>
-            </div>-->
             <div class="hot">
-              热度 90020
+              <span>热度90020</span>
               <img src="../assets/img/index/crunchies/underline_s.png" alt />
               <span></span>
             </div>
@@ -92,20 +80,22 @@
           <div class="icon">
             <img src="../assets/img/index/crunchies/icon_wen.png" alt />
           </div>
-          <div class="right">
-            <!-- <div class="discuss1">#3015讨论</div> -->
+          <div class="right2">
             <div class="discuss2">
               <div class="girl">
-                #
-                <span>女</span> 210
+                <span>#</span>
+                <span>女</span>
+                <span>210</span>
               </div>
               <div class="man">
-                #
-                <span>男</span> 3015讨论
+                <span>#</span>
+                <span>男</span>
+                <span>3015</span> 
+                <span>讨论</span>
               </div>
             </div>
             <div class="hot">
-              热度 90020
+              <span>热度90020</span>
               <img src alt />
               <span></span>
             </div>
@@ -131,12 +121,8 @@
           </div>
           <div class="right">
             <div class="discuss1">#3015讨论</div>
-            <!-- <div class="discuss2">
-              <div class="girl">#<span>女</span> 210</div>
-              <div class="man">#<span>男</span> 3015讨论</div>
-            </div>-->
             <div class="hot">
-              热度 90020
+              <span>热度90020</span>
               <img src alt />
               <span></span>
             </div>
@@ -157,12 +143,8 @@
           </div>
           <div class="right">
             <div class="discuss1">#3015讨论</div>
-            <!-- <div class="discuss2">
-              <div class="girl">#<span>女</span> 210</div>
-              <div class="man">#<span>男</span> 3015讨论</div>
-            </div>-->
             <div class="hot">
-              热度 90020
+              <span>热度90020</span>
               <img src="../assets/img/index/up.png" alt />
               <span>+6</span>
             </div>
@@ -212,12 +194,8 @@
           </div>
           <div class="right">
             <div class="discuss1">#3015讨论</div>
-            <!-- <div class="discuss2">
-              <div class="girl">#<span>女</span> 210</div>
-              <div class="man">#<span>男</span> 3015讨论</div>
-            </div>-->
             <div class="hot">
-              热度 90020
+              <span>热度90020</span>
               <img src alt />
               <span></span>
             </div>
@@ -238,12 +216,8 @@
           </div>
           <div class="right">
             <div class="discuss1">#3015讨论</div>
-            <!-- <div class="discuss2">
-              <div class="girl">#<span>女</span> 210</div>
-              <div class="man">#<span>男</span> 3015讨论</div>
-            </div>-->
             <div class="hot">
-              热度 90020
+              <span>热度90020</span>
               <img src alt />
               <span></span>
             </div>
@@ -283,12 +257,8 @@
           </div>
           <div class="right">
             <div class="discuss1">#3015讨论</div>
-            <!-- <div class="discuss2">
-              <div class="girl">#<span>女</span> 210</div>
-              <div class="man">#<span>男</span> 3015讨论</div>
-            </div>-->
             <div class="hot">
-              热度 90020
+              <span>热度90020</span>
               <img src alt />
               <span></span>
             </div>
@@ -309,12 +279,8 @@
           </div>
           <div class="right">
             <div class="discuss1">#3015讨论</div>
-            <!-- <div class="discuss2">
-              <div class="girl">#<span>女</span> 210</div>
-              <div class="man">#<span>男</span> 3015讨论</div>
-            </div>-->
             <div class="hot">
-              热度 90020
+              <span>热度90020</span>
               <img src alt />
               <span></span>
             </div>

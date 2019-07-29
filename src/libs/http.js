@@ -5,7 +5,7 @@ import axios from 'axios'
 // import Vue from 'vue'
 
 // 设置基地址
-axios.defaults.baseURL = 'http://172.16.19.161:8080/DTKQ'
+axios.defaults.baseURL = 'http://172.16.19.101:8080/DTKQ'
 
 // 抽取网络请求的对象
 const request = {
@@ -22,6 +22,16 @@ const request = {
   // 矫正热搜榜
   getHotList(params) {
     return axios.post('/classAskArticle/selectHot',{belong:params.hot});
+  },
+
+  // 根据ID跳转 文章详情
+  getArticleDetailsById(id){
+    return axios.post('/article/webFindObj',{artId:id});
+  },
+
+  // 根据ID跳转 问答详情
+  getAskDetailsById(id){
+    return axios.post('/ask/webFindObj',{artId:id});
   },
 
   // 医生专家banner图

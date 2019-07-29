@@ -14,11 +14,15 @@
       </div>
     </div>
     <div class="crunchies_nav">
-      <div class="nav_list active" :class="[$route.name == 'hot_crunchies' ? 'active' : '']">热搜榜</div>
+      <div class="nav_list" :class="[$route.name == 'hot_crunchies' ? 'active' : '']">
+        <router-link tag="span" to="/crunchies/">热搜榜</router-link>
+      </div>
       <div class="line"></div>
-      <div class="nav_list" @click="pullDown">
-        问大家
-        <i class="icon" ref="bg"></i>
+      <div class="nav_list" :class="[$route.name == 'askPeople' ? 'active' : '']" @click="pullDown">
+        <router-link tag="span" to="/crunchies/askPeople">
+          问大家
+          <i class="icon" ref="changeBg"></i>
+        </router-link>
         <div class="pullDown_list" v-if="pullDown_show">
           <div class="list">矫正案例</div>
           <div class="list">矫正案例</div>
@@ -28,11 +32,16 @@
         </div>
       </div>
       <div class="line"></div>
-      <div class="nav_list" @click="tiao" :class="[$route.name == 'correctCase' ? 'active' : '']">矫正案例</div>
+      <div class="nav_list" :class="[$route.name == 'correctCase' ? 'active' : '']">
+        <router-link tag="span" to="/crunchies/correctCase">矫正案例</router-link>
+      </div>
       <div class="line"></div>
-      <div class="nav_list" @click="tiao1" :class="[$route.name == 'doctorList' ? 'active' : '']">专家</div>
+      <div class="nav_list" :class="[$route.name == 'doctorList' ? 'active' : '']">
+        <router-link tag="span" to="/doctorList">专家</router-link>
+      </div>
     </div>
     <router-view></router-view>
+    <div class="mask_show" v-if="pullDown_show" @click="pullDown"></div>
   </div>
 </template>
 
@@ -54,22 +63,14 @@ export default {
   methods: {
     pullDown() {
       this.pullDown_show = !this.pullDown_show;
-      //  if(this.pullDown_show){
-      //    this.$refs.bg.style.background = url('../assets/img/index/crunchies/return_top.png') + 'no-repeat';
-      //  }
+      if(this.pullDown_show){
+        this.$refs.changeBg.style.backgroundImage = "url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564319722690&di=74aff7dc6df6cba6f97b1f90efaad0c6&imgtype=0&src=http%3A%2F%2Fh.hiphotos.baidu.com%2Flvpics%2Fw%3D600%2Fsign%3D5dc3621e19d5ad6eaaf967eab1c939a3%2F0b55b319ebc4b745cc71eecccdfc1e178b821506.jpg)";
+      } else {
+        this.$refs.changeBg.style.backgroundImage = null;
+      }
     },
     back() {
       this.$router.go(-1);
-    },
-    tiao() {
-      this.$router.push({
-        path: "/crunchies/correctCase" //路径
-      });
-    },
-    tiao1() {
-      this.$router.push({
-        path: "/doctorList" //路径
-      });
     }
   }
 };
@@ -77,6 +78,7 @@ export default {
 
 <style>
 #crunchies {
+  position: relative;
   width: 100%;
   height: auto;
   background-color: #f2f2f2;

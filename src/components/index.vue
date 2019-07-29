@@ -51,76 +51,97 @@
           <div class="hot_modules" v-for="(item,index) in getHotList" :key="index">
             <div class="hot_question2" v-if="index==2">
               <!-- 问题(左) -->
-              <div class="left" v-if="item.ac_artId!=null">
+              <div class="left" v-if="item.ac_artId!=null" @click="art_details(item.ac_artId)">
                 <span>{{item.article.artTitle}}</span>
                 <img src="../assets/img/index/new.png" v-if="item.article.label=='新'" alt />
                 <img src="../assets/img/index/bomb.png" v-else-if="item.article.label=='爆'" alt />
                 <img src="../assets/img/index/hot.png" v-else-if="item.article.label=='热'" alt />
               </div>
-              <div class="left" v-else>
+              <div class="left" v-else @click="ask_details(item.ac_askId)">
                 <span>{{item.ask.askTitle}}</span>
-                <img src="../assets/img/index/new.png" v-if="item.ask.label=='新'" alt />
-                <img src="../assets/img/index/bomb.png" v-else-if="item.ask.label=='爆'" alt />
-                <img src="../assets/img/index/hot.png" v-else-if="item.ask.label=='热'" alt />
+                <img src="../assets/img/index/new.png" v-if="item.ask.askLabel=='新'" alt />
+                <img src="../assets/img/index/bomb.png" v-else-if="item.ask.askLabel=='爆'" alt />
+                <img src="../assets/img/index/hot.png" v-else-if="item.ask.askLabel=='热'" alt />
               </div>
               <!-- 讨论(右) -->
-              <div class="discussion2">
+              <div class="discussion2" v-if="item.ac_artId!=null">
                 <div class="up">
-                  <span>3.9W</span>
+                  <span>{{item.article.checkNum}}W</span>
                   <img src="../assets/img/index/up.png" alt />
-                  <span>+6</span>
+                  <span>+{{up_Num}}</span>
                 </div>
                 <div class="down2">
                   <div class="girl">
                     <span>#</span>
                     <span>女</span>
-                    <span>1234</span>
+                    <span>{{item.womanNum}}</span>
                   </div>
                   <div class="man">
                     <span>#</span>
                     <span>男</span>
-                    <span>1234</span>
+                    <span>{{item.manNum}}</span>
+                  </div>
+                  <span>讨论</span>
+                </div>
+              </div>
+              <div class="discussion2" v-else>
+                <div class="up">
+                  <span>{{item.ask.askCheckNum}}W</span>
+                  <img src="../assets/img/index/up.png" alt />
+                  <span>+{{up_Num}}</span>
+                </div>
+                <div class="down2">
+                  <div class="girl">
+                    <span>#</span>
+                    <span>女</span>
+                    <span>{{item.womanNum}}</span>
+                  </div>
+                  <div class="man">
+                    <span>#</span>
+                    <span>男</span>
+                    <span>{{item.manNum}}</span>
                   </div>
                   <span>讨论</span>
                 </div>
               </div>
             </div>
+
             <div class="hot_question" v-else>
               <!-- 问题(左) -->
-              <div class="left" v-if="item.ac_artId!=null">
+              <div class="left" v-if="item.ac_artId!=null" @click="art_details(item.ac_artId)">
                 <span>{{item.article.artTitle}}</span>
                 <img src="../assets/img/index/new.png" v-if="item.article.label=='新'" alt />
                 <img src="../assets/img/index/bomb.png" v-else-if="item.article.label=='爆'" alt />
                 <img src="../assets/img/index/hot.png" v-else-if="item.article.label=='热'" alt />
               </div>
-              <div class="left" v-else>
+              <div class="left" v-else @click="ask_details(item.ac_askId)">
                 <span>{{item.ask.askTitle}}</span>
-                <img src="../assets/img/index/new.png" v-if="item.ask.label=='新'" alt />
-                <img src="../assets/img/index/bomb.png" v-else-if="item.ask.label=='爆'" alt />
-                <img src="../assets/img/index/hot.png" v-else-if="item.ask.label=='热'" alt />
+                <img src="../assets/img/index/new.png" v-if="item.ask.askLabel=='新'" alt />
+                <img src="../assets/img/index/bomb.png" v-else-if="item.ask.askLabel=='爆'" alt />
+                <img src="../assets/img/index/hot.png" v-else-if="item.ask.askLabel=='热'" alt />
               </div>
               <!-- 讨论(右) -->
               <div class="discussion" v-if="item.ac_artId!=null">
                 <div class="up">
                   <span>{{item.article.checkNum}}W</span>
                   <img src="../assets/img/index/up.png" alt />
-                  <span>+{{message}}</span>
+                  <span>+{{up_Num}}</span>
                 </div>
 
                 <div class="down1">
-                  <span>#2026</span>
+                  <span>#{{item.article.artCommentNum}}</span>
                   <span>讨论</span>
                 </div>
               </div>
               <div class="discussion" v-else>
                 <div class="up">
-                  <span>9.9W</span>
+                  <span>{{item.ask.askCheckNum}}W</span>
                   <img src="../assets/img/index/up.png" alt />
-                  <span>+3</span>
+                  <span>+{{up_Num}}</span>
                 </div>
 
                 <div class="down1">
-                  <span>#2026</span>
+                  <span>#{{item.ask.askCommentNum}}</span>
                   <span>讨论</span>
                 </div>
               </div>
@@ -435,39 +456,10 @@
                   </div>
                 </div>
               </div>
-              <div class="article_module">
-                <div class="title">牙齿矫正多少钱?</div>
-                <div class="icon">
-                  <img src="../assets/img/index/article.png" alt />
-                </div>
-                <div class="article_img">
-                  <img src="../assets/img/index/article3.png" preview="7" alt />
-                </div>
-                <div
-                  class="article_details"
-                >这是因为在进行牙齿矫正时，牙根表面也发生着吸收、增生这种重建活动。治疗后，牙根凭着自身修复能力而恢复正常，但如果治疗加力过大，会增加牙根吸收的危险性。</div>
-                <div class="read_Num">
-                  <div class="left">
-                    <span class="reading">阅读量</span>
-                    <span class="readingNum">12121</span>
-                  </div>
-                  <div class="right">
-                    <img src="../assets/img/index/heart1.png" alt />
-                    <span class="zan">300</span>
-                  </div>
-                </div>
-              </div>
-              <div class="doc_module">
-                <img src="../assets/img/index/article_list_doc1.png" preview="8" alt />
-                <div class="doc_name">
-                  <span>黄涛</span>
-                  <span>正崎专家</span>
-                </div>
-              </div>
               <div class="answer_module">
                 <div class="title">牙齿矫正多少钱?</div>
                 <div class="icon">
-                  <img src="../assets/img/index/article.png" alt />
+                  <img src="../assets/img/index/answer.png" alt />
                 </div>
                 <div
                   class="article_details"
@@ -509,25 +501,6 @@
                   <span>正崎专家</span>
                 </div>
               </div>
-              <div class="answer_module">
-                <div class="title">牙齿不整齐怎么办?</div>
-                <div class="icon">
-                  <img src="../assets/img/index/article.png" alt />
-                </div>
-                <div
-                  class="article_details"
-                >这是因为在进行牙齿矫正时，牙根表面也发生着吸收、增生这种重建活动。治疗后，牙根凭着自身修复能力而恢...正常，但如果治疗加力过大，会增加牙根吸收的危险性。 and see.</div>
-                <div class="read_Num">
-                  <div class="left">
-                    <span class="reading">阅读量</span>
-                    <span class="readingNum">12121</span>
-                  </div>
-                  <div class="right">
-                    <img src="../assets/img/index/heart1.png" alt />
-                    <span class="zan">300</span>
-                  </div>
-                </div>
-              </div>
               <div class="article_module">
                 <div class="title">牙齿矫正多少钱?</div>
                 <div class="icon">
@@ -551,26 +524,6 @@
                   </div>
                 </div>
               </div>
-              <div class="article_module">
-                <div class="title">牙齿矫正多少钱?</div>
-                <div class="icon">
-                  <img src="../assets/img/index/article.png" alt />
-                </div>
-                <div class="article_img">
-                  <img src="../assets/img/index/article5.png" preview="7" alt />
-                </div>
-                <div class="article_details"></div>
-                <div class="read_Num">
-                  <div class="left">
-                    <span class="reading">阅读量</span>
-                    <span class="readingNum">12121</span>
-                  </div>
-                  <div class="right">
-                    <img src="../assets/img/index/heart1.png" alt />
-                    <span class="zan">300</span>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -582,49 +535,116 @@
             <img src="../assets/img/index/SZ1.png" alt />
           </div>
           <div class="SZ_question">
-            <div class="question_list">
-              <!-- 问题(左) -->
-              <div class="left">
-                <div class="question">
-                  <span>1、問：深圳牙齒矯正全部下來要..圳牙齒矯正全部下來要.</span>
+            <div class="oneHundred_modules" v-for="(item,index) in getOneHundredList" :key="index">
+              <div class="question_list2" v-if="index==2">
+                <!-- 问题(左) -->
+                <div class="left" v-if="item.ac_artId!=null" @click="art_details(item.ac_artId)">
+                  <div class="question">
+                    <span>{{item.article.artTitle}}</span>
+                  </div>
                 </div>
-                 <div class="question_img">
-                  <img src="../assets/img/index/question_img1.png" preview="10" alt />
-                  <img src="../assets/img/index/question_img2.png" preview="10" alt />
-                  <img src="../assets/img/index/question_img3.png" preview="10" alt />
+                <div class="left" v-else @click="ask_details(item.ac_askId)">
+                  <div class="question">
+                    <span>{{item.ask.askTitle}}</span>
+                  </div>
+                </div>
+                <!-- 讨论(右) -->
+                <div class="discussion2" v-if="item.ac_artId!=null">
+                  <div class="up">
+                    <span>{{item.article.checkNum}}W</span>
+                    <img src="../assets/img/index/up.png" alt />
+                    <span>+{{up_Num}}</span>
+                  </div>
+                  <div class="down2">
+                    <div class="girl">
+                      <span>#</span>
+                      <span>女</span>
+                      <span>{{item.womanNum}}</span>
+                    </div>
+                    <div class="man">
+                      <span>#</span>
+                      <span>男</span>
+                      <span>{{item.manNum}}</span>
+                    </div>
+                    <span>讨论</span>
+                  </div>
+                </div>
+                <div class="discussion2" v-else>
+                  <div class="up">
+                    <span>{{item.ask.askCheckNum}}W</span>
+                    <img src="../assets/img/index/up.png" alt />
+                    <span>+{{up_Num}}</span>
+                  </div>
+                  <div class="down2">
+                    <div class="girl">
+                      <span>#</span>
+                      <span>女</span>
+                      <span>{{item.womanNum}}</span>
+                    </div>
+                    <div class="man">
+                      <span>#</span>
+                      <span>男</span>
+                      <span>{{item.womanNum}}</span>
+                    </div>
+                    <span>讨论</span>
+                  </div>
                 </div>
               </div>
-              <!-- 讨论(右) -->
-              <!-- <div class="discussion2">
-                <div class="up">
-                  <span>3.9W</span>
-                  <img src="../assets/img/index/up.png" alt />
-                  <span>+6</span>
-                </div>
-                <div class="down2">
-                  <div class="girl">
-                    <span>#</span>
-                    <span>女</span>
-                    <span>1234</span>
-                  </div>
-                  <div class="man">
-                    <span>#</span>
-                    <span>男</span>
-                    <span>1234</span>
-                  </div>
-                  <span>讨论</span>
-                </div>
-              </div>-->
-              <div class="discussion">
-                <div class="up">
-                  <span>9.9W</span>
-                  <img src="../assets/img/index/up.png" alt />
-                  <span>+3</span>
-                </div>
 
-                <div class="down">
-                  <span>#2026</span>
-                  <span>讨论</span>
+              <div class="question_list" v-else>
+                <!-- 问题(左) -->
+                <div class="left" v-if="item.ac_artId!=null">
+                  <div class="question" @click="art_details(item.ac_artId)">
+                    <span>{{item.article.artTitle}}</span>
+                  </div>
+                  <div class="question_img" v-if="index==1">
+                    <img
+                      :src="it"
+                      v-for="(it,i) in imgList(item.article.artImg)"
+                      :key="i"
+                      preview="10"
+                      alt
+                    />
+                  </div>
+                </div>
+                <div class="left" v-else>
+                  <div class="question" @click="ask_details(item.ac_askId)">
+                    <span>{{item.ask.askTitle}}</span>
+                  </div>
+                  <div class="question_img" v-if="index==1">
+                    <img
+                      :src="it"
+                      v-for="(it,i) in imgList(item.ask.askImg)"
+                      :key="i"
+                      preview="10"
+                      alt
+                    />
+                  </div>
+                </div>
+                <!-- 讨论(右) -->
+                <div class="discussion" v-if="item.ac_artId!=null">
+                  <div class="up">
+                    <span>{{item.article.checkNum}}W</span>
+                    <img src="../assets/img/index/up.png" alt />
+                    <span>+{{up_Num}}</span>
+                  </div>
+
+                  <div class="down">
+                    <span>#{{item.article.artCommentNum}}</span>
+                    <span>讨论</span>
+                  </div>
+                </div>
+                <div class="discussion" v-else>
+                  <div class="up">
+                    <span>{{item.ask.askCheckNum}}W</span>
+                    <img src="../assets/img/index/up.png" alt />
+                    <span>+{{up_Num}}</span>
+                  </div>
+
+                  <div class="down">
+                    <span>#{{item.ask.askCommentNum}}</span>
+                    <span>讨论</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -675,13 +695,13 @@ export default {
       // 悬浮导航栏
       search_show: false,
       // 调取热搜榜数据
-      allCrunchiesList: { hot: 1,oneHundred: 2 },
+      allCrunchiesList: { hot: 1, oneHundred: 2 },
       // 拿到热搜榜数据
       getHotList: [],
       // 拿到100榜数据
       getOneHundredList: [],
       // 热搜 +值
-      up_Num:1,
+      up_Num: 1,
       // 显示框当前下标
       currentIndex: 1,
       // 专家 轮播图
@@ -746,6 +766,30 @@ export default {
     showNav() {
       this.navShow = !this.navShow;
     },
+    // 获取文章详情
+    art_details(id) {
+      if (id == null) return;
+      else {
+        this.$request.getArticleDetailsById(id).then(res => {
+          console.log(res);
+          // 保存到仓库中
+          this.$store.commit("getArtDetails", res.data.data);
+          this.$router.push("/crunchies/askPeople");
+        });
+      }
+    },
+    // 获取问答详情
+    ask_details(id) {
+      if (id == null) return;
+      else {
+        this.$request.getAskDetailsById(id).then(res => {
+          console.log(res);
+          // 保存到仓库中
+          this.$store.commit("getAskDetails", res.data.data);
+          this.$router.push("/crunchies/askPeople");
+        });
+      }
+    },
     // 显示隐藏 白色点击展示更多
     showMoreBox() {
       if (this.currentIndex == 3) return;
@@ -804,11 +848,18 @@ export default {
         this.blue_list = res.data.data.dataList;
         this.blueimg_list = res.data.data.imgList;
       });
+    },
+    // 分割 矫正100 图片
+    imgList(img) {
+      if (img == null) return;
+      else {
+        return img.split(",");
+      }
     }
   },
   mounted() {
     // 随机 + 值
-    this.message = parseInt(Math.random()*10)+1;
+    this.up_Num = parseInt(Math.random() * 10) + 1;
     // 获取 头部高度
     this.header_scrollTop = this.$refs.header.offsetHeight;
     // 监听 页面高度
@@ -828,9 +879,9 @@ export default {
       this.getHotList = res.data.data;
     });
     // 矫正100榜单
-    this.$request.getOneHundredList(this.allCrunchiesList).then(res=>{
-      console.log(res);
-    })
+    this.$request.getOneHundredList(this.allCrunchiesList).then(res => {
+      this.getOneHundredList = res.data.data;
+    });
     // 医生专家banner图
     this.$request.getbanner().then(res => {
       this.bannerList = res.data.data;
