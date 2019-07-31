@@ -2,7 +2,8 @@
 .ask_people{
     width:100%;
     height:11.7rem;
-    background-color:#f3f2f2;   
+    background-color:#f3f2f2;
+    position: relative;   
     .wen_article{
         width:7.1rem;
         height:10.34rem;
@@ -12,6 +13,8 @@
         background-color: white;
         border-radius: 0.2rem;
         overflow: hidden;
+        border: 1px solid #e2e2e2;
+        z-index: 3;
         .up_maximumbox{
             width:7.1rem;
             height:10.34rem;
@@ -135,60 +138,74 @@
             }
         }
         //评论1
-        .user_comment{
+        .commenta{
             width: 100%;
             height: auto;
-            position: relative;
-            border-bottom: 1px solid #f2f2f2;
-            padding: 0.4rem 0.46rem 0.1rem 0.2rem;
-            .commenta{
-                width: 100%;
+            padding: 0.2rem 0 0 0;
+            border: 1px solid #f2f2f2;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            .commentator{
+                width:25%;
                 height:auto;
-                padding: 0.2rem 0 0 0;
-                .commentator{
-                    width:25%;
+                margin-left: 0.2rem;
+                .commentator_img{
+                    width: 80%;
                     height:auto;
-                    display: inline-block;
-                    .commentator_img{
+                    img{
                         width: 80%;
-                        height:auto;
-                        img{
-                            width: 80%;
-                        
-                        }
+                    
                     }
-                    .commen_by{
+                }
+                .commen_by{
+                    width: 100%;
+                    height: auto;
+                    .commen_name{
                         width: 100%;
                         height: auto;
-                        .commen_name{
-                            width: 100%;
-                            height: auto;
-                            font:0.26rem "微软雅黑";
-                            color:#333333;
-                            padding: 0.1rem 0 0 0;
+                        font:0.26rem "微软雅黑";
+                        color:#333333;
+                        padding: 0.1rem 0 0 0;
+                    }
+                    .commen_age{
+                        width: 100%;
+                        height: auto;
+                        font:lighter 0.26rem "微软雅黑";
+                        color:#6f6f6f;
+                        padding: 0.1rem 0 0 0;
+                        img{
+                            width: 20%;
+                            margin-left: 0.1rem;
                         }
-                        .commen_age{
+                    }
+                    .commen_time{
+                        width: 100%;
+                        height: auto;
+                        font:lighter 0.26rem "微软雅黑";
+                        color:#6f6f6f;
+                        padding: 0.08rem 0 0 0;
+                    }
+                }
+            }
+            .commen_articlerf{
+                width: 75%;
+                .commen_articlebox{
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    .commen_articleimg{
+                        width: 100%;
+                        border: 1px solid #f3f0f0;
+                        border-radius: 0.2rem;
+                        margin-right: 0.16rem;
+                        img{
                             width: 100%;
-                            height: auto;
-                            font:lighter 0.26rem "微软雅黑";
-                            color:#6f6f6f;
-                            padding: 0.1rem 0 0 0;
-                            img{
-                                width: 20%;
-                                margin-left: 0.1rem;
-                            }
-                        }
-                        .commen_time{
-                            width: 100%;
-                            height: auto;
-                            font:lighter 0.26rem "微软雅黑";
-                            color:#6f6f6f;
-                            padding: 0.08rem 0 0 0;
                         }
                     }
                 }
                 .commen_article{
-                    width: 74%;
+                    width: 98%;
                     height: auto;
                     font:lighter 0.32rem "微软雅黑";
                     color:#333333;
@@ -203,13 +220,13 @@
                     width: 100%;
                     height:auto;
                     padding: 0.3rem 0 0.34rem 0;
+                    display: flex;
                     .commen_messageimg{
-                        width: 22%;
+                        width: 30%;
                         height:auto;
                         text-align: left;
-                        display: inline-block;
-                        position: absolute;
-                        right: 1.1rem;
+                        position: relative;
+                        right: -2.6rem;
                         img{
                             width: 20%;
                         }
@@ -221,12 +238,11 @@
                         }
                     }
                     .commen_loveimg{
-                        width: 22%;
+                        width: 30%;
                         height:auto;
-                        display: inline-block;
                         text-align: left;
-                        position: absolute;
-                        right: -0.2rem;
+                        position: relative;
+                        right: -2.3rem;
                         img{
                             width: 20%;
                         }
@@ -239,7 +255,12 @@
                     }     
                 }
             }
+            
         }
+        // 评论2  
+        
+            
+        
         // 评论人
         .comment_dialogue{
             width: 100%;
@@ -427,5 +448,31 @@
         }
         }
         
+    }
+    .wen_article2{
+        width:7.1rem;
+        height:10.34rem;
+        background-color: white;
+        border-radius: 0.2rem;
+        overflow: hidden;
+        position: absolute;
+        top: 0.44rem;
+        left: 0.34rem;
+        z-index: 2;
+        opacity: 0.5;
+        border: 1px solid #e2e2e2;
+    }
+    .wen_article3{
+        width:7.1rem;
+        height:10.34rem;
+        background-color: white;
+        border-radius: 0.2rem;
+        overflow: hidden;
+        position: absolute;
+        top: 0.2rem;
+        left: 0.52rem;
+        z-index: 1;
+        opacity: 0.3;
+        border: 1px solid #e2e2e2;
     }
 }

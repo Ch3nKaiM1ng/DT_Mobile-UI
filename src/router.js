@@ -4,6 +4,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+
+
 import index from './components/index.vue'
 import login from './components/login.vue'
 import crunchies from './components/crunchies.vue'
@@ -139,3 +141,4 @@ const router = new VueRouter({
 
 // 暴露出去
 export default router
+
