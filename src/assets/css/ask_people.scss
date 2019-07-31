@@ -26,14 +26,24 @@
             .up_top{
                 width: 100%;
                 height: auto;
-                font:bold 0.34rem "微软雅黑";
-                color: #333333;
-                padding: 0.32rem 0 0 0.2rem;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis; 
-                img{
-                    width:5%;
+                .up_problem{
+                    width:85%;
+                    display: inline-block;
+                    font:bold 0.34rem "微软雅黑";
+                    color: #333333;
+                    padding: 0.32rem 0 0 0.2rem;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                .up_problemimg{
+                    width: 5%;
+                    display: inline-block;
+                    position: absolute;
+                    top: 0.34rem;
+                    img{
+                        width:100%;
+                    }
                 }
             }
             .up_article{

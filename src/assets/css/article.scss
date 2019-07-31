@@ -23,16 +23,28 @@
             .article_head{
                 width: 100%;
                 height: auto;
-                font:bold 0.34rem "微软雅黑";
-                color: #333333;
-                padding: 0.32rem 0 0 0.2rem;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis; 
-                img{
-                    width:5%;
+                position: relative;
+                .article_top{
+                    width:75%;
+                    display: inline-block;
+                    font:bold 0.34rem "微软雅黑";
+                    color: #333333;
+                    padding: 0.32rem 0 0 0.2rem;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                .article_headimg{
+                    width: 5%;
+                    display: inline-block;
+                    position: absolute;
+                    top: 0.34rem;
+                    img{
+                        width:100%;
+                    }
                 }
             }
+            // 文章题主
             .article_info{
                 width: 100%;
                 height: auto;
