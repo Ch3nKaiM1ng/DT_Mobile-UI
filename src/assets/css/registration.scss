@@ -1,31 +1,36 @@
-.underpainting{
+.underpainting {
     width: 100%;
     height: 4.04rem;
     background-color: #f2f2f2;
     padding: .22rem .2rem .26rem;
-    .appointment_form{
+
+    .appointment_form {
         width: 100%;
         height: 100%;
         background-color: #ffffff;
         display: flex;
         align-items: center;
         padding: .3rem;
-        .doc_img{
+
+        .doc_img {
             width: 2.72rem;
             height: 2.72rem;
-            img{
+
+            img {
                 width: 100%;
                 height: 100%;
             }
         }
-        .appointment_details{
+
+        .appointment_details {
             margin-left: .3rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             height: 2.72rem;
-            .details_up{
-                .doc_title{
+
+            .details_up {
+                .doc_title {
                     background-color: #e0f7ef;
                     font-size: .26rem;
                     font-weight: lighter;
@@ -33,42 +38,128 @@
                     border-radius: .2rem;
                     padding: .1rem;
                 }
-                .doc_name{
+
+                .doc_name {
                     margin-top: .1rem;
                     font-size: .34rem;
                     color: #333333;
                 }
             }
-            .details_down{
-                .time{
+
+            .details_down {
+                .time {
                     display: flex;
                     align-items: center;
-                    .clock{
+
+                    .clock {
                         width: .28rem;
                         height: .28rem;
                     }
-                    .CH{
+
+                    .CH {
                         font-size: .28rem;
                         color: #333333;
                         margin: 0 .2rem 0 .05rem;
                     }
-                    .icon{
+
+                    .icon {
                         transform: rotate(180deg);
                         width: .17rem;
                         height: .2rem;
                     }
                 }
-                .data{
+
+                .data {
                     font-weight: lighter;
                     font-size: .28rem;
                     color: #777777;
                     margin: .2rem 0 .2rem;
                 }
-                .hour{
+
+                .hour {
                     font-size: .4rem;
                     font-weight: bold;
                     color: #009965;
                 }
+            }
+        }
+    }
+}
+
+.userinfo {
+    padding: 0 .2rem;
+    width: 100%;
+
+    .user_name {
+        height: 1.2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .project {
+        height: 1.04rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .phone {
+        height: 1.04rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .title {
+        font-weight: normal;
+        font-size: .3rem;
+        color: #333333;
+    }
+
+    input {
+        font-size: .28rem;
+        font-weight: lighter;
+        color: #6f6f6f;
+        text-align: right;
+    }
+}
+
+.btn_yuyue {
+    position: absolute;
+    bottom: 1.6rem;
+    width: 6rem;
+    height: .8rem;
+    background-color: #009965;
+    font-size: .3rem;
+    font-weight: normal;
+    color: #ffffff;
+    text-align: center;
+    border-radius: .4rem;
+    line-height: .8rem;
+    left: 50%;
+    margin-left: -3rem;
+}
+
+.van-popup {
+    .van-datetime-picker {
+        .van-picker__toolbar {
+            align-items: center;
+
+            .van-picker__cancel {
+                height: 100%;
+                line-height: 44px;
+            }
+
+            .van-picker__confirm {
+                height: 100%;
+                line-height: 44px;
+            }
+        }
+
+        .van-picker__columns {
+            .van-picker__frame {
+                top: 43%;
             }
         }
     }

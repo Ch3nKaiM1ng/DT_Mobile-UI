@@ -32,6 +32,7 @@ const routes = [
   },
   {
     path: '/login',
+    name: 'login',
     component: login ,
     meta:{
       Deadad: false

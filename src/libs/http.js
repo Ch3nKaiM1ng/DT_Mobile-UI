@@ -52,7 +52,37 @@ const request = {
   // 矫正100榜
   getOneHundredList(params) {
     return axios.post('/classAskArticle/selectHot',{belong:params.oneHundred});
-  }
+  },
+
+  // 获取医生分类列表
+  getDocClassList(){
+    return axios.get('/DoctorClass/findAll');
+  },
+
+  // 获取医生们数据
+  getDocsDatas(id){
+    return axios.post('/Doctor/select',{classId:id});
+  },
+
+  // 获取文章数据
+  getArticleDataList(num){
+    return axios.post('/article/webPageBlockList',{offset:num});
+  },
+
+  // 用户展示
+  getUserShowList(params){
+    return axios.post('/case/findAll',params);
+  },
+
+  // 用户展示 点赞
+  userShowZan(id){
+    return axios.post('/case/caseDoThumb',{id});
+  },
+
+  // 用户展示 点赞
+  art_Zan(id){
+    return axios.post('/article/artDoThumb',{artId:id});
+  },
 }
 
 export default {

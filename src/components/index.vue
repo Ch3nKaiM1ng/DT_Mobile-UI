@@ -14,7 +14,7 @@
           <div class="message">
             <router-link to="/login">
               <div class="icon_message"></div>
-              <div class="message" v-if="isMessage">2</div>
+              <div class="message_num">{{random_Num()}}</div>
             </router-link>
           </div>
         </div>
@@ -39,7 +39,7 @@
     </header>
 
     <!-- 主体区域 -->
-    <main id="main">
+    <main class="main">
       <!-- 主体上半区 -->
       <div class="main_up">
         <!-- 热搜 -->
@@ -52,13 +52,13 @@
             <div class="hot_question2" v-if="index==2">
               <!-- 问题(左) -->
               <div class="left" v-if="item.ac_artId!=null" @click="art_details(item.ac_artId)">
-                <span>{{item.article.artTitle}}</span>
+                <span>{{title_num(index)}}{{item.article.artTitle}}</span>
                 <img src="../assets/img/index/new.png" v-if="item.article.label=='新'" alt />
                 <img src="../assets/img/index/bomb.png" v-else-if="item.article.label=='爆'" alt />
                 <img src="../assets/img/index/hot.png" v-else-if="item.article.label=='热'" alt />
               </div>
               <div class="left" v-else @click="ask_details(item.ac_askId)">
-                <span>{{item.ask.askTitle}}</span>
+                <span>{{title_num(index)}}{{item.ask.askTitle}}</span>
                 <img src="../assets/img/index/new.png" v-if="item.ask.askLabel=='新'" alt />
                 <img src="../assets/img/index/bomb.png" v-else-if="item.ask.askLabel=='爆'" alt />
                 <img src="../assets/img/index/hot.png" v-else-if="item.ask.askLabel=='热'" alt />
@@ -68,7 +68,7 @@
                 <div class="up">
                   <span>{{item.article.checkNum}}W</span>
                   <img src="../assets/img/index/up.png" alt />
-                  <span>+{{up_Num}}</span>
+                  <span>+{{random_Num()}}</span>
                 </div>
                 <div class="down2">
                   <div class="girl">
@@ -88,7 +88,7 @@
                 <div class="up">
                   <span>{{item.ask.askCheckNum}}W</span>
                   <img src="../assets/img/index/up.png" alt />
-                  <span>+{{up_Num}}</span>
+                  <span>+{{random_Num()}}</span>
                 </div>
                 <div class="down2">
                   <div class="girl">
@@ -109,13 +109,13 @@
             <div class="hot_question" v-else>
               <!-- 问题(左) -->
               <div class="left" v-if="item.ac_artId!=null" @click="art_details(item.ac_artId)">
-                <span>{{item.article.artTitle}}</span>
+                <span>{{title_num(index)}}{{item.article.artTitle}}</span>
                 <img src="../assets/img/index/new.png" v-if="item.article.label=='新'" alt />
                 <img src="../assets/img/index/bomb.png" v-else-if="item.article.label=='爆'" alt />
                 <img src="../assets/img/index/hot.png" v-else-if="item.article.label=='热'" alt />
               </div>
               <div class="left" v-else @click="ask_details(item.ac_askId)">
-                <span>{{item.ask.askTitle}}</span>
+                <span>{{title_num(index)}}{{item.ask.askTitle}}</span>
                 <img src="../assets/img/index/new.png" v-if="item.ask.askLabel=='新'" alt />
                 <img src="../assets/img/index/bomb.png" v-else-if="item.ask.askLabel=='爆'" alt />
                 <img src="../assets/img/index/hot.png" v-else-if="item.ask.askLabel=='热'" alt />
@@ -125,7 +125,7 @@
                 <div class="up">
                   <span>{{item.article.checkNum}}W</span>
                   <img src="../assets/img/index/up.png" alt />
-                  <span>+{{up_Num}}</span>
+                  <span>+{{random_Num()}}</span>
                 </div>
 
                 <div class="down1">
@@ -137,7 +137,7 @@
                 <div class="up">
                   <span>{{item.ask.askCheckNum}}W</span>
                   <img src="../assets/img/index/up.png" alt />
-                  <span>+{{up_Num}}</span>
+                  <span>+{{random_Num()}}</span>
                 </div>
 
                 <div class="down1">
@@ -156,7 +156,7 @@
           <!-- 专家上半区 -->
           <div class="specialist_up">
             <div class="left_swiper">
-              <swiper :options="swiperOption">
+              <swiper :options="swiperOption" v-if="bannerList.length">
                 <swiper-slide v-for="item in bannerList" :key="item.id">
                   <a :href="item.bannerUrl">
                     <img :src="item.bannerImg" alt />
@@ -190,155 +190,42 @@
 
         <!-- 客户展示 -->
         <div class="user_show" :style="{height:scrollBoxHeight}">
-          <div class="user_list">
+          <div class="user_list" v-for="(item,index) in userShow_list" :key="index">
             <!-- 内容展示区 -->
             <div class="user_content">
-              <img src="../assets/img/index/user1.png" preview="1" preview-text="展示图1" alt />
+              <img :src="item.userData.userImg" preview="1" preview-text="展示图1" alt />
               <div class="user_picture">
-                <img src="../assets/img/index/user2.png" preview="1" alt />
-                <img src="../assets/img/index/user3.png" preview="1" alt />
+                <img :src="it" v-for="(it,i) in imgList(item.caseImg)" :key="i" preview="1" alt />
               </div>
               <div class="user_question">
-                <span>牙齿矫正多少钱？</span>
+                <span>{{item.caseTitle}}</span>
               </div>
             </div>
             <!-- 点赞评论区 -->
             <div class="zan">
               <div class="zan_message">
                 <img src="../assets/img/index/zanMeg.png" alt />
-                <span>12.5万</span>
+                <span>{{item.caseCommentnum}}</span>
               </div>
-              <div class="zan_heart">
-                <img src="../assets/img/index/heart1.png" alt />
-                <span>12.5万</span>
-              </div>
-            </div>
-          </div>
-          <div class="user_list">
-            <!-- 内容展示区 -->
-            <div class="user_content">
-              <img src="../assets/img/index/user4.png" preview="2" alt />
-              <div class="user_picture">
-                <img src="../assets/img/index/user5.png" preview="2" alt />
-                <img src="../assets/img/index/user6.png" preview="2" alt />
-              </div>
-              <div class="user_question">
-                <span>隐形牙齿矫正费用</span>
-              </div>
-            </div>
-            <!-- 点赞评论区 -->
-            <div class="zan">
-              <div class="zan_message">
-                <img src="../assets/img/index/zanMeg.png" alt />
-                <span>12.5万</span>
-              </div>
-              <div class="zan_heart">
-                <img src="../assets/img/index/heart1.png" alt />
-                <span>12.5万</span>
-              </div>
-            </div>
-          </div>
-          <div class="user_list">
-            <!-- 内容展示区 -->
-            <div class="user_content">
-              <img src="../assets/img/index/user1.png" preview="3" alt />
-              <div class="user_picture">
-                <img src="../assets/img/index/user2.png" preview="3" alt />
-                <img src="../assets/img/index/user3.png" preview="3" alt />
-              </div>
-              <div class="user_question">
-                <span>牙齿矫正多少钱？</span>
-              </div>
-            </div>
-            <!-- 点赞评论区 -->
-            <div class="zan">
-              <div class="zan_message">
-                <img src="../assets/img/index/zanMeg.png" alt />
-                <span>12.5万</span>
-              </div>
-              <div class="zan_heart">
-                <img src="../assets/img/index/heart1.png" alt />
-                <span>12.5万</span>
-              </div>
-            </div>
-          </div>
-          <div class="user_list">
-            <!-- 内容展示区 -->
-            <div class="user_content">
-              <img src="../assets/img/index/user4.png" preview="4" alt />
-              <div class="user_picture">
-                <img src="../assets/img/index/user5.png" preview="4" alt />
-                <img src="../assets/img/index/user6.png" preview="4" alt />
-              </div>
-              <div class="user_question">
-                <span>隐形牙齿矫正费用</span>
-              </div>
-            </div>
-            <!-- 点赞评论区 -->
-            <div class="zan">
-              <div class="zan_message">
-                <img src="../assets/img/index/zanMeg.png" alt />
-                <span>12.5万</span>
-              </div>
-              <div class="zan_heart">
-                <img src="../assets/img/index/heart1.png" alt />
-                <span>12.5万</span>
-              </div>
-            </div>
-          </div>
-          <div class="user_list">
-            <!-- 内容展示区 -->
-            <div class="user_content">
-              <img src="../assets/img/index/user4.png" preview="5" alt />
-              <div class="user_picture">
-                <img src="../assets/img/index/user5.png" preview="5" alt />
-                <img src="../assets/img/index/user6.png" preview="5" alt />
-              </div>
-              <div class="user_question">
-                <span>隐形牙齿矫正费用</span>
-              </div>
-            </div>
-            <!-- 点赞评论区 -->
-            <div class="zan">
-              <div class="zan_message">
-                <img src="../assets/img/index/zanMeg.png" alt />
-                <span>12.5万</span>
-              </div>
-              <div class="zan_heart">
-                <img src="../assets/img/index/heart1.png" alt />
-                <span>12.5万</span>
-              </div>
-            </div>
-          </div>
-          <div class="user_list">
-            <!-- 内容展示区 -->
-            <div class="user_content">
-              <img src="../assets/img/index/user4.png" preview="6" alt />
-              <div class="user_picture">
-                <img src="../assets/img/index/user5.png" preview="6" alt />
-                <img src="../assets/img/index/user6.png" preview="6" alt />
-              </div>
-              <div class="user_question">
-                <span>隐形牙齿矫正费用</span>
-              </div>
-            </div>
-            <!-- 点赞评论区 -->
-            <div class="zan">
-              <div class="zan_message">
-                <img src="../assets/img/index/zanMeg.png" alt />
-                <span>12.5万</span>
-              </div>
-              <div class="zan_heart">
-                <img src="../assets/img/index/heart1.png" alt />
-                <span>12.5万</span>
+              <div class="zan_heart" @click="userShowDianZan(item.id,index)">
+                <div class="heart" ref="changeHeart"></div>
+                <span>{{item.caseThumbnum}}</span>
               </div>
             </div>
           </div>
           <div class="more">
             <router-link tag="div" to="/crunchies/correctCase">查看更多>></router-link>
           </div>
-          <div class="mask" v-if="currentIndex!=3" @click="showMoreBox">
-            <img src="../assets/img/index/drop-down.png" alt />
+          <div class="mask">
+            <img src="../assets/img/index/111.png" class="mask-bg" v-if="currentIndex!=3" alt />
+            <div class="up-box" :style="currentIndex==3?'bottom:.5rem':'bottom:2.8rem'">
+              <img
+                v-if="currentIndex!=3"
+                src="../assets/img/index/drop-down.png"
+                @click="showMoreBox"
+              />
+              <img v-else src="../assets/img/index/drop-up.png" @click="showMoreBox" />
+            </div>
           </div>
         </div>
       </div>
@@ -348,6 +235,7 @@
         <div class="different_persons">
           <div class="persons_category">
             <div
+              class="category"
               @click="difPep(item.id,index)"
               v-for="(item,index) in getAll_differentPersons"
               :key="index"
@@ -406,121 +294,116 @@
             <div class="line">/</div>
             <div class="title_new">最新</div>
           </div>
-          <div class="article_content">
+          <div class="article_content" v-if="articleList[0]!=null">
             <div class="article_content_left">
               <div class="article_module">
-                <div class="title">牙齿矫正多少钱?</div>
+                <div class="title">{{articleList[0].artTitle}}</div>
                 <div class="icon">
                   <img src="../assets/img/index/article.png" alt />
                 </div>
                 <div class="article_img">
-                  <img src="../assets/img/index/article1.png" preview="7" alt />
+                  <img :src="imgList(articleList[0].artImg)[0]" preview="7" alt />
                 </div>
-                <div
-                  class="article_details"
-                >牙齿是美丽的代表器官之一。因此，会有许多牙齿长的不好的朋友想要做牙齿矫正手术来让自己的牙齿变得更为漂亮。那对于牙齿矫正大家了解...</div>
+                <div class="article_details">{{articleList[0].artContent}}</div>
                 <div class="read_Num">
                   <div class="left">
                     <span class="reading">阅读量</span>
-                    <span class="readingNum">12121</span>
+                    <span class="readingNum">{{articleList[0].checkNum}}</span>
                   </div>
-                  <div class="right">
-                    <img src="../assets/img/index/heart1.png" alt />
-                    <span class="zan">300</span>
+                  <div class="right" @click="artDianZan(articleList[0])">
+                    <div class="heart" ref="art1"></div>
+                    <span class="zan">{{articleList[0].thumbNum}}</span>
                   </div>
                 </div>
               </div>
               <div class="video_module">
-                <div class="title">30-35岁还可以做牙齿矫正吗？</div>
+                <div class="title">{{articleList[1].askTitle}}</div>
                 <div class="icon">
-                  <img src="../assets/img/index/video.png" alt />
+                  <img src="../assets/img/index/answer.png" alt />
                 </div>
                 <div class="article_img">
-                  <video
+                  <!-- <video
                     class="videoPlay"
                     src
                     poster="../assets/img/index/article2.png"
                     loop="loop"
                     x-webkit-airplay="true"
                     webkit-playsinline="true"
-                  >您的浏览器暂不支持播放该视频，请升级至最新版浏览器。</video>
+                  >您的浏览器暂不支持播放该视频，请升级至最新版浏览器。
+                  </video>-->
+                  <img :src="imgList(articleList[1].askImg)[0]" preview="7" alt />
                 </div>
                 <div class="read_Num">
                   <div class="left">
                     <span class="reading">阅读量</span>
-                    <span class="readingNum">12121</span>
+                    <span class="readingNum">{{articleList[1].askCheckNum}}</span>
                   </div>
                   <div class="right">
                     <img src="../assets/img/index/heart1.png" alt />
-                    <span class="zan">300</span>
+                    <span class="zan">{{articleList[1].thumbNum}}</span>
                   </div>
                 </div>
               </div>
               <div class="answer_module">
-                <div class="title">牙齿矫正多少钱?</div>
+                <div class="title">{{articleList[2].artTitle}}</div>
                 <div class="icon">
                   <img src="../assets/img/index/answer.png" alt />
                 </div>
-                <div
-                  class="article_details"
-                >这是因为在进行牙齿矫正时，牙根表面也发生着吸收、增生这种重建活动。治疗后，牙根凭着自身修复能力而恢复正常，但如果治疗加过大，会增加牙根吸收的危险性。orthodontics can be chosen.</div>
+                <div class="article_details">{{articleList[2].artContent}}</div>
                 <div class="read_Num">
                   <div class="left">
                     <span class="reading">阅读量</span>
-                    <span class="readingNum">12121</span>
+                    <span class="readingNum">{{articleList[2].checkNum}}</span>
                   </div>
                   <div class="right">
                     <img src="../assets/img/index/heart1.png" alt />
-                    <span class="zan">300</span>
+                    <span class="zan">{{articleList[2].thumbNum}}</span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="article_content_right">
               <div class="answer_module">
-                <div class="title">牙齿不整齐怎么办?</div>
+                <div class="title">{{articleList[3].askTitle}}</div>
                 <div class="icon">
                   <img src="../assets/img/index/article.png" alt />
                 </div>
-                <div class="article_details">矫正的危害对于那些牙齿长的不好的朋友来说，做牙齿矫正之前，先要了解一下它具有危...</div>
+                <div class="article_details">{{articleList[3].askContent}}</div>
                 <div class="read_Num">
                   <div class="left">
                     <span class="reading">阅读量</span>
-                    <span class="readingNum">12121</span>
+                    <span class="readingNum">{{articleList[3].askCheckNum}}</span>
                   </div>
                   <div class="right">
                     <img src="../assets/img/index/heart2.png" alt />
-                    <span class="zan">30.2万</span>
+                    <span class="zan">{{articleList[3].thumbNum}}</span>
                   </div>
                 </div>
               </div>
               <div class="doc_module">
-                <img src="../assets/img/index/article_list_doc2.png" preview="8" alt />
+                <img :src="articleList[4].doctorImg" preview="8" alt />
                 <div class="doc_name">
-                  <span>蔡英英</span>
-                  <span>正崎专家</span>
+                  <span>{{articleList[4].doctorChName}}</span>
+                  <span>{{articleList[4].doctorChPosition}}</span>
                 </div>
               </div>
               <div class="article_module">
-                <div class="title">牙齿矫正多少钱?</div>
+                <div class="title">{{articleList[5].artTitle}}</div>
                 <div class="icon">
                   <img src="../assets/img/index/article.png" alt />
                 </div>
                 <div class="article_img">
-                  <img src="../assets/img/index/article4.png" preview="7" alt />
+                  <img :src="imgList(articleList[5].artImg)[0]" preview="7" alt />
                 </div>
-                <div class="article_details">
-                  这是因为在进行牙齿矫正时，牙根表面也发生着吸收、增生这种重建活动。治疗后，牙根凭着自身修复能力而恢复正常，但如果治疗加力过大，会增加牙根吸...的危险性。
-                  chosen.
-                </div>
+                <div class="article_details">{{articleList[5].artContent}}</div>
                 <div class="read_Num">
                   <div class="left">
                     <span class="reading">阅读量</span>
-                    <span class="readingNum">12121</span>
+                    <span class="readingNum">{{articleList[5].checkNum}}</span>
                   </div>
                   <div class="right">
                     <img src="../assets/img/index/heart1.png" alt />
-                    <span class="zan">300</span>
+                    <span class="zan">{{articleList[5].thumbNum}}</span>
                   </div>
                 </div>
               </div>
@@ -540,12 +423,12 @@
                 <!-- 问题(左) -->
                 <div class="left" v-if="item.ac_artId!=null" @click="art_details(item.ac_artId)">
                   <div class="question">
-                    <span>{{item.article.artTitle}}</span>
+                    <span>{{title_num(index)}}{{item.article.artTitle}}</span>
                   </div>
                 </div>
                 <div class="left" v-else @click="ask_details(item.ac_askId)">
                   <div class="question">
-                    <span>{{item.ask.askTitle}}</span>
+                    <span>{{title_num(index)}}{{item.ask.askTitle}}</span>
                   </div>
                 </div>
                 <!-- 讨论(右) -->
@@ -553,7 +436,7 @@
                   <div class="up">
                     <span>{{item.article.checkNum}}W</span>
                     <img src="../assets/img/index/up.png" alt />
-                    <span>+{{up_Num}}</span>
+                    <span>+{{random_Num()}}</span>
                   </div>
                   <div class="down2">
                     <div class="girl">
@@ -573,7 +456,7 @@
                   <div class="up">
                     <span>{{item.ask.askCheckNum}}W</span>
                     <img src="../assets/img/index/up.png" alt />
-                    <span>+{{up_Num}}</span>
+                    <span>+{{random_Num()}}</span>
                   </div>
                   <div class="down2">
                     <div class="girl">
@@ -591,11 +474,11 @@
                 </div>
               </div>
 
-              <div class="question_list" v-else>
+              <div class="question_list0" v-else-if="index==0">
                 <!-- 问题(左) -->
                 <div class="left" v-if="item.ac_artId!=null">
                   <div class="question" @click="art_details(item.ac_artId)">
-                    <span>{{item.article.artTitle}}</span>
+                    <span>{{title_num(index)}}{{item.article.artTitle}}</span>
                   </div>
                   <div class="question_img" v-if="index==1">
                     <img
@@ -609,7 +492,7 @@
                 </div>
                 <div class="left" v-else>
                   <div class="question" @click="ask_details(item.ac_askId)">
-                    <span>{{item.ask.askTitle}}</span>
+                    <span>{{title_num(index)}}{{item.ask.askTitle}}</span>
                   </div>
                   <div class="question_img" v-if="index==1">
                     <img
@@ -626,7 +509,7 @@
                   <div class="up">
                     <span>{{item.article.checkNum}}W</span>
                     <img src="../assets/img/index/up.png" alt />
-                    <span>+{{up_Num}}</span>
+                    <span>+{{random_Num()}}</span>
                   </div>
 
                   <div class="down">
@@ -638,7 +521,121 @@
                   <div class="up">
                     <span>{{item.ask.askCheckNum}}W</span>
                     <img src="../assets/img/index/up.png" alt />
-                    <span>+{{up_Num}}</span>
+                    <span>+{{random_Num()}}</span>
+                  </div>
+
+                  <div class="down">
+                    <span>#{{item.ask.askCommentNum}}</span>
+                    <span>讨论</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="question_list1" v-else-if="index==1">
+                <!-- 问题(左) -->
+                <div class="left" v-if="item.ac_artId!=null">
+                  <div class="question" @click="art_details(item.ac_artId)">
+                    <span>{{title_num(index)}}{{item.article.artTitle}}</span>
+                  </div>
+                  <div class="question_img" v-if="index==1">
+                    <img
+                      :src="it"
+                      v-for="(it,i) in imgList(item.article.artImg)"
+                      :key="i"
+                      preview="10"
+                      alt
+                    />
+                  </div>
+                </div>
+                <div class="left" v-else>
+                  <div class="question" @click="ask_details(item.ac_askId)">
+                    <span>{{title_num(index)}}{{item.ask.askTitle}}</span>
+                  </div>
+                  <div class="question_img" v-if="index==1">
+                    <img
+                      :src="it"
+                      v-for="(it,i) in imgList(item.ask.askImg)"
+                      :key="i"
+                      preview="10"
+                      alt
+                    />
+                  </div>
+                </div>
+                <!-- 讨论(右) -->
+                <div class="discussion" v-if="item.ac_artId!=null">
+                  <div class="up">
+                    <span>{{item.article.checkNum}}W</span>
+                    <img src="../assets/img/index/up.png" alt />
+                    <span>+{{random_Num()}}</span>
+                  </div>
+
+                  <div class="down">
+                    <span>#{{item.article.artCommentNum}}</span>
+                    <span>讨论</span>
+                  </div>
+                </div>
+                <div class="discussion" v-else>
+                  <div class="up">
+                    <span>{{item.ask.askCheckNum}}W</span>
+                    <img src="../assets/img/index/up.png" alt />
+                    <span>+{{random_Num()}}</span>
+                  </div>
+
+                  <div class="down">
+                    <span>#{{item.ask.askCommentNum}}</span>
+                    <span>讨论</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="question_list" v-else>
+                <!-- 问题(左) -->
+                <div class="left" v-if="item.ac_artId!=null">
+                  <div class="question" @click="art_details(item.ac_artId)">
+                    <span>{{title_num(index)}}{{item.article.artTitle}}</span>
+                  </div>
+                  <div class="question_img" v-if="index==1">
+                    <img
+                      :src="it"
+                      v-for="(it,i) in imgList(item.article.artImg)"
+                      :key="i"
+                      preview="10"
+                      alt
+                    />
+                  </div>
+                </div>
+                <div class="left" v-else>
+                  <div class="question" @click="ask_details(item.ac_askId)">
+                    <span>{{title_num(index)}}{{item.ask.askTitle}}</span>
+                  </div>
+                  <div class="question_img" v-if="index==1">
+                    <img
+                      :src="it"
+                      v-for="(it,i) in imgList(item.ask.askImg)"
+                      :key="i"
+                      preview="10"
+                      alt
+                    />
+                  </div>
+                </div>
+                <!-- 讨论(右) -->
+                <div class="discussion" v-if="item.ac_artId!=null">
+                  <div class="up">
+                    <span>{{item.article.checkNum}}W</span>
+                    <img src="../assets/img/index/up.png" alt />
+                    <span>+{{random_Num()}}</span>
+                  </div>
+
+                  <div class="down">
+                    <span>#{{item.article.artCommentNum}}</span>
+                    <span>讨论</span>
+                  </div>
+                </div>
+                <div class="discussion" v-else>
+                  <div class="up">
+                    <span>{{item.ask.askCheckNum}}W</span>
+                    <img src="../assets/img/index/up.png" alt />
+                    <span>+{{random_Num()}}</span>
                   </div>
 
                   <div class="down">
@@ -652,6 +649,14 @@
         </div>
       </div>
     </main>
+
+    <van-list
+      class="moreArticle"
+      v-model="loading"
+      :finished="finished"
+      finished-text="没有更多了"
+      @load="onLoad"
+    ></van-list>
 
     <!-- 悬浮search-->
     <div class="suspend_search" v-show="search_show">
@@ -680,14 +685,16 @@ export default {
   name: "index",
   data() {
     return {
+      // 上拉加载
+      loading: false,
+      finished: false,
+      offset: 100,
       // 头部背景图
       headerBg: "",
       // 头部导航栏
       headerNav: [],
       // 头部导航栏显示
       navShow: true,
-      // 头部消息红点提示
-      isMessage: false,
       // 头部高度
       header_scrollTop: 0,
       // 当前滚动距离
@@ -700,16 +707,14 @@ export default {
       getHotList: [],
       // 拿到100榜数据
       getOneHundredList: [],
-      // 热搜 +值
-      up_Num: 1,
       // 显示框当前下标
       currentIndex: 1,
       // 专家 轮播图
       swiperOption: {
         autoplay: {
-          delay: 3000,
+          delay: 2000,
           stopOnLastSlide: false,
-          disableOnInteraction: true
+          disableOnInteraction: false
         },
         loop: true,
         pagination: {
@@ -746,10 +751,28 @@ export default {
       // 蓝色标签数据
       blue_list: [],
       // 蓝色标签对应的swiper图片
-      blueimg_list: []
+      blueimg_list: [],
+      // 文章页码
+      articleNum: 1,
+      // 第一页 文章数据
+      articleList: [],
+      // 根据页码 文章数据
+      articleList1: [],
+      // 获取用户展示数据
+      userShow: { limit: 6, offset: 1 },
+      // 用户展示列表
+      userShow_list: [],
+      // 点赞功能
+      zan:false,
+      artZan:false
     };
   },
   methods: {
+    // 上拉加载
+    onLoad() {
+      this.articleNum++;
+      this.getArticleDataByNum(this.articleNum);
+    },
     // 显示 黑色搜索框
     handleScroll(e) {
       // 获取当前滚动距离
@@ -771,10 +794,9 @@ export default {
       if (id == null) return;
       else {
         this.$request.getArticleDetailsById(id).then(res => {
-          console.log(res);
           // 保存到仓库中
           this.$store.commit("getArtDetails", res.data.data);
-          this.$router.push("/crunchies/askPeople");
+          this.$router.push("/crunchies/");
         });
       }
     },
@@ -783,7 +805,6 @@ export default {
       if (id == null) return;
       else {
         this.$request.getAskDetailsById(id).then(res => {
-          console.log(res);
           // 保存到仓库中
           this.$store.commit("getAskDetails", res.data.data);
           this.$router.push("/crunchies/askPeople");
@@ -792,7 +813,10 @@ export default {
     },
     // 显示隐藏 白色点击展示更多
     showMoreBox() {
-      if (this.currentIndex == 3) return;
+      if (this.currentIndex == 3) {
+        this.currentIndex = 1;
+        return;
+      }
       this.currentIndex++;
     },
     // 判断 不同人群的一级标签数据
@@ -831,7 +855,7 @@ export default {
         }
       });
     },
-    //判断 不同人群的三级标签数据
+    // 判断 不同人群的三级标签数据
     difPep2(crid2, index) {
       this.blue_list = [];
       this.blueimg_list = [];
@@ -849,17 +873,79 @@ export default {
         this.blueimg_list = res.data.data.imgList;
       });
     },
-    // 分割 矫正100 图片
+    // 分割 图片
     imgList(img) {
       if (img == null) return;
       else {
         return img.split(",");
       }
+    },
+    // 随机红数字
+    random_Num() {
+      // 随机 + 值
+      return parseInt(Math.random() * 10) + 1;
+    },
+    // 问答标题数字
+    title_num(index) {
+      if (index == 0) return "1、";
+      else if (index == 1) return "2、";
+      else if (index == 2) return "3、";
+      else if (index == 3) return "4、";
+      else if (index == 4) return "5、";
+      else if (index == 5) return "6、";
+      else if (index == 6) return "7、";
+      else if (index == 7) return "8、";
+    },
+    // 根据页码获取文章数据
+    getArticleDataByNum(num) {
+      this.$request.getArticleDataList(num).then(res => {
+        let newarticleList = [];
+        if (num == 1) {
+          this.articleList = res.data.data.dataList;
+          console.log(this.articleList);
+          
+        } else {
+          this.articleList1 = res.data.data.dataList;
+          newarticleList.push(this.articleList1);
+        }
+        this.loading = false;
+      });
+    },
+    // 用户展示 点赞功能
+    userShowDianZan(id,index) {
+      if(!this.zan){
+        this.$request.userShowZan(id).then(res => {
+        if (res.data.code == 200) {
+          this.userShow_list[index].caseThumbnum = parseInt(this.userShow_list[index].caseThumbnum) + 1;
+          this.$refs.changeHeart[index].style.backgroundImage = "url(http://pv2pjkuy1.bkt.clouddn.com/%E7%88%B1%E5%BF%83@2x@2x.png)";
+        }
+        this.zan = !this.zan;
+      });
+      } else {
+        this.userShow_list[index].caseThumbnum = parseInt(this.userShow_list[index].caseThumbnum) - 1;
+        this.zan = !this.zan;
+        this.$refs.changeHeart[index].style.backgroundImage = null;
+      }
+      
+    },
+    // 文章 点赞功能
+    artDianZan(data){
+      if(!this.artZan){
+        this.$request.art_Zan(data.artId).then(res => {
+        if (res.data.code == 200) {
+          data.thumbNum = parseInt(data.thumbNum) + 1;
+          this.$refs.art1.style.backgroundImage = "url(http://pv2pjkuy1.bkt.clouddn.com/%E7%88%B1%E5%BF%83@2x@2x.png)";
+        }
+        this.artZan = !this.artZan;
+      });
+      } else {
+        data.thumbNum = parseInt(data.thumbNum) - 1;
+        this.artZan = !this.artZan;
+        this.$refs.art1.style.backgroundImage = null;
+      }
     }
   },
   mounted() {
-    // 随机 + 值
-    this.up_Num = parseInt(Math.random() * 10) + 1;
     // 获取 头部高度
     this.header_scrollTop = this.$refs.header.offsetHeight;
     // 监听 页面高度
@@ -898,12 +984,18 @@ export default {
         }
         this.queryblue_byId(this.grandsonList[0].id);
       });
+    // 开始获取第一页文章数据
+    this.getArticleDataByNum(this.articleNum);
+    // 用户展示
+    this.$request.getUserShowList(this.userShow).then(res => {
+      this.userShow_list = res.data.data.dataList;
+    });
   },
   computed: {
     // 用户展示 点击计算
     scrollBoxHeight() {
       if (this.currentIndex < 3) {
-        return this.currentIndex * 4.47 + 2.235 + "rem";
+        return this.currentIndex * 4.47 + 3.235 + "rem";
       } else {
         return this.currentIndex * 4.47 + 0.9 + "rem";
       }

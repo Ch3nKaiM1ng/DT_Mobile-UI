@@ -13,9 +13,9 @@
           </router-link>
         </li>
         <li>
-          <router-link to="/">
-            <div class="icon" :class="[$route.name == 'nearby' ? 'location2' : 'location1']"></div>
-            <span :class="[$route.name == 'nearby' ? 'sp1' : '']">附近</span>
+          <router-link to="/crunchies/correctCase">
+            <div class="icon" :class="[$route.name == 'correctCase' ? 'location2' : 'location1']"></div>
+            <span :class="[$route.name == 'correctCase' ? 'sp1' : '']">同城</span>
           </router-link>
         </li>
         <li>
@@ -25,9 +25,9 @@
           </router-link>
         </li>
         <li>
-          <router-link to="/">
-            <div class="icon" :class="[$route.name == 'mine' ? 'mine2' : 'mine1']"></div>
-            <span :class="[$route.name == 'mine' ? 'sp1' : '']">我的</span>
+          <router-link to="/login">
+            <div class="icon" :class="[$route.name == 'login' ? 'mine2' : 'mine1']"></div>
+            <span :class="[$route.name == 'login' ? 'sp1' : '']">我的</span>
           </router-link>
         </li>
       </ul>

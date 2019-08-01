@@ -27,11 +27,13 @@ import 'vue-photo-preview/dist/skin.css'
 Vue.use(preview)
 
 // 导入Vant
-import { DropdownMenu,DropdownItem,Tab,Tabs,Popup,Button } from 'vant';
+import { DropdownMenu,DropdownItem,Tab,Tabs,Popup,Button,List,DatetimePicker } from 'vant';
 Vue.use(DropdownMenu).use(DropdownItem);
 Vue.use(Tab).use(Tabs);
-Vue.use(Popup);
 Vue.use(Button);
+Vue.use(List);
+Vue.use(Popup);
+Vue.use(DatetimePicker);
 
 Vue.config.productionTip = false
 

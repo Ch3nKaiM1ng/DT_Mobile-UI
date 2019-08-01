@@ -49,6 +49,9 @@
                     border-radius: .06rem;
                     margin-right: .3rem;
                 }
+                .active{
+                    background-color: #909090;
+                }
             }
         }
     
@@ -112,6 +115,9 @@
                         color: #333333;
                     }
                 }
+                .active {
+                    background-color: #909090;
+                }
             }
         }
     
@@ -136,6 +142,9 @@
                     border-radius: .04rem;
                     margin-right: .2rem;
                     margin-bottom: .25rem;
+                }
+                .active{
+                    background-color: #909090;
                 }
             }
         }

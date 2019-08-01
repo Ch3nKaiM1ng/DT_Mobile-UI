@@ -6,45 +6,34 @@
         <div class="gender">
           <div class="gender_title">性别</div>
           <div class="girlOrman">
-            <div class="girl gd">女</div>
-            <div class="man gd">男</div>
+            <div class="gd" :class="{active:current==index}" v-for="(item,index) in genderList" :key="index" @click="checked(index)">{{item.sex}}</div>
           </div>
         </div>
         <div class="age">
           <div class="age_title">年龄</div>
           <div class="age_segment">
             <div class="lowOrhigh">
-              <input class="most" type="number" placeholder="最低" onfocus="this.placeholder=''" onblur="this.placeholder='最低'"  />
+              <input class="most" type="number" placeholder="最低" onfocus="this.placeholder=''" onblur="this.placeholder='最低'" />
               <div class="line"></div>
-              <input class="most" type="number" placeholder="最高" onfocus="this.placeholder=''" onblur="this.placeholder='最高'"  />
+              <input class="most" type="number" placeholder="最高" onfocus="this.placeholder=''" onblur="this.placeholder='最高'" />
             </div>
           </div>
           <div class="age_select">
-            <div class="select">
-              <span>12-24</span>
-              <span>40%的选择</span>
-            </div>
-            <div class="select">
-              <span>25-32</span>
-              <span>32%的选择</span>
-            </div>
-            <div class="select">
-              <span>33-42</span>
-              <span>30%的选择</span>
+            <div class="select" v-for="(it,i) in chooseList" :key="i" @click="checked1(i)" :class="{active:current1==i}">
+              <span>{{it.age}}</span>
+              <span>{{it.percent}}的选择</span>
             </div>
           </div>
         </div>
         <div class="project">
           <div class="project_title">方案</div>
           <div class="label_box">
-            <div class="label_list">隐形矫正</div>
-            <div class="label_list">半隐形矫正</div>
-            <div class="label_list">传统矫正</div>
+            <div class="label_list" v-for="(it,i) in projectList" :key="i" @click="checked2(i)" :class="{active:current2==i}">{{it.pj}}</div>
           </div>
         </div>
         <div class="bottom_btn">
-          <van-button type="primary" disabled class="cancel">取消</van-button>
-          <van-button type="primary" class="confirm">确认</van-button>
+          <van-button type="primary" class="cancel" @click="closePopup">取消</van-button>
+          <van-button type="primary" class="confirm" @click="upPopup">确认</van-button>
         </div>
       </van-popup>
     </div>
@@ -93,13 +82,40 @@ export default {
   name: "correctCase",
   data() {
     return {
-      show: false
+      show: false,
+      genderList:[{sex:'女'},{sex:'男'}],
+      current: 3,
+      chooseList:[{age:'12-24',percent:'40%'},{age:'25-32',percent:'32%'},{age:'33-42',percent:'30%'}],
+      current1: 4,
+      projectList:[{pj:'隐形矫正'},{pj:'半隐形矫正'},{pj:'传统矫正'}],
+      current2: 3,
     };
   },
   methods: {
     showPopup() {
       this.show = true;
-    }
+    },
+    closePopup() {
+      this.show = false;
+      this.current =10;
+      this.current1 =10;
+      this.current2 =10;
+    },
+    upPopup() {
+      this.show = false;
+      this.current =10;
+      this.current1 =10;
+      this.current2 =10;
+    },
+    checked(index,e){
+      this.current = index;
+    },
+    checked1(index){
+      this.current1 = index;
+    },
+    checked2(index){
+      this.current2 = index;
+    },
   }
 };
 </script>

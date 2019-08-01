@@ -1,43 +1,49 @@
 <template>
-  <div id="crunchies">
-    <div class="crunchies_header">
-      <div class="crunchies_return" @click="back">
-        <div class="icon_return"></div>
-      </div>
-      <div class="crunchies_title">
-        <van-dropdown-menu active-color="#009965">
-          <van-dropdown-item v-model="headerValue" :options="headerOption" />
-        </van-dropdown-menu>
-      </div>
-      <div class="crunchies_search">
-        <div class="icon_search"></div>
-      </div>
-    </div>
-    <div class="crunchies_nav">
-      <div class="nav_list" :class="[$route.name == 'hot_crunchies' ? 'active' : '']">
-        <router-link tag="span" to="/crunchies/">热搜榜</router-link>
-      </div>
-      <div class="line"></div>
-      <div class="nav_list" :class="[$route.name == 'askPeople' ? 'active' : '']" @click="pullDown">
-        <router-link tag="span" to="/crunchies/askPeople">
-          问大家
-          <i class="icon" ref="changeBg"></i>
-        </router-link>
-        <div class="pullDown_list" v-if="pullDown_show">
-          <div class="list">矫正案例</div>
-          <div class="list">矫正案例</div>
-          <div class="list">矫正案例</div>
-          <div class="list">矫正案例</div>
-          <div class="list">矫正案例</div>
+  <div id="crunchies" :class="current_scrollTop>0?'pd':''">
+    <div class="suspension_box" :class="current_scrollTop>0?'fly':''">
+      <div class="crunchies_header">
+        <div class="crunchies_return" @click="back">
+          <div class="icon_return"></div>
+        </div>
+        <div class="crunchies_title">
+          <van-dropdown-menu active-color="#009965">
+            <van-dropdown-item v-model="headerValue" :options="headerOption" />
+          </van-dropdown-menu>
+        </div>
+        <div class="crunchies_search">
+          <div class="icon_search"></div>
         </div>
       </div>
-      <div class="line"></div>
-      <div class="nav_list" :class="[$route.name == 'correctCase' ? 'active' : '']">
-        <router-link tag="span" to="/crunchies/correctCase">矫正案例</router-link>
-      </div>
-      <div class="line"></div>
-      <div class="nav_list" :class="[$route.name == 'doctorList' ? 'active' : '']">
-        <router-link tag="span" to="/doctorList">专家</router-link>
+      <div class="crunchies_nav">
+        <div class="nav_list" :class="[$route.name == 'hot_crunchies' ? 'active' : '']">
+          <router-link tag="span" to="/crunchies/">热搜榜</router-link>
+        </div>
+        <div class="line"></div>
+        <div
+          class="nav_list"
+          :class="[$route.name == 'askPeople' ? 'active' : '']"
+          @click="pullDown"
+        >
+          <router-link tag="span" to="/crunchies/askPeople">
+            问大家
+            <i class="icon" ref="changeBg"></i>
+          </router-link>
+          <div class="pullDown_list" v-if="pullDown_show">
+            <div class="list">矫正案例</div>
+            <div class="list">矫正案例</div>
+            <div class="list">矫正案例</div>
+            <div class="list">矫正案例</div>
+            <div class="list">矫正案例</div>
+          </div>
+        </div>
+        <div class="line"></div>
+        <div class="nav_list" :class="[$route.name == 'correctCase' ? 'active' : '']">
+          <router-link tag="span" to="/crunchies/correctCase">矫正案例</router-link>
+        </div>
+        <div class="line"></div>
+        <div class="nav_list" :class="[$route.name == 'doctorList' ? 'active' : '']">
+          <router-link tag="span" to="/doctorList">专家</router-link>
+        </div>
       </div>
     </div>
     <router-view></router-view>
@@ -52,6 +58,8 @@ export default {
     return {
       pullDown_show: false,
       headerValue: 0,
+      // 当前滚动距离
+      current_scrollTop: 0,
       headerOption: [
         { text: "矫正榜", value: 0 },
         { text: "修复榜", value: 1 },
@@ -63,14 +71,30 @@ export default {
   methods: {
     pullDown() {
       this.pullDown_show = !this.pullDown_show;
-      if(this.pullDown_show){
-        this.$refs.changeBg.style.backgroundImage = "url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564319722690&di=74aff7dc6df6cba6f97b1f90efaad0c6&imgtype=0&src=http%3A%2F%2Fh.hiphotos.baidu.com%2Flvpics%2Fw%3D600%2Fsign%3D5dc3621e19d5ad6eaaf967eab1c939a3%2F0b55b319ebc4b745cc71eecccdfc1e178b821506.jpg)";
+      if (this.pullDown_show) {
+        this.$refs.changeBg.style.backgroundImage =
+          "url(http://pv2pjkuy1.bkt.clouddn.com/%E8%BF%94%E5%9B%9E%281%29%E6%8B%B7%E8%B4%9D@2x.png)";
       } else {
         this.$refs.changeBg.style.backgroundImage = null;
       }
     },
     back() {
-      this.$router.go(-1);
+      this.$router.push("/");
+    },
+    handleScroll(e) {
+      // 获取当前滚动距离
+      this.current_scrollTop =
+        e.target.documentElement.scrollTop || e.target.body.scrollTop; // 执行代码
+    }
+  },
+  mounted() {
+    // 监听 页面高度
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  updated() {
+    if (this.$route.name != "askPeople") {
+      this.pullDown_show = false;
+      this.$refs.changeBg.style.backgroundImage = null;
     }
   }
 };
@@ -82,6 +106,9 @@ export default {
   width: 100%;
   height: auto;
   background-color: #f2f2f2;
+}
+.pd{
+  padding-top: 1.68rem;
 }
 </style>
 <style lang='scss'>

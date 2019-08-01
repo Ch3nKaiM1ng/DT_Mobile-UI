@@ -24,7 +24,6 @@
             .up {
                 font-size: .34rem;
                 font-weight: bold;
-                color: #d33936;
                 display: flex;
                 justify-content: start;
                 width: 6rem;
@@ -82,7 +81,6 @@
                     font-size: .24rem;
                     color: #626262;
                     height: .34rem;
-                    width: 64%;
 
                     .discuss1 {
                         margin-right: .5rem
@@ -167,6 +165,18 @@
                 }
             }
         }
+    }
+
+    .cr_question_list:nth-child(1){
+        color: #d33936;
+    }
+
+    .cr_question_list:nth-child(2){
+        color: #e67e30;
+    }
+
+    .cr_question_list:nth-child(3){
+        color: #eab489;
     }
 
     .cr_AD {
@@ -328,12 +338,4 @@
             }
         }
     }
-
-    // .crunchies_mask{
-    //     width: 100%;
-    //     height: 24.7rem;
-    //     background:rgba(51,51,51,1);
-    //     opacity:0.4;
-    //     z-index: 998;
-    // }
 }

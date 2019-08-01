@@ -1,170 +1,183 @@
-.crunchies_header {
-    width: 100%;
-    height: 0.9rem;
-    border-bottom: 0.01rem solid #f2f2f2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffffff;
-    background: rgba(255, 255, 255, 1);
-    box-shadow: -1px 0px 4px 0px rgba(84, 84, 84, 0.17);
+.suspension_box {
 
-    .crunchies_return {
-        width: 1.1rem;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
 
-        .icon_return {
-            width: 0.17rem;
-            height: 0.32rem;
-            background: url('../../src/assets/img/index/crunchies/return_left.png') no-repeat;
-            background-size: 100%;
-        }
-    }
-
-    .crunchies_title {
-        flex: 1;
-        text-align: center;
-        font-size: 0.3rem;
-        color: #333333;
-
-        .van-dropdown-menu {
-            height: 0.9rem;
-
-            .van-hairline--bottom {
-                border-color: #ffffff;
-            }
-
-            .van-dropdown-menu__title {
-                font-size: .32rem;
-                font-weight: bold;
-                color: #333333;
-                padding: 0 .2rem;
-
-                &::after {
-                    top: .1rem;
-                    right: -.2rem;
-                    border: 0;
-                    transform: rotate(0deg);
-                    width: .26rem;
-                    height: .14rem;
-                    background: url('../../src/assets/img/index/crunchies/arrow_down.png') no-repeat;
-                    background-size: 100% 100%;
-                }
-            }
-
-            .van-dropdown-menu__title.van-dropdown-menu__title--down {
-                &::after {
-                    transform: rotate(-180deg);
-                }
-            }
-
-            .van-popup {
-                .van-hairline {}
-
-                .van-cell {
-                    font-size: .32rem;
-                    font-weight: normal;
-
-                    .van-cell__title {
-                        text-align: center;
-                        line-height: .6rem;
-                    }
-
-                    .van-cell__value {
-                        text-align: center;
-                        line-height: .6rem;
-                    }
-                }
-            }
-        }
-    }
-
-    .crunchies_search {
-        width: 1.1rem;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        .icon_search {
-            width: .6rem;
-            height: .6rem;
-            background: url('../../src/assets/img/index/crunchies/search.png') no-repeat;
-            background-size: 100%;
-        }
-    }
-}
-
-.crunchies_nav {
-    width: 100%;
-    height: .78rem;
-    background-color: #ffffff;
-    padding: 0 .2rem;
-    font-size: .28rem;
-    font-weight: lighter;
-    color: #333333;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .line {
-        width: .1rem;
-        height: .5rem;
-        background-color: #e5e5e5;
-    }
-
-    .nav_list {
-        text-align: center;
-        line-height: .78rem;
+    .crunchies_header {
         width: 100%;
-        height: 100%;
-        position: relative;
+        height: 0.9rem;
+        border-bottom: 0.01rem solid #f2f2f2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffffff;
+        background: rgba(255, 255, 255, 1);
+        box-shadow: -1px 0px 4px 0px rgba(84, 84, 84, 0.17);
 
-        .icon {
-            display: inline-block;
-            width: .22rem;
-            height: .12rem;
-            margin-left: .1rem;
-            background: url('../../src/assets/img/index/crunchies/return_bottom.png') no-repeat;
-            background-size: .22rem .12rem;
+        .crunchies_return {
+            width: 1.1rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .icon_return {
+                width: 0.17rem;
+                height: 0.32rem;
+                background: url('../../src/assets/img/index/crunchies/return_left.png') no-repeat;
+                background-size: 100%;
+            }
         }
 
-        .pullDown_list {
-            width: 100%;
-            position: absolute;
-            top: .78rem;
-            left: 0;
-            z-index: 500;
-            font-size: .25rem;
-            font-weight: normal;
-            background-color: #ffffff;
-            padding: .32rem 0;
-            border-radius: .2rem;
+        .crunchies_title {
+            flex: 1;
+            text-align: center;
+            font-size: 0.3rem;
             color: #333333;
 
-            .list {
-                margin-bottom: .78rem;
+            .van-dropdown-menu {
+                height: 0.9rem;
 
-                &:last-child {
-                    margin-bottom: 0;
+                .van-hairline--bottom {
+                    border-color: #ffffff;
                 }
+
+                .van-dropdown-menu__title {
+                    font-size: .32rem;
+                    font-weight: bold;
+                    color: #333333;
+                    padding: 0 .2rem;
+
+                    &::after {
+                        top: .1rem;
+                        right: -.2rem;
+                        border: 0;
+                        transform: rotate(0deg);
+                        width: .26rem;
+                        height: .14rem;
+                        background: url('../../src/assets/img/index/crunchies/arrow_down.png') no-repeat;
+                        background-size: 100% 100%;
+                    }
+                }
+
+                .van-dropdown-menu__title.van-dropdown-menu__title--down {
+                    &::after {
+                        transform: rotate(-180deg);
+                    }
+                }
+
+                .van-popup {
+                    .van-hairline {}
+
+                    .van-cell {
+                        font-size: .32rem;
+                        font-weight: normal;
+
+                        .van-cell__title {
+                            text-align: center;
+                            line-height: .6rem;
+                        }
+
+                        .van-cell__value {
+                            text-align: center;
+                            line-height: .6rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        .crunchies_search {
+            width: 1.1rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .icon_search {
+                width: .6rem;
+                height: .6rem;
+                background: url('../../src/assets/img/index/crunchies/search.png') no-repeat;
+                background-size: 100%;
             }
         }
     }
 
-    .active {
-        background: url('../../src/assets/img/index/crunchies/underline.png') no-repeat;
-        background-position: 36% 80%;
-        font-weight: normal;
-        color: #009965;
-        background-size: .5rem .04rem;
+    .crunchies_nav {
+        width: 100%;
+        height: .78rem;
+        background-color: #ffffff;
+        padding: 0 .2rem;
+        font-size: .28rem;
+        font-weight: lighter;
+        color: #333333;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .line {
+            width: .1rem;
+            height: .5rem;
+            background-color: #e5e5e5;
+        }
+
+        .nav_list {
+            text-align: center;
+            line-height: .78rem;
+            width: 100%;
+            height: 100%;
+            position: relative;
+
+            .icon {
+                display: inline-block;
+                width: .22rem;
+                height: .12rem;
+                margin-left: .1rem;
+                background: url('../../src/assets/img/index/crunchies/return_bottom.png') no-repeat;
+                background-size: .22rem .12rem;
+            }
+
+            .pullDown_list {
+                width: 100%;
+                position: absolute;
+                top: .78rem;
+                left: 0;
+                z-index: 500;
+                font-size: .25rem;
+                font-weight: normal;
+                background-color: #ffffff;
+                padding: .32rem 0;
+                border-radius: .2rem;
+                color: #333333;
+
+                .list {
+                    margin-bottom: .78rem;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        .active {
+            background: url('../../src/assets/img/index/crunchies/underline.png') no-repeat;
+            background-position: 36% 80%;
+            font-weight: normal;
+            color: #009965;
+            background-size: .5rem .04rem;
+        }
     }
 }
 
-.mask_show{
+.fly {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1001;
+}
+
+
+.mask_show {
     position: absolute;
     top: 1.7rem;
     left: 0;

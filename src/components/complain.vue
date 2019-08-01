@@ -68,7 +68,7 @@ export default {
   mounted() {},
   methods: {
     back() {
-      this.$router.go(-1); //返回上一层
+      this.$router.push("/");
     },
     radio() {
       this.Radio = !this.Radio;
@@ -127,6 +127,11 @@ export default {
 </script>
 
 <style>
+textarea{
+  width: 100%;
+  height: 100%;
+  font-size: .3rem !important;
+}
 </style>
 <style lang='scss' scoped>
 @import "../assets/css/complain.scss";

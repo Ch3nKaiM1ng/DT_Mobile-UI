@@ -11,10 +11,10 @@
                 type="search"
                 :fetch-suggestions="querySearchAsync"
                 :trigger-on-focus="false"
-                placeholder="查询服务或门诊名称"
+                placeholder="牙齿矫正"
                 @select="handleSelect"
                 @keyup.enter.native="Keybtn"
-                 onfocus="this.placeholder=''" onblur="this.placeholder='查询服务或门诊名称'"
+                onfocus="this.placeholder=''" onblur="this.placeholder='牙齿矫正'" 
               ></el-autocomplete>
             </form>
           </div>
@@ -28,6 +28,16 @@
         <div class="search_hot_tit">热搜</div>
         <div class="search_hot_nav">
           <a v-for="i in showSearch" :key="i.index" :href="i.sUrl">{{i.sName}}</a>
+          <a href="#">我</a>
+          <a href="#">我</a>
+          <a href="#">我</a>
+          <a href="#">我</a>
+          <a href="#">我</a>
+          <a href="#">我</a>
+          <a href="#">我</a>
+          <a href="#">我</a>
+          <a href="#">我</a>
+          <a href="#">我</a>
         </div>
       </div>
       <!-- 大家都在搜(公用模版) -->
@@ -99,7 +109,7 @@
         <div class="header_recording_ranking">
           <a
             href="http://m.mylikegd.com.cn/html/zt/213.html"
-            class="header_recording_ranking_Shelf"
+            id="header_recording_ranking_Shelf"
             v-for="index in history_list"
             :key="index.id"
           >{{index.value}}</a>

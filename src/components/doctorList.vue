@@ -10,115 +10,18 @@
       </div>
     </div>
     <div class="navigation_bar">
-      <div class="nav_list active">全部</div>
-      <div class="line"></div>
-      <div class="nav_list">牙齿矫正</div>
-      <div class="line"></div>
-      <div class="nav_list">牙齿种植</div>
-      <div class="line"></div>
-      <div class="nav_list">牙齿修复</div>
-      <div class="line"></div>
-      <div class="nav_list">综合</div>
+      <div class="nav_list" @click="getDocsData('',10)" :class="{ 'active':current_inx == 10 }">全部</div>
+      <div class="nav_list" @click="getDocsData(item.classId,index)" v-for="(item,index) in docClassList" :key="index" :class="{ 'active':current_inx == index }">{{item.classChName}}</div>
     </div>
     <div class="doctor_list">
-      <div class="doctor_synopsis">
+      <div class="doctor_synopsis" v-for="(item,index) in docsDataList" :key="index">
         <div class="doc_img">
-            <img src="../assets/img/index/doctorList/zj_zw@2x.png" alt="">
+            <img :src="item.doctorImg" alt="">
         </div>
-        <div class="doc_name">周炜</div>
+        <div class="doc_name">{{item.doctorChName}}</div>
         <div class="doc_type">
-            <div class="CN">正畸专家</div>
-            <div class="EN">Orthodontists</div>
-        </div>
-      </div>
-      <div class="doctor_synopsis">
-        <div class="doc_img">
-            <img src="../assets/img/index/doctorList/zj_ll@2x.png" alt="">
-        </div>
-        <div class="doc_name">韩旭</div>
-        <div class="doc_type">
-            <div class="CN">正畸院长</div>
-            <div class="EN">Orthodontists</div>
-        </div>
-      </div>
-      <div class="doctor_synopsis">
-        <div class="doc_img">
-            <img src="../assets/img/index/doctorList/zj_yy@2x.png" alt="">
-        </div>
-        <div class="doc_name">于泳</div>
-        <div class="doc_type">
-            <div class="CN">种植专家</div>
-            <div class="EN">Planting Specialist</div>
-        </div>
-      </div>
-      <div class="doctor_synopsis">
-        <div class="doc_img">
-            <img src="../assets/img/index/doctorList/zj_ll@2x.png" alt="">
-        </div>
-        <div class="doc_name">李莉</div>
-        <div class="doc_type">
-            <div class="CN">正畸专家</div>
-            <div class="EN">Orthodontists</div>
-        </div>
-      </div>
-      <div class="doctor_synopsis">
-        <div class="doc_img">
-            <img src="../assets/img/index/doctorList/zj_ht@2x.png" alt="">
-        </div>
-        <div class="doc_name">黄涛</div>
-        <div class="doc_type">
-            <div class="CN">正畸专家</div>
-            <div class="EN">Orthodontists</div>
-        </div>
-      </div>
-      <div class="doctor_synopsis">
-        <div class="doc_img">
-            <img src="../assets/img/index/doctorList/zj_ldl@2x.png" alt="">
-        </div>
-        <div class="doc_name">廖定亮</div>
-        <div class="doc_type">
-            <div class="CN">种植专家</div>
-            <div class="EN">Planting Specialist</div>
-        </div>
-      </div>
-      <div class="doctor_synopsis">
-        <div class="doc_img">
-            <img src="../assets/img/index/doctorList/lhy@2x.png" alt="">
-        </div>
-        <div class="doc_name">刘贺宇</div>
-        <div class="doc_type">
-            <div class="CN">综合主任</div>
-            <div class="EN">Comprehensive</div>
-        </div>
-      </div>
-      <div class="doctor_synopsis">
-        <div class="doc_img">
-            <img src="../assets/img/index/doctorList/李超主治@2x.png" alt="">
-        </div>
-        <div class="doc_name">李超</div>
-        <div class="doc_type">
-            <div class="CN">修复专家</div>
-            <div class="EN">Repair Specialist</div>
-        </div>
-      </div>
-      <div class="doctor_synopsis">
-        <div class="doc_img">
-            <img src="../assets/img/index/doctorList/zjdt1@2x.png" alt="">
-        </div>
-        <div class="doc_name">吴中兴</div>
-        <div class="doc_type">
-            <div class="CN">种植专家</div>
-            <div class="EN">Planting Specialist</div>
-        </div>
-      </div>
-      <div class="doctor_synopsis">
-        <div class="doc_img">
-            <img src="../assets/img/index/doctorList/zjdt6@2x.png" alt="">
-        </div>
-        <div class="doc_name">蔡英英</div>
-        <div class="doc_type">
-            <div class="CN">正畸专家</div>
-            <div class="EN">Orthodontists</div>
+            <div class="CN">{{item.doctorChPosition}}</div>
+            <div class="EN">{{item.doctorEnPosition}}</div>
         </div>
       </div>
     </div>
@@ -128,11 +31,31 @@
 <script>
 export default {
   name: "doctor",
+  data() {
+    return {
+      docClassList:[],
+      docsDataList:[],
+      current_inx:10
+    }
+  },
   methods: {
     back(){
-      this.$router.go(-1);
+      this.$router.push("/");
+    },
+    getDocsData(id,index){
+      this.current_inx = index;
+      this.$request.getDocsDatas(id).then(res=>{
+        this.docsDataList=res.data.data;
+      })
     }
-  }
+  },
+  created() {
+    this.$request.getDocClassList().then(res=>{
+      this.docClassList = res.data.data;
+      
+    });
+    this.getDocsData('',10);
+  },
 };
 </script>
 <style>

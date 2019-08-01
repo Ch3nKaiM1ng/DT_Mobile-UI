@@ -49,7 +49,7 @@ export default {
   name: "system_message",
   methods: {
     back(){
-      this.$router.go(-1);
+      this.$router.push("/");
     }
   }
 };
