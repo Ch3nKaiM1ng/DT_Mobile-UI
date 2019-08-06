@@ -1010,7 +1010,7 @@ export default {
   created() {
     // 医生专家banner图
     this.$request.getbanner().then(res => {
-      this.bannerList = res.data.data;
+        this.bannerList = res.data.data;
     });
     // 头部背景图
     this.$request.getheaderBg().then(res => {

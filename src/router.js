@@ -4,6 +4,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+
+
 import index from './components/index.vue'
 import login from './components/login.vue'
 import crunchies from './components/crunchies.vue'
@@ -18,6 +20,10 @@ import hot_crunchies from './components/hot_crunchies.vue'
 import correctCase from './components/correctCase.vue'
 import askPeople from './components/askPeople.vue'
 import details_case from './components/details_case.vue'
+import article from './components/article.vue'
+
+import stack from './components/stack.vue'
+import stack_basic from './components/stack_basic.vue'
 
 // 路由规则
 // Deadad 通用底部是否显示
@@ -55,6 +61,10 @@ const routes = [
       {
         path: 'askPeople',
         component: askPeople
+      },
+      {
+        path:'article',
+        component:article
       }
     ]
   },
@@ -114,6 +124,21 @@ const routes = [
     meta:{
       Deadad: false
     }
+  },
+
+  {
+    path: '/stack',
+    component: stack ,
+    meta:{
+      Deadad: false
+    }
+  },
+  {
+    path: '/stack_basic',
+    component: stack_basic ,
+    meta:{
+      Deadad: false
+    }
   }
 ]
 
@@ -135,3 +160,4 @@ const router = new VueRouter({
 
 // 暴露出去
 export default router
+
