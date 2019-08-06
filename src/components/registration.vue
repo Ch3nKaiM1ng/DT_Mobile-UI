@@ -9,20 +9,22 @@
     </div>
 
     <div class="underpainting">
-      <div class="appointment_form">
+      <div class="appointment_form" v-if="this.dataDetails!=null">
         <div class="doc_img">
-          <img src="../assets/img/index/appointment/gh_hx.png" alt />
+          <img :src="this.dataDetails.doctorImg" alt />
         </div>
         <div class="appointment_details">
           <div class="details_up">
-            <div class="doc_title">主治医师</div>
-            <div class="doc_name">韩旭</div>
+            <div class="doc_title">{{this.dataDetails.doctorChPosition}}</div>
+            <div class="doc_name">{{this.dataDetails.doctorChName}}</div>
           </div>
           <div class="details_down">
             <div class="time">
               <img class="clock" src="../assets/img/index/appointment/clock.png" alt />
               <div class="CH">时间</div>
-              <img class="icon" @click="showPopup" src="../assets/img/index/appointment/return.png" alt />
+              <router-link to="/appointmentTime">
+              <img class="icon" src="../assets/img/index/appointment/return.png" alt />
+              </router-link>
             </div>
             <div class="data">
               <span>6月10日</span>
@@ -50,16 +52,6 @@
     </div>
 
     <div class="btn_yuyue">确定预约</div>
-
-    <van-popup v-model="show" position="bottom">
-      <van-datetime-picker
-        v-model="currentDate"
-        type="datetime"
-        :min-date="minDate"
-        :max-date="maxDate"
-        @confirm='wc'
-      />
-    </van-popup>
   </div>
 </template>
 
@@ -68,23 +60,17 @@ export default {
   name: "registration",
   data() {
     return {
-      show: false,
-      minHour: 10,
-      maxHour: 20,
-      minDate: new Date(),
-      maxDate: new Date(2019, 10, 1),
-      currentDate: new Date()
+      dataDetails: null
     };
+  },
+  created() {
+    this.$request.bookingDetails(this.$route.query.id).then(res => {
+      this.dataDetails = res.data.data;
+    });
   },
   methods: {
     back() {
       this.$router.go(-1);
-    },
-    showPopup() {
-      this.show = true;
-    },
-    wc(){
-      this.show = false;
     }
   }
 };
@@ -92,9 +78,7 @@ export default {
 
 <style>
 #registration {
-  position: relative;
   width: 100%;
-  height: 100%;
 }
 </style>
 <style lang='scss'>

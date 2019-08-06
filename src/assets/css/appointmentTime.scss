@@ -1,0 +1,108 @@
+.calendar {
+  font-size: .32rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.month {
+  width: 100%;
+  height: .8rem;
+  color: #333333;
+}
+
+.month ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  height: .5rem;
+}
+
+.year-month {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: .1rem;
+}
+
+.choose-month {
+  text-align: center;
+  font-size: .28rem;
+}
+
+.arrow {
+  padding: .15rem;
+  color: #50bc95;
+}
+
+.month ul li {
+  font-size: .28rem;
+  text-transform: uppercase;
+  letter-spacing: .03rem;
+}
+
+.weekdays {
+  margin: 0;
+  padding: .1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: .5rem;
+}
+
+.weekdays li {
+  display: inline-block;
+  width: 13.6%;
+  text-align: center;
+}
+
+.days {
+  padding: .1rem;
+  background: #ffffff;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.days li {
+  list-style-type: none;
+  display: inline-block;
+  width: 14.2%;
+  text-align: center;
+  padding-bottom: .04rem;
+  padding-top: .1rem;
+  font-size: .3rem;
+  color: #000;
+  margin-bottom: .4rem;
+}
+
+.days li .active {
+  padding: .06rem .1rem;
+  border-radius: 50%;
+  background: #50bc95;
+  color: #fff;
+}
+
+.days li .other-month {
+  padding: .05rem;
+  color: gainsboro;
+}
+
+.btn-time {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding-left: .3rem;
+  .btn_list {
+    width: 1.62rem;
+    height: .6rem;
+    background-color: #7dccb1;
+    margin-right: .14rem;
+    margin-bottom: .32rem;
+    font-size: .3rem;
+    color: #ffffff;
+    border-radius: .5rem;
+    text-align: center;
+    line-height: .6rem;
+  }
+}

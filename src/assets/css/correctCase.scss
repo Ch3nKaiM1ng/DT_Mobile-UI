@@ -1,6 +1,7 @@
 .btn {
     text-align: right;
     padding-right: .5rem;
+    padding-top: .2rem;
     background-color: #ffffff;
 
     .van-button {
@@ -10,7 +11,7 @@
         font-weight: normal;
         color: #009965;
         background: rgba(255, 255, 255, 1);
-        box-shadow: -1px 0px 4px 0px rgba(84, 84, 84, 0.17);
+        box-shadow: 0px 0px 5px 0px rgba(84, 84, 84, 0.17);
         border-radius: .03rem;
         line-height: .6rem;
     }
@@ -149,9 +150,37 @@
             }
         }
 
+        .case{
+            text-align: left;
+            padding-top: .75rem;
+            .case_title{
+                font-size: .28rem;
+                font-weight: normal;
+                color: #333333;
+                margin-bottom: .3rem;
+            }
+            .case_box{
+                display: flex;
+                flex-wrap: wrap;
+                font-size: .3rem;
+                .case_list{
+                    font-weight: lighter;
+                    color: #333333;
+                    background-color: #f2f2f2;
+                    padding: .1rem;
+                    border-radius: .04rem;
+                    margin-right: .2rem;
+                    margin-bottom: .25rem;
+                }
+                .active{
+                    background-color: #909090;
+                }
+            }
+        }
+
         .bottom_btn{
             display: flex;
-            margin-top: 1.6rem;
+            margin-top: .75rem;
             .cancel{
                 width:1.62rem;
                 height:.6rem;

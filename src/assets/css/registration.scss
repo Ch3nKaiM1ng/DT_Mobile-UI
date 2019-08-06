@@ -37,6 +37,7 @@
                     color: #009965;
                     border-radius: .2rem;
                     padding: .1rem;
+                    display: inline-block;
                 }
 
                 .doc_name {
@@ -50,6 +51,7 @@
                 .time {
                     display: flex;
                     align-items: center;
+                    margin-bottom: .1rem;
 
                     .clock {
                         width: .28rem;
@@ -81,6 +83,15 @@
                     font-weight: bold;
                     color: #009965;
                 }
+
+                // .block{
+                //     .el-input{
+                //         width: 100%;
+                //         input {
+                //             padding-right: .2rem;
+                //         }
+                //     }
+                // }
             }
         }
     }
@@ -141,26 +152,30 @@
     margin-left: -3rem;
 }
 
-.van-popup {
-    .van-datetime-picker {
-        .van-picker__toolbar {
-            align-items: center;
+// .van-popup {
+//     .van-datetime-picker {
+//         .van-picker__toolbar {
+//             align-items: center;
 
-            .van-picker__cancel {
-                height: 100%;
-                line-height: 44px;
-            }
+//             .van-picker__cancel {
+//                 height: 100%;
+//                 line-height: 44px;
+//             }
 
-            .van-picker__confirm {
-                height: 100%;
-                line-height: 44px;
-            }
-        }
+//             .van-picker__confirm {
+//                 height: 100%;
+//                 line-height: 44px;
+//             }
+//         }
 
-        .van-picker__columns {
-            .van-picker__frame {
-                top: 43%;
-            }
-        }
-    }
+//         .van-picker__columns {
+//             .van-picker__frame {
+//                 top: 43%;
+//             }
+//         }
+//     }
+// }
+
+.el-time-panel{
+    left: -0.4rem;
 }

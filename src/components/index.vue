@@ -10,12 +10,12 @@
         <div class="icon_left" @click="showNav"></div>
 
         <div class="icon_right">
-          <div class="icon_en"></div>
+          <div class="icon_en"><router-link to="/login"></router-link></div>
           <div class="message">
-            <router-link to="/login">
+            <a href="#">
               <div class="icon_message"></div>
               <div class="message_num">{{random_Num()}}</div>
-            </router-link>
+            </a>
           </div>
         </div>
       </div>
@@ -169,7 +169,7 @@
               <a href="tel:4008018088" class="tel">
                 <div class="we">联系我们</div>
               </a>
-              <router-link tag="div" to="/doctorList">
+              <router-link tag="div" to="/appointment">
                 <div class="doctor">医生专家</div>
               </router-link>
             </div>
@@ -193,9 +193,9 @@
           <div class="user_list" v-for="(item,index) in userShow_list" :key="index">
             <!-- 内容展示区 -->
             <div class="user_content">
-              <img :src="item.userData.userImg" preview="1" preview-text="展示图1" alt />
+              <img :src="item.userData.userImg" alt />
               <div class="user_picture">
-                <img :src="it" v-for="(it,i) in imgList(item.caseImg)" :key="i" preview="1" alt />
+                <img :src="it" v-for="(it,i) in imgList(item.caseImg)" :key="i" alt />
               </div>
               <div class="user_question">
                 <span>{{item.caseTitle}}</span>
@@ -207,8 +207,8 @@
                 <img src="../assets/img/index/zanMeg.png" alt />
                 <span>{{item.caseCommentnum}}</span>
               </div>
-              <div class="zan_heart" @click="userShowDianZan(item.id,index)">
-                <div class="heart" ref="changeHeart"></div>
+              <div class="zan_heart" @click="userShowDianZan(item.id,index,$event)">
+                <div class="heart"></div>
                 <span>{{item.caseThumbnum}}</span>
               </div>
             </div>
@@ -218,16 +218,16 @@
           </div>
           <div class="mask">
             <img src="../assets/img/index/111.png" class="mask-bg" v-if="currentIndex!=3" alt />
-            <div class="up-box" :style="currentIndex==3?'bottom:.5rem':'bottom:2.8rem'">
+            <div class="up-box" :style="currentIndex==3?'bottom:.5rem':'bottom:2.8rem'" @click="showMoreBox">
               <img
                 v-if="currentIndex!=3"
                 src="../assets/img/index/drop-down.png"
-                @click="showMoreBox"
               />
-              <img v-else src="../assets/img/index/drop-up.png" @click="showMoreBox" />
+              <img v-else src="../assets/img/index/drop-up.png"/>
             </div>
           </div>
         </div>
+
       </div>
       <!-- 主体下半区 -->
       <div class="main_down">
@@ -310,8 +310,8 @@
                     <span class="reading">阅读量</span>
                     <span class="readingNum">{{articleList[0].checkNum}}</span>
                   </div>
-                  <div class="right" @click="artDianZan(articleList[0])">
-                    <div class="heart" ref="art1"></div>
+                  <div class="right" @click="artDianZan(articleList[0],$event)">
+                    <div class="heart"></div>
                     <span class="zan">{{articleList[0].thumbNum}}</span>
                   </div>
                 </div>
@@ -338,8 +338,8 @@
                     <span class="reading">阅读量</span>
                     <span class="readingNum">{{articleList[1].askCheckNum}}</span>
                   </div>
-                  <div class="right">
-                    <img src="../assets/img/index/heart1.png" alt />
+                  <div class="right" @click="anwDianZan(articleList[1],$event)">
+                    <div class="heart"></div>
                     <span class="zan">{{articleList[1].thumbNum}}</span>
                   </div>
                 </div>
@@ -355,8 +355,8 @@
                     <span class="reading">阅读量</span>
                     <span class="readingNum">{{articleList[2].checkNum}}</span>
                   </div>
-                  <div class="right">
-                    <img src="../assets/img/index/heart1.png" alt />
+                  <div class="right" @click="artDianZan(articleList[2],$event)">
+                    <div class="heart"></div>
                     <span class="zan">{{articleList[2].thumbNum}}</span>
                   </div>
                 </div>
@@ -374,8 +374,8 @@
                     <span class="reading">阅读量</span>
                     <span class="readingNum">{{articleList[3].askCheckNum}}</span>
                   </div>
-                  <div class="right">
-                    <img src="../assets/img/index/heart2.png" alt />
+                  <div class="right" @click="anwDianZan(articleList[3],$event)">
+                    <div class="heart"></div>
                     <span class="zan">{{articleList[3].thumbNum}}</span>
                   </div>
                 </div>
@@ -401,8 +401,8 @@
                     <span class="reading">阅读量</span>
                     <span class="readingNum">{{articleList[5].checkNum}}</span>
                   </div>
-                  <div class="right">
-                    <img src="../assets/img/index/heart1.png" alt />
+                  <div class="right" @click="artDianZan(articleList[5],$event)">
+                    <div class="heart"></div>
                     <span class="zan">{{articleList[5].thumbNum}}</span>
                   </div>
                 </div>
@@ -474,120 +474,6 @@
                 </div>
               </div>
 
-              <div class="question_list0" v-else-if="index==0">
-                <!-- 问题(左) -->
-                <div class="left" v-if="item.ac_artId!=null">
-                  <div class="question" @click="art_details(item.ac_artId)">
-                    <span>{{title_num(index)}}{{item.article.artTitle}}</span>
-                  </div>
-                  <div class="question_img" v-if="index==1">
-                    <img
-                      :src="it"
-                      v-for="(it,i) in imgList(item.article.artImg)"
-                      :key="i"
-                      preview="10"
-                      alt
-                    />
-                  </div>
-                </div>
-                <div class="left" v-else>
-                  <div class="question" @click="ask_details(item.ac_askId)">
-                    <span>{{title_num(index)}}{{item.ask.askTitle}}</span>
-                  </div>
-                  <div class="question_img" v-if="index==1">
-                    <img
-                      :src="it"
-                      v-for="(it,i) in imgList(item.ask.askImg)"
-                      :key="i"
-                      preview="10"
-                      alt
-                    />
-                  </div>
-                </div>
-                <!-- 讨论(右) -->
-                <div class="discussion" v-if="item.ac_artId!=null">
-                  <div class="up">
-                    <span>{{item.article.checkNum}}W</span>
-                    <img src="../assets/img/index/up.png" alt />
-                    <span>+{{random_Num()}}</span>
-                  </div>
-
-                  <div class="down">
-                    <span>#{{item.article.artCommentNum}}</span>
-                    <span>讨论</span>
-                  </div>
-                </div>
-                <div class="discussion" v-else>
-                  <div class="up">
-                    <span>{{item.ask.askCheckNum}}W</span>
-                    <img src="../assets/img/index/up.png" alt />
-                    <span>+{{random_Num()}}</span>
-                  </div>
-
-                  <div class="down">
-                    <span>#{{item.ask.askCommentNum}}</span>
-                    <span>讨论</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="question_list1" v-else-if="index==1">
-                <!-- 问题(左) -->
-                <div class="left" v-if="item.ac_artId!=null">
-                  <div class="question" @click="art_details(item.ac_artId)">
-                    <span>{{title_num(index)}}{{item.article.artTitle}}</span>
-                  </div>
-                  <div class="question_img" v-if="index==1">
-                    <img
-                      :src="it"
-                      v-for="(it,i) in imgList(item.article.artImg)"
-                      :key="i"
-                      preview="10"
-                      alt
-                    />
-                  </div>
-                </div>
-                <div class="left" v-else>
-                  <div class="question" @click="ask_details(item.ac_askId)">
-                    <span>{{title_num(index)}}{{item.ask.askTitle}}</span>
-                  </div>
-                  <div class="question_img" v-if="index==1">
-                    <img
-                      :src="it"
-                      v-for="(it,i) in imgList(item.ask.askImg)"
-                      :key="i"
-                      preview="10"
-                      alt
-                    />
-                  </div>
-                </div>
-                <!-- 讨论(右) -->
-                <div class="discussion" v-if="item.ac_artId!=null">
-                  <div class="up">
-                    <span>{{item.article.checkNum}}W</span>
-                    <img src="../assets/img/index/up.png" alt />
-                    <span>+{{random_Num()}}</span>
-                  </div>
-
-                  <div class="down">
-                    <span>#{{item.article.artCommentNum}}</span>
-                    <span>讨论</span>
-                  </div>
-                </div>
-                <div class="discussion" v-else>
-                  <div class="up">
-                    <span>{{item.ask.askCheckNum}}W</span>
-                    <img src="../assets/img/index/up.png" alt />
-                    <span>+{{random_Num()}}</span>
-                  </div>
-
-                  <div class="down">
-                    <span>#{{item.ask.askCommentNum}}</span>
-                    <span>讨论</span>
-                  </div>
-                </div>
-              </div>
-
               <div class="question_list" v-else>
                 <!-- 问题(左) -->
                 <div class="left" v-if="item.ac_artId!=null">
@@ -650,13 +536,123 @@
       </div>
     </main>
 
-    <van-list
-      class="moreArticle"
-      v-model="loading"
-      :finished="finished"
-      finished-text="没有更多了"
-      @load="onLoad"
-    ></van-list>
+    <van-list class="moreArticle" v-model="loading" :finished="finished" finished-text="没有更多内容了" @load="onLoad" >
+      <div class="article" v-for="(item,index) in list" :key="index">
+            <div class="article_content_left">
+              <div class="article_module">
+                <div class="title">{{item[0].artTitle}}</div>
+                <div class="icon">
+                  <img src="../assets/img/index/article.png" alt />
+                </div>
+                <div class="article_img">
+                  <img :src="imgList(item[0].artImg)[0]" preview="7" alt />
+                </div>
+                <div class="article_details">{{item[0].artContent}}</div>
+                <div class="read_Num">
+                  <div class="left">
+                    <span class="reading">阅读量</span>
+                    <span class="readingNum">{{item[0].checkNum}}</span>
+                  </div>
+                  <div class="right" @click="artDianZan(item[0],$event)">
+                    <div class="heart"></div>
+                    <span class="zan">{{item[0].thumbNum}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="video_module">
+                <div class="title">{{item[1].askTitle}}</div>
+                <div class="icon">
+                  <img src="../assets/img/index/answer.png" alt />
+                </div>
+                <div class="article_img">
+                  <!-- <video
+                    class="videoPlay"
+                    src
+                    poster="../assets/img/index/article2.png"
+                    loop="loop"
+                    x-webkit-airplay="true"
+                    webkit-playsinline="true"
+                  >您的浏览器暂不支持播放该视频，请升级至最新版浏览器。
+                  </video>-->
+                  <img :src="imgList(item[1].askImg)[0]" preview="7" alt />
+                </div>
+                <div class="read_Num">
+                  <div class="left">
+                    <span class="reading">阅读量</span>
+                    <span class="readingNum">{{item[1].askCheckNum}}</span>
+                  </div>
+                  <div class="right" @click="anwDianZan(item[1],$event)">
+                    <div class="heart"></div>
+                    <span class="zan">{{item[1].thumbNum}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="answer_module">
+                <div class="title">{{item[2].artTitle}}</div>
+                <div class="icon">
+                  <img src="../assets/img/index/answer.png" alt />
+                </div>
+                <div class="article_details">{{item[2].artContent}}</div>
+                <div class="read_Num">
+                  <div class="left">
+                    <span class="reading">阅读量</span>
+                    <span class="readingNum">{{item[2].checkNum}}</span>
+                  </div>
+                  <div class="right" @click="artDianZan(item[2],$event)">
+                    <div class="heart"></div>
+                    <span class="zan">{{item[2].thumbNum}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="article_content_right">
+              <div class="answer_module">
+                <div class="title">{{item[3].askTitle}}</div>
+                <div class="icon">
+                  <img src="../assets/img/index/article.png" alt />
+                </div>
+                <div class="article_details">{{item[3].askContent}}</div>
+                <div class="read_Num">
+                  <div class="left">
+                    <span class="reading">阅读量</span>
+                    <span class="readingNum">{{item[3].askCheckNum}}</span>
+                  </div>
+                  <div class="right" @click="anwDianZan(item[3],$event)">
+                    <div class="heart"></div>
+                    <span class="zan">{{item[3].thumbNum}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="doc_module">
+                <img :src="item[4].doctorImg" preview="8" alt />
+                <div class="doc_name">
+                  <span>{{item[4].doctorChName}}</span>
+                  <span>{{item[4].doctorChPosition}}</span>
+                </div>
+              </div>
+              <div class="article_module">
+                <div class="title">{{item[5].artTitle}}</div>
+                <div class="icon">
+                  <img src="../assets/img/index/article.png" alt />
+                </div>
+                <div class="article_img">
+                  <img :src="imgList(item[5].artImg)[0]" preview="7" alt />
+                </div>
+                <div class="article_details">{{item[5].artContent}}</div>
+                <div class="read_Num">
+                  <div class="left">
+                    <span class="reading">阅读量</span>
+                    <span class="readingNum">{{item[5].checkNum}}</span>
+                  </div>
+                  <div class="right" @click="artDianZan(item[5],$event)">
+                    <div class="heart"></div>
+                    <span class="zan">{{item[5].thumbNum}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </van-list>
 
     <!-- 悬浮search-->
     <div class="suspend_search" v-show="search_show">
@@ -677,6 +673,8 @@
         </div>
       </div>
     </div>
+
+    <div class="aaa"></div>
   </div>
 </template>
 
@@ -686,6 +684,7 @@ export default {
   data() {
     return {
       // 上拉加载
+      list:[],
       loading: false,
       finished: false,
       offset: 100,
@@ -756,15 +755,10 @@ export default {
       articleNum: 1,
       // 第一页 文章数据
       articleList: [],
-      // 根据页码 文章数据
-      articleList1: [],
       // 获取用户展示数据
       userShow: { limit: 6, offset: 1 },
       // 用户展示列表
       userShow_list: [],
-      // 点赞功能
-      zan:false,
-      artZan:false
     };
   },
   methods: {
@@ -845,6 +839,7 @@ export default {
       this.current1 = index;
       this.grandsonList = [];
       this.blue_list = [];
+      this.blueimg_list = [];
       this.sonList.forEach(e => {
         if (e.id == crid1) {
           this.grandsonList = e.sonList;
@@ -899,49 +894,70 @@ export default {
     // 根据页码获取文章数据
     getArticleDataByNum(num) {
       this.$request.getArticleDataList(num).then(res => {
-        let newarticleList = [];
+        if(res.data.code == 500){
+          this.finished = true;
+          this.loading = false;
+          return;
+        }
         if (num == 1) {
           this.articleList = res.data.data.dataList;
-          console.log(this.articleList);
-          
         } else {
-          this.articleList1 = res.data.data.dataList;
-          newarticleList.push(this.articleList1);
+          this.list.push(res.data.data.dataList);
+          console.log(this.list);
+          
+          this.loading = false;
         }
-        this.loading = false;
       });
     },
     // 用户展示 点赞功能
-    userShowDianZan(id,index) {
-      if(!this.zan){
-        this.$request.userShowZan(id).then(res => {
-        if (res.data.code == 200) {
-          this.userShow_list[index].caseThumbnum = parseInt(this.userShow_list[index].caseThumbnum) + 1;
-          this.$refs.changeHeart[index].style.backgroundImage = "url(http://pv2pjkuy1.bkt.clouddn.com/%E7%88%B1%E5%BF%83@2x@2x.png)";
-        }
-        this.zan = !this.zan;
-      });
+    userShowDianZan(id,index,e) {
+      let u = e.currentTarget.firstChild;
+      if(u.getAttribute("class").indexOf("heart") == 0) {
+        u.classList.remove("heart");
+        u.classList.add("aheart");
+        this.$request.userShowZan(id).then(res=>{
+          if(res.data.code == 200){
+            this.userShow_list[index].caseThumbnum = parseInt(this.userShow_list[index].caseThumbnum) + 1;
+          }
+        })
       } else {
+        u.classList.remove("aheart");
+        u.classList.add("heart");
         this.userShow_list[index].caseThumbnum = parseInt(this.userShow_list[index].caseThumbnum) - 1;
-        this.zan = !this.zan;
-        this.$refs.changeHeart[index].style.backgroundImage = null;
       }
-      
     },
-    // 文章 点赞功能
-    artDianZan(data){
-      if(!this.artZan){
-        this.$request.art_Zan(data.artId).then(res => {
-        if (res.data.code == 200) {
-          data.thumbNum = parseInt(data.thumbNum) + 1;
-          this.$refs.art1.style.backgroundImage = "url(http://pv2pjkuy1.bkt.clouddn.com/%E7%88%B1%E5%BF%83@2x@2x.png)";
-        }
-        this.artZan = !this.artZan;
-      });
+    // 文章-文章 点赞功能
+    artDianZan(data,e){
+      let ar = e.currentTarget.firstChild;
+      if(ar.getAttribute("class").indexOf("heart") == 0) {
+        ar.classList.remove("heart");
+        ar.classList.add("aheart");
+        this.$request.art_Zan(data.artId).then(res=>{
+          if(res.data.code == 200){
+            data.thumbNum = parseInt(data.thumbNum) + 1;
+          }
+        })
       } else {
+        ar.classList.remove("aheart");
+        ar.classList.add("heart");
         data.thumbNum = parseInt(data.thumbNum) - 1;
-        this.artZan = !this.artZan;
-        this.$refs.art1.style.backgroundImage = null;
+      }
+    },
+    // 文章-问答 点赞功能
+    anwDianZan(data,e){
+      let anw = e.currentTarget.firstChild;
+      if(anw.getAttribute("class").indexOf("heart") == 0) {
+        anw.classList.remove("heart");
+        anw.classList.add("aheart");
+        this.$request.anw_Zan(data.askId).then(res=>{
+          if(res.data.code == 200){
+            data.thumbNum = parseInt(data.thumbNum) + 1;
+          }
+        })
+      } else {
+        anw.classList.remove("aheart");
+        anw.classList.add("heart");
+        data.thumbNum = parseInt(data.thumbNum) - 1;
       }
     }
   },
@@ -962,11 +978,23 @@ export default {
     });
     // 热搜榜单
     this.$request.getHotList(this.allCrunchiesList).then(res => {
-      this.getHotList = res.data.data;
+      let arr = [];
+      res.data.data.forEach( e => {
+        if(e.article !== null || e.ask !== null) {
+          arr.push(e);
+        }
+      });
+      this.getHotList = arr;
     });
     // 矫正100榜单
     this.$request.getOneHundredList(this.allCrunchiesList).then(res => {
-      this.getOneHundredList = res.data.data;
+      let arr = []
+      res.data.data.forEach( e => {
+        if(e.article !== null || e.ask !== null) {
+          arr.push(e)
+        }
+      });
+      this.getOneHundredList = arr;
     });
     // 医生专家banner图
     this.$request.getbanner().then(res => {
@@ -1008,6 +1036,10 @@ export default {
 #index {
   width: 100%;
   height: 100%;
+}
+.aaa{
+  width: 100%;
+  height: 1.2rem;
 }
 </style>
 <style lang='scss'>

@@ -4,7 +4,6 @@ const zopfli = require("@gfx/zopfli");//zopfli压缩
 const BrotliPlugin = require("brotli-webpack-plugin");//brotli压缩
 const productionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i;
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; //Webpack包文件分析器
-const baseUrl = process.env.NODE_ENV === "production" ? "/" : "/"; //font scss资源路径 不同环境切换控制
 
 module.exports = {
 	//基本路径

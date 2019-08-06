@@ -52,7 +52,6 @@ export default {
   created() {
     this.$request.getDocClassList().then(res=>{
       this.docClassList = res.data.data;
-      
     });
     this.getDocsData('',10);
   },

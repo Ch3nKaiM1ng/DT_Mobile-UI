@@ -1,15 +1,5 @@
 <template>
-  <div id="appointment">
-    <div class="login_header">
-      <div class="header_return" @click="back">
-        <div class="icon_return"></div>
-      </div>
-      <div class="header_title">预约</div>
-      <div class="header_kong">
-        <div class="icon_message"></div>
-      </div>
-    </div>
-
+  <div id="specialist">
     <div class="appointment_bar">
       <div class="nav_list" @click="getDocsData('',10)" :class="{ 'active':current_inx == 10 }">综合</div>
       <div
@@ -30,9 +20,11 @@
           <div class="doc_name">{{item.doctorChName}}</div>
           <div class="doc_title">{{item.doctorChPosition}}</div>
         </div>
-        <div class="particulars_img" @click="getBookingDetailsId(item.doctorId)">
-          <img src="../assets/img/index/appointment/appointment.png" alt />
-        </div>
+        <router-link to="/registration">
+          <div class="particulars_img">
+            <img src="../assets/img/index/appointment/appointment.png" alt />
+          </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -40,7 +32,7 @@
 
 <script>
 export default {
-  name: "appointment",
+  name: "specialist",
   data() {
     return {
       docClassList: [],
@@ -56,27 +48,22 @@ export default {
       this.current_inx = index;
       this.$request.getDocsDatas(id).then(res => {
         this.docsDataList = res.data.data;
+        console.log(this.docsDataList);
+        
       });
-    },
-    getBookingDetailsId(id) {
-      this.$router.push({ path: "/registration", query: { id: id } });
     }
   },
   created() {
     this.$request.getDocClassList().then(res => {
       this.docClassList = res.data.data;
     });
-    this.getDocsData("", 10);
+    this.getDocsData('',10);
   }
 };
 </script>
 
 <style>
-#appointment {
-  width: 100%;
-  background-color: #f2f2f2;
-}
 </style>
 <style lang='scss' scoped>
-@import "../assets/css/appointment.scss";
+@import "../assets/css/specialist.scss";
 </style>

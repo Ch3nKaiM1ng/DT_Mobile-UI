@@ -79,9 +79,19 @@ const request = {
     return axios.post('/case/caseDoThumb',{id});
   },
 
-  // 用户展示 点赞
+  // 文章-文章 点赞
   art_Zan(id){
     return axios.post('/article/artDoThumb',{artId:id});
+  },
+
+  // 文章-问答 点赞
+  anw_Zan(id){
+    return axios.post('/ask/askDoThumb',{askId:id});
+  },
+
+  // 预约详情
+  bookingDetails(id){
+    return axios.post('/Doctor/findObj',{doctorId:id});
   },
 }
 

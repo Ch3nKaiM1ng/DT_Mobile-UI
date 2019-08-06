@@ -31,6 +31,12 @@
             <div class="label_list" v-for="(it,i) in projectList" :key="i" @click="checked2(i)" :class="{active:current2==i}">{{it.pj}}</div>
           </div>
         </div>
+        <div class="case">
+          <div class="case_title">案例</div>
+          <div class="case_box">
+            <div class="case_list" v-for="(it,i) in caseList" :key="i" @click="checked3(i)" :class="{active:current3==i}">{{it.cs}}</div>
+          </div>
+        </div>
         <div class="bottom_btn">
           <van-button type="primary" class="cancel" @click="closePopup">取消</van-button>
           <van-button type="primary" class="confirm" @click="upPopup">确认</van-button>
@@ -88,7 +94,9 @@ export default {
       chooseList:[{age:'12-24',percent:'40%'},{age:'25-32',percent:'32%'},{age:'33-42',percent:'30%'}],
       current1: 4,
       projectList:[{pj:'隐形矫正'},{pj:'半隐形矫正'},{pj:'传统矫正'}],
-      current2: 3,
+      current2: 4,
+      caseList:[{cs:'黄金案例'},{cs:'白金案例'},{cs:'钻石案例'}],
+      current3: 4,
     };
   },
   methods: {
@@ -116,6 +124,9 @@ export default {
     checked2(index){
       this.current2 = index;
     },
+    checked3(index){
+      this.current3 = index;
+    }
   }
 };
 </script>

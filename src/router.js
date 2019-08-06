@@ -18,6 +18,8 @@ import hot_crunchies from './components/hot_crunchies.vue'
 import correctCase from './components/correctCase.vue'
 import askPeople from './components/askPeople.vue'
 import details_case from './components/details_case.vue'
+import specialist from './components/specialist.vue'
+import appointmentTime from './components/appointmentTime.vue'
 
 // 路由规则
 // Deadad 通用底部是否显示
@@ -59,6 +61,11 @@ const routes = [
         path: 'askPeople',
         name: 'askPeople',
         component: askPeople
+      },
+      {
+        path: 'specialist',
+        name:'specialist',
+        component: specialist,
       }
     ]
   },
@@ -117,6 +124,13 @@ const routes = [
   {
     path: '/details_case',
     component: details_case ,
+    meta:{
+      Deadad: false
+    }
+  },
+  {
+    path: '/appointmentTime',
+    component: appointmentTime ,
     meta:{
       Deadad: false
     }

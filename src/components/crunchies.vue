@@ -41,8 +41,8 @@
           <router-link tag="span" to="/crunchies/correctCase">矫正案例</router-link>
         </div>
         <div class="line"></div>
-        <div class="nav_list" :class="[$route.name == 'doctorList' ? 'active' : '']">
-          <router-link tag="span" to="/doctorList">专家</router-link>
+        <div class="nav_list" :class="[$route.name == 'specialist' ? 'active' : '']">
+          <router-link tag="span" to="/crunchies/specialist">专家</router-link>
         </div>
       </div>
     </div>
