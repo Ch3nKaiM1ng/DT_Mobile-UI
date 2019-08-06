@@ -37,7 +37,12 @@ const request = {
   // 获取蓝色标签数据
   getDifferentPersonsBlue_byId(id) {
     return axios.post('/ClassObj/FindClassObjById',{linkClassId:id});
-  }
+  },
+
+  // 案例banner图
+  getshowes() {
+    return axios.post(' /case/findAll');
+  },
 }
 
 export default {

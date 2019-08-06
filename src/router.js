@@ -21,6 +21,10 @@ import correctCase from './components/correctCase.vue'
 import askPeople from './components/askPeople.vue'
 import details_case from './components/details_case.vue'
 import article from './components/article.vue'
+
+import stack from './components/stack.vue'
+import stack_basic from './components/stack_basic.vue'
+
 // 路由规则
 // Deadad 通用底部是否显示
 const routes = [
@@ -117,6 +121,21 @@ const routes = [
   {
     path: '/details_case',
     component: details_case ,
+    meta:{
+      Deadad: false
+    }
+  },
+
+  {
+    path: '/stack',
+    component: stack ,
+    meta:{
+      Deadad: false
+    }
+  },
+  {
+    path: '/stack_basic',
+    component: stack_basic ,
     meta:{
       Deadad: false
     }

@@ -23,28 +23,42 @@
             overflow-x: hidden;
             // 文章标题
             .article_head{
-                width: 100%;
+                width: 80%;
                 height: auto;
                 position: relative;
-                .article_top{
-                    width:75%;
+                margin: 0.32rem 0 0.2rem 0.2rem;
+                display: flex;
+                span{
                     display: inline-block;
                     font:bold 0.34rem "微软雅黑";
-                    color: #333333;
-                    padding: 0.32rem 0 0 0.2rem;
-                    white-space: nowrap;
+                    color: #333333;white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
                 }
-                .article_headimg{
-                    width: 5%;
-                    display: inline-block;
-                    position: absolute;
-                    top: 0.34rem;
-                    img{
-                        width:100%;
-                    }
+                img{
+                    width: 0.4rem;
+                    height: 0.4rem;
+                    margin-left: 0.1rem;
                 }
+                // .article_top{
+                //     width:75%;
+                //     display: inline-block;
+                //     font:bold 0.34rem "微软雅黑";
+                //     color: #333333;
+                //     padding: 0.32rem 0 0 0.2rem;
+                //     white-space: nowrap;
+                //     overflow: hidden;
+                //     text-overflow: ellipsis;
+                // }
+                // .article_headimg{
+                //     width: 5%;
+                //     display: inline-block;
+                //     position: absolute;
+                //     top: 0.34rem;
+                //     img{
+                //         width:100%;
+                //     }
+                // }
             }
             // 文章题主
             .article_info{
@@ -53,8 +67,11 @@
                 padding: 0.2rem 0 0.34rem 0.2rem;
                 position: relative;
                 .article_img{
-                    width:10%;
+                    width: 0.7rem;
+                    height: 0.7rem;
                     display: inline-block;
+                    border-radius: 50%;
+                    overflow: hidden;
                     img{
                         width: 100%;
                     }

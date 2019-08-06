@@ -4,7 +4,7 @@
       <div class="header_return" @click="back">
         <div class="icon_return"></div>
       </div>
-      <div class="header_title">白金案例</div>
+      <div class="header_title">{{casename}}</div>
       <div class="header_kong"></div>
     </div>
     <!-- 案例详情 -->
@@ -13,18 +13,20 @@
       <div class="CaseOne">
         <div class="case1">过去的她</div>
         <div class="case1_Show">
-          <div class="case1_img1">
-            <img src="../\assets\img\index\details_case\DSC_3930@2x.png" alt="">
-          </div>
-          <div class="case1_img2">
+          <div class="case1_img1" v-for="item in showes" :key="item.id">
             <img src="../\assets\img\index\details_case\DSC_3941@2x.png" alt="">
           </div>
-          <div class="case1_img3">
+          <div class="case1_img1">
+            <img src="../\assets\img\index\details_case\DSC_3941@2x.png" alt="">
+          </div>
+          <div class="case1_img1">
             <img src="../\assets\img\index\details_case\DSC_3937@2x.png" alt="">
           </div>
           <div class="case1_img4">
             <img src="../\assets\img\index\details_case\oval1@2x.png" alt="">
-            <span>咨询详情</span>
+            <router-link to="/login">
+              <span>咨询详情</span>
+            </router-link>
           </div>
         </div>
       </div>
@@ -36,10 +38,13 @@
             <div class="case2_nav">
               <img src="../\assets\img\index\details_case\shijianzhou@2x.png" alt="">
               <span>效果显现期</span>
-              <p>隐形矫正</p>
+              <p>{{caseName}}</p>
             </div>
             <div class="case2_day">
-              <p>86<span>day</span></p>
+              <p>{{ctime}}<span>day</span></p>
+              <div class="area">
+                <p>福田区<span>:</span><span>200m</span></p>
+              </div>
             </div>
           </div>
           <div class="case2_rf">          
@@ -66,6 +71,9 @@
             </div>
             <div class="case3_day">
               <p>86<span>day</span></p>
+              <div class="area">
+                <p>福田区<span>:</span><span>200m</span></p>
+              </div>
             </div>
           </div>
           <div class="case3_rf">          
@@ -93,6 +101,9 @@
             </div>
             <div class="case4_day">
               <p>86<span>day</span></p>
+              <div class="area">
+                <p>福田区<span>:</span><span>200m</span></p>
+              </div>
             </div>
           </div>
           <div class="case4_rf">          
@@ -121,6 +132,9 @@
             </div>
             <div class="case5_day">
               <p>86<span>day</span></p>
+              <div class="area">
+                <p>福田区<span>:</span><span>200m</span></p>
+              </div>
             </div>
           </div>
           <div class="case5_rf">          
@@ -263,11 +277,31 @@
 <script>
 export default {
   name: "details_case",
+  data(){
+    return{
+      // 案例类型
+      casename:"案例类型",
+      //案例banenr图
+      showes:[],
+      // 矫正名称
+      caseName:"时代天使",
+      // 时间
+      ctime:"89",
+    }
+  },
   methods: {
     back() {
       this.$router.go(-1);
-    }
+    },
+    
+  },
+  mounted(){
+    
+  },
+  toplb(){
+    
   }
+  
 };
 </script>
 
