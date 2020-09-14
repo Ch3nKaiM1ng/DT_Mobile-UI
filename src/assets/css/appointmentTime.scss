@@ -13,12 +13,24 @@
 .month ul {
   margin: 0;
   padding: 0;
+  display: -moz-box;  /* Firefox */ 
+  display: -ms-flexbox;    /* IE10 */ 
+  display: -webkit-box;    /* Safari */  
+  display: -webkit-flex;    /* Chrome, WebKit */ 
+  display: box;  
+  display: flexbox;
   display: flex;
   justify-content: space-between;
   height: .5rem;
 }
 
 .year-month {
+  display: -moz-box;  /* Firefox */ 
+  display: -ms-flexbox;    /* IE10 */ 
+  display: -webkit-box;    /* Safari */  
+  display: -webkit-flex;    /* Chrome, WebKit */ 
+  display: box;  
+  display: flexbox;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -44,6 +56,12 @@
 .weekdays {
   margin: 0;
   padding: .1rem;
+  display: -moz-box;  /* Firefox */ 
+  display: -ms-flexbox;    /* IE10 */ 
+  display: -webkit-box;    /* Safari */  
+  display: -webkit-flex;    /* Chrome, WebKit */ 
+  display: box;  
+  display: flexbox;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -60,12 +78,18 @@
   padding: .1rem;
   background: #ffffff;
   margin: 0;
+  display: -moz-box;  /* Firefox */ 
+  display: -ms-flexbox;    /* IE10 */ 
+  display: -webkit-box;    /* Safari */  
+  display: -webkit-flex;    /* Chrome, WebKit */ 
+  display: box;  
+  display: flexbox;
   display: flex;
   flex-wrap: wrap;
 }
 
 .days li {
-  list-style-type: none;
+  // list-style-type: none;
   display: inline-block;
   width: 14.2%;
   text-align: center;
@@ -89,6 +113,12 @@
 }
 
 .btn-time {
+  display: -moz-box;  /* Firefox */ 
+  display: -ms-flexbox;    /* IE10 */ 
+  display: -webkit-box;    /* Safari */  
+  display: -webkit-flex;    /* Chrome, WebKit */ 
+  display: box;  
+  display: flexbox;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -105,4 +135,24 @@
     text-align: center;
     line-height: .6rem;
   }
+}
+
+.affirm{
+  background-color: #009965;
+  font-size: .3rem;
+  height: .78rem;
+  line-height: .78rem;
+  text-align: center;
+  color: #ffffff;
+  width: 6.9rem;
+  border-radius: .5rem;
+  margin: .08rem auto 0;
+}
+
+.activee{
+  background-color: #909090 !important;
+}
+
+.active1{
+  background-color: #009965 !important;
 }

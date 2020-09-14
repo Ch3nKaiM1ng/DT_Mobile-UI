@@ -1,13 +1,22 @@
 .appointment_bar{
     padding: 0 .2rem;
-    width: 100%;
+    width: 95%;
     height: .8rem;
+    display: -moz-box;  /* Firefox */ 
+    display: -ms-flexbox;    /* IE10 */ 
+    display: -webkit-box;    /* Safari */  
+    display: -webkit-flex;    /* Chrome, WebKit */ 
+    display: box;  
+    display: flexbox;
     display: flex;
     background-color: #ffffff;
     justify-content: space-between;
     align-items: center;
     font-size: .3rem;
     color: #333333;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
     .nav_list{
         margin: 0 .2rem;
         height: .5rem;
@@ -23,6 +32,12 @@
     background-color: #ffffff;
     padding: .5rem .2rem .2rem;
     .presentation{
+        display: -moz-box;  /* Firefox */ 
+        display: -ms-flexbox;    /* IE10 */ 
+        display: -webkit-box;    /* Safari */  
+        display: -webkit-flex;    /* Chrome, WebKit */ 
+        display: box;  
+        display: flexbox;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -40,7 +55,18 @@
         .doc_information{
             margin-left: .2rem;
             height: .9rem;
+            -prefix-box-flex: 1; 
+            -webkit-box-flex: 1; 
+            -webkit-flex: 1; 
+            -moz-box-flex: 1; 
+            -ms-flex: 1;
             flex: 1;
+            display: -moz-box;  /* Firefox */ 
+            display: -ms-flexbox;    /* IE10 */ 
+            display: -webkit-box;    /* Safari */  
+            display: -webkit-flex;    /* Chrome, WebKit */ 
+            display: box;  
+            display: flexbox;
             display: flex;
             flex-direction: column;
             justify-content: space-between;

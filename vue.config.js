@@ -1,14 +1,13 @@
 const path = require('path');
+const webpack=require("webpack");
 const CompressionPlugin = require('compression-webpack-plugin'); //Gzip
-const zopfli = require("@gfx/zopfli");//zopfli压缩
-const BrotliPlugin = require("brotli-webpack-plugin");//brotli压缩
+const zopfli = require("@gfx/zopfli"); //zopfli压缩
+const BrotliPlugin = require("brotli-webpack-plugin"); //brotli压缩
 const productionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i;
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; //Webpack包文件分析器
 
 module.exports = {
-	//基本路径
-	baseUrl: './',
-	publicPath:'./',//vue-cli3.3新版本
+	publicPath: './', //vue-cli3.3新版本
 	//输出文件目录
 	outputDir: 'dist',
 	// eslint-loader 是否在保存的时候检查
@@ -27,6 +26,14 @@ module.exports = {
 	//对内部的 webpack 配置进行更细粒度的修改 https://github.com/neutrinojs/webpack-chain see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
 	chainWebpack: config => {
 		config.resolve.symlinks(true);
+		config.module
+			.rule('vue')
+			.use('vue-loader')
+			.loader('vue-loader')
+			.tap(options => {
+				// 修改它的选项...
+				return options
+			})
 		/**
 		 * 删除懒加载模块的prefetch，降低带宽压力
 		 * https://cli.vuejs.org/zh/guide/html-and-static-assets.html#prefetch
@@ -38,50 +45,15 @@ module.exports = {
 		// }
 	},
 	//调整 webpack 配置 https://cli.vuejs.org/zh/guide/webpack.html#%E7%AE%80%E5%8D%95%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F
-	configureWebpack: config => {
-		//生产and测试环境
-		let pluginsPro = [
-// 			new CompressionPlugin({ //文件开启Gzip，也可以通过服务端(如：nginx)(https://github.com/webpack-contrib/compression-webpack-plugin)
-// 				filename: '[path].gz[query]',
-// 				algorithm: 'gzip',
-// 				test: productionGzipExtensions,
-// 				threshold: 8192,
-// 				minRatio: 0.8,
-// 			}),
-			new CompressionPlugin({
-				algorithm(input, compressionOptions, callback) {
-					return zopfli.gzip(input, compressionOptions, callback);
-				},
-				compressionOptions: {
-					numiterations: 15
-				},
-				minRatio: 0.8,
-				test: productionGzipExtensions
+	configureWebpack: {
+		plugins: [
+			new webpack.ProvidePlugin({
+				$: 'jquery',
+				jQuery: 'jquery',
+				'window.jQuery': 'jquery'
 			}),
-			new BrotliPlugin({
-				test: productionGzipExtensions,
-				minRatio: 0.8
-			}),
-			// Webpack包文件分析器(https://github.com/webpack-contrib/webpack-bundle-analyzer)
-			new BundleAnalyzerPlugin(),
-		];
-		//开发环境
-		let pluginsDev = [
-			
-		];
-		if(process.env.NODE_ENV === 'production') { // 为生产环境修改配置...process.env.NODE_ENV !== 'development'
-//			config.entry.app = ['babel-polyfill', './src/main.js'];
-//			config.externals = {
-//				'vue': 'Vue',
-//				'vue-router': 'VueRouter',
-//				'iview': 'iview',
-//				'vuex': 'vuex',
-//			}
-			config.plugins = [...config.plugins, ...pluginsPro];
-		} else {
-			// 为开发环境修改配置...
-			config.plugins = [...config.plugins, ...pluginsDev];
-		}
+			// new MyAwesomeWebpackPlugin()
+		]
 	},
 
 	css: {
@@ -99,35 +71,35 @@ module.exports = {
 				// $baseUrl: "/";
 				// @import '@/assets/scss/_common.scss';
 				// `
-//				data: `
-//				$baseUrl: "/";
-//				`
+				//				data: `
+				//				$baseUrl: "/";
+				//				`
 			}
 		}
 	},
 	// webpack-dev-server 相关配置 https://webpack.js.org/configuration/dev-server/
 	devServer: {
-		disableHostCheck:true,
-        // host: 'localhost',
-        contentBase: path.join(__dirname, 'dist'),
-        compress: true,
+		disableHostCheck: true,
+		// host: 'localhost',
+		contentBase: path.join(__dirname, 'dist'),
+		compress: true,
 		host: "0.0.0.0",
 		port: 4000, // 端口号
 		https: false, // https:{type:Boolean}
 		open: true, //配置自动启动浏览器  http://XXX.XXX.X.XX:7071/rest/XXX/ 
 		hotOnly: true, // 热更新
 		// proxy: 'http://localhost:8000'           // 配置跨域处理,只有一个代理
-		
+
 	},
 
 	// 第三方插件配置 https://www.npmjs.com/package/vue-cli-plugin-style-resources-loader
 	pluginOptions: {
-		'style-resources-loader': {//https://github.com/yenshih/style-resources-loader
-			preProcessor: 'scss',//声明类型
+		'style-resources-loader': { //https://github.com/yenshih/style-resources-loader
+			preProcessor: 'scss', //声明类型
 			'patterns': [
-//				path.resolve(__dirname, './src/assets/scss/_common.scss'), 
+				//				path.resolve(__dirname, './src/assets/scss/_common.scss'), 
 			],
-//			injector: 'append'
+			//			injector: 'append'
 		}
 	}
 };

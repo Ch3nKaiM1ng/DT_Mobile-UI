@@ -7,17 +7,25 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   // 数据
   state: {
-    artDetails:{},
-    askDetails:{},
+    getId:"",
+    WenSonData:[],
+    ArtCom2Data:[],
+    show:false
   },
   // 修改的方法
   mutations: {
-    getArtDetails(state,newData) {
-      state.artDetails = newData;
+    getCaseTitId(state,newId) {
+      state.getId = newId;
     },
-    getAskDetails(state,newData) {
-      state.askDetails = newData;
+    getWenSonDatas(state,newDatas){
+      state.WenSonData = newDatas;
     },
+    getArtCom2Datas(state,newDatas){
+      state.ArtCom2Data = newDatas;
+    },
+    getShow(state,newShow) {
+      state.show = newShow;
+    }
   }
 })
 // 暴露出去

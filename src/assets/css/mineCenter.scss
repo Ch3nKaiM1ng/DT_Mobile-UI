@@ -1,0 +1,212 @@
+.contentBox {
+    padding: .3rem .54rem .46rem .4rem;
+
+    .mine {
+        display: -moz-box;  /* Firefox */ 
+        display: -ms-flexbox;    /* IE10 */ 
+        display: -webkit-box;    /* Safari */  
+        display: -webkit-flex;    /* Chrome, WebKit */ 
+        display: box;  
+        display: flexbox;
+        display: flex;
+        align-items: center;
+
+        .left_img {
+            height: 1.2rem;
+            width: 1.2rem;
+
+            img {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+            }
+        }
+
+        .right_userMessage {
+            margin-left: .7rem;
+            height: 1.2rem;
+            display: -moz-box;  /* Firefox */ 
+            display: -ms-flexbox;    /* IE10 */ 
+            display: -webkit-box;    /* Safari */  
+            display: -webkit-flex;    /* Chrome, WebKit */ 
+            display: box;  
+            display: flexbox;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+
+            .up_userName {
+                font-size: .36rem;
+                color: #333333;
+            }
+
+            .down_diary {
+                font-size: .24rem;
+                color: #909090;
+            }
+        }
+    }
+
+    .feedback {
+        margin-top: .68rem;
+        display: -moz-box;  /* Firefox */ 
+        display: -ms-flexbox;    /* IE10 */ 
+        display: -webkit-box;    /* Safari */  
+        display: -webkit-flex;    /* Chrome, WebKit */ 
+        display: box;  
+        display: flexbox;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .left_feedback {
+            display: -moz-box;  /* Firefox */ 
+            display: -ms-flexbox;    /* IE10 */ 
+            display: -webkit-box;    /* Safari */  
+            display: -webkit-flex;    /* Chrome, WebKit */ 
+            display: box;  
+            display: flexbox;
+            display: flex;
+            align-items: center;
+            .icon_fankui {
+                width: .4rem;
+                height: .4rem;
+                background: url('../../src/assets/img/index/mine/fankui.png') no-repeat;
+                background-size: .4rem .4rem;
+            }
+
+            .fankui {
+                margin-left: .34rem;
+                font-size: .28rem;
+                color: #333333;
+            }
+        }
+
+        .right_icon_jiantou {
+            width: .2rem;
+            height: .2rem;
+            background: url('../../src/assets/img/index/mine/gengduo.png') no-repeat;
+            background-size: 65% 100%;
+        }
+    }
+}
+
+.line {
+    width: 100%;
+    height: .08rem;
+    background-color: #f2f2f2;
+}
+
+.s_z_y_box {
+    padding: .4rem .54rem .4rem .4rem;
+    .row {
+        display: -moz-box;  /* Firefox */ 
+        display: -ms-flexbox;    /* IE10 */ 
+        display: -webkit-box;    /* Safari */  
+        display: -webkit-flex;    /* Chrome, WebKit */ 
+        display: box;  
+        display: flexbox;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .left {
+            display: -moz-box;  /* Firefox */ 
+            display: -ms-flexbox;    /* IE10 */ 
+            display: -webkit-box;    /* Safari */  
+            display: -webkit-flex;    /* Chrome, WebKit */ 
+            display: box;  
+            display: flexbox;
+            display: flex;
+            align-items: center;
+            .icon_shou {
+                width: .4rem;
+                height: .4rem;
+                background: url('../../src/assets/img/index/mine/shoucang.png') no-repeat;
+                background-size: .4rem .4rem;
+            }
+            .icon_zu {
+                width: .4rem;
+                height: .4rem;
+                background: url('../../src/assets/img/index/mine/zuji.png') no-repeat;
+                background-size: .4rem .4rem;
+            }
+            .icon_yu {
+                width: .4rem;
+                height: .4rem;
+                background: url('../../src/assets/img/index/mine/yuyue.png') no-repeat;
+                background-size: .4rem .4rem;
+            }
+
+            .zi {
+                margin-left: .34rem;
+                font-size: .28rem;
+                color: #333333;
+            }
+        }
+
+        .right_icon_jiantou {
+            width: .2rem;
+            height: .2rem;
+            background: url('../../src/assets/img/index/mine/gengduo.png') no-repeat;
+            background-size: 65% 100%;
+        }
+    }
+    .track {
+        margin: .66rem 0;
+    }
+}
+
+.b_f_box {
+    padding: .4rem .54rem 0 .4rem;
+    .row {
+        display: -moz-box;  /* Firefox */ 
+        display: -ms-flexbox;    /* IE10 */ 
+        display: -webkit-box;    /* Safari */  
+        display: -webkit-flex;    /* Chrome, WebKit */ 
+        display: box;  
+        display: flexbox;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .left {
+            display: -moz-box;  /* Firefox */ 
+            display: -ms-flexbox;    /* IE10 */ 
+            display: -webkit-box;    /* Safari */  
+            display: -webkit-flex;    /* Chrome, WebKit */ 
+            display: box;  
+            display: flexbox;
+            display: flex;
+            align-items: center;
+            .icon_help {
+                width: .4rem;
+                height: .4rem;
+                background: url('../../src/assets/img/index/mine/bangzhu.png') no-repeat;
+                background-size: .4rem .4rem;
+            }
+            .icon_share {
+                width: .4rem;
+                height: .4rem;
+                background: url('../../src/assets/img/index/mine/share.png') no-repeat;
+                background-size: .4rem .4rem;
+            }
+
+            .zi {
+                margin-left: .34rem;
+                font-size: .28rem;
+                color: #333333;
+            }
+        }
+
+        .right_icon_jiantou {
+            width: .2rem;
+            height: .2rem;
+            background: url('../../src/assets/img/index/mine/gengduo.png') no-repeat;
+            background-size: 65% 100%;
+        }
+    }
+    .share {
+        margin: .66rem 0 0 0;
+    }
+}

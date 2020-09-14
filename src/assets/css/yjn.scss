@@ -11,11 +11,28 @@
     z-index: 999;
 
     ul {
+        display: -moz-box;  /* Firefox */ 
+        display: -ms-flexbox;    /* IE10 */ 
+        display: -webkit-box;    /* Safari */  
+        display: -webkit-flex;    /* Chrome, WebKit */ 
+        display: box;  
+        display: flexbox;
         display: flex;
         height: 100%;
 
         li {
+            -prefix-box-flex: 1; 
+            -webkit-box-flex: 1; 
+            -webkit-flex: 1; 
+            -moz-box-flex: 1; 
+            -ms-flex: 1;
             flex: 1;
+            display: -moz-box;  /* Firefox */ 
+            display: -ms-flexbox;    /* IE10 */ 
+            display: -webkit-box;    /* Safari */  
+            display: -webkit-flex;    /* Chrome, WebKit */ 
+            display: box;  
+            display: flexbox;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -25,6 +42,12 @@
             a {
                 width: 100%;
                 height: 100%;
+                display: -moz-box;  /* Firefox */ 
+                display: -ms-flexbox;    /* IE10 */ 
+                display: -webkit-box;    /* Safari */  
+                display: -webkit-flex;    /* Chrome, WebKit */ 
+                display: box;  
+                display: flexbox;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -107,14 +130,18 @@
 
 
 $color: rgba(255, 255, 255, 1);
-$green: rgba(178, 211, 70, 1);
-$green1: rgba(125, 182, 0, 1);
 // 通用头部
 .login_header {
     width: 100%;
     height: 0.9rem;
     background: linear-gradient(0deg, $color, $color);
     border-bottom: 0.01rem solid #f2f2f2;
+    display: -moz-box;  /* Firefox */ 
+    display: -ms-flexbox;    /* IE10 */ 
+    display: -webkit-box;    /* Safari */  
+    display: -webkit-flex;    /* Chrome, WebKit */ 
+    display: box;  
+    display: flexbox;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -122,6 +149,12 @@ $green1: rgba(125, 182, 0, 1);
     .header_return {
         width: 1.1rem;
         height: 100%;
+        display: -moz-box;  /* Firefox */ 
+        display: -ms-flexbox;    /* IE10 */ 
+        display: -webkit-box;    /* Safari */  
+        display: -webkit-flex;    /* Chrome, WebKit */ 
+        display: box;  
+        display: flexbox;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -135,6 +168,11 @@ $green1: rgba(125, 182, 0, 1);
     }
 
     .header_title {
+        -prefix-box-flex: 1; 
+        -webkit-box-flex: 1; 
+        -webkit-flex: 1; 
+        -moz-box-flex: 1; 
+        -ms-flex: 1;
         flex: 1;
         text-align: center;
         font-size: 0.32rem;
@@ -145,6 +183,12 @@ $green1: rgba(125, 182, 0, 1);
     .header_kong {
         width: 1.1rem;
         height: 100%;
+        display: -moz-box;  /* Firefox */ 
+        display: -ms-flexbox;    /* IE10 */ 
+        display: -webkit-box;    /* Safari */  
+        display: -webkit-flex;    /* Chrome, WebKit */ 
+        display: box;  
+        display: flexbox;
         display: flex;
         align-items: center;
         justify-content: center;

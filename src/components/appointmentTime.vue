@@ -4,9 +4,9 @@
       <div class="header_return" @click="back">
         <div class="icon_return"></div>
       </div>
-      <div class="header_title">时间</div>
+      <div class="header_title">预约时间</div>
       <div class="header_kong">
-        <div class="icon_message"></div>
+        <!-- <div class="icon_message"></div> -->
       </div>
     </div>
 
@@ -57,8 +57,16 @@
     </div>
 
     <div class="btn-time">
-      <div class="btn_list" v-for="(item,index) in timeList" :key="index">{{item.t}}</div>
+      <div
+        @click="changeBgc($event,item.t)"
+        :class="{activee:currentIndex==index}"
+        class="btn_list"
+        v-for="(item,index) in timeList"
+        :key="index"
+      >{{item.t}}</div>
     </div>
+
+    <div class="affirm" @click="submit">确认</div>
   </div>
 </template>
 
@@ -73,15 +81,35 @@ export default {
       currentWeek: 1,
       days: [],
       currentNum: null,
-      timeList:[{t:'9:00'},{t:'10:00'},{t:'11:00'},{t:'13:00'},{t:'14:00'},{t:'15:00'},{t:'16:00'},{t:'17:00'},{t:'18:00'},{t:'19:00'}]
+      timeList: [
+        { t: "09:00" },
+        { t: "10:00" },
+        { t: "11:00" },
+        { t: "13:00" },
+        { t: "14:00" },
+        { t: "15:00" },
+        { t: "16:00" },
+        { t: "17:00" },
+        { t: "18:00" },
+        { t: "19:00" }
+      ],
+      currentIndex: 3,
+      information: {}
     };
   },
   created: function() {
     // 在vue初始化时调用
     this.initData(null);
   },
+  updated() {
+    if (localStorage.getItem("status") == "false") {
+      this.$t2();
+    }
+  },
   methods: {
-    back() {},
+    back() {
+      this.$router.go(-1);
+    },
     initData: function(cur) {
       // var leftcount = 0 // 存放剩余数量
       var date;
@@ -125,8 +153,22 @@ export default {
       }
     },
     getDayTime(el, i) {
-      console.log(el, i);
+      if (
+        el.getMonth() + 1 < new Date().getMonth() + 1 ||
+        el.getDate() < new Date().getDate()
+      ) {
+        this.$toast({
+          duration: 2000,
+          message: "当前日期不可选"
+        });
+        return;
+      }
       this.currentNum = i;
+      this.information.sDate = this.formatDate(
+        el.getFullYear(),
+        el.getMonth() + 1,
+        el.getDate()
+      );
     },
     pickPre: function(year, month) {
       // setDate(0); 上月最后一天
@@ -149,6 +191,38 @@ export default {
       var d = day;
       if (d < 10) d = "0" + d;
       return y + "-" + m + "-" + d;
+    },
+    changeBgc(e, t) {
+      if (e.currentTarget.getAttribute("class").indexOf("active") == -1) {
+        let a = e.currentTarget;
+        $(a)
+          .addClass("active1")
+          .siblings()
+          .removeClass("active1");
+      }
+      this.information.sTime = t;
+    },
+    submit() {
+      if (this.information.sDate == undefined) {
+        this.$toast({
+          duration: 2000,
+          message: "请选择日期"
+        });
+      } else if (this.information.sTime == undefined) {
+        this.$toast({
+          duration: 2000,
+          message: "请选择时间"
+        });
+      } else {
+        window.sessionStorage.setItem(
+          "dataTime",
+          JSON.stringify(this.information)
+        );
+        this.$router.push({
+          path: "/registration",
+          query: { id: this.$route.query.id }
+        });
+      }
     }
   }
 };
@@ -156,6 +230,6 @@ export default {
 
 <style>
 </style>
-<style lang='scss'>
+<style lang='scss' scoped>
 @import "../assets/css/appointmentTime.scss";
 </style>

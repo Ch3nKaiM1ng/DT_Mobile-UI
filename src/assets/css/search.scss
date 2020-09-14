@@ -408,6 +408,12 @@ $shadow: rgba(29, 149, 60, 0.15);
           .result_com {
             width: 1.5rem;
             height: 100%;
+            display: -moz-box;  /* Firefox */ 
+            display: -ms-flexbox;    /* IE10 */ 
+            display: -webkit-box;    /* Safari */  
+            display: -webkit-flex;    /* Chrome, WebKit */ 
+            display: box;  
+            display: flexbox;
             display: flex;
             align-items: center;
             white-space: nowrap;

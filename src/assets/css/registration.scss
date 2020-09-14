@@ -8,6 +8,12 @@
         width: 100%;
         height: 100%;
         background-color: #ffffff;
+        display: -moz-box;  /* Firefox */ 
+        display: -ms-flexbox;    /* IE10 */ 
+        display: -webkit-box;    /* Safari */  
+        display: -webkit-flex;    /* Chrome, WebKit */ 
+        display: box;  
+        display: flexbox;
         display: flex;
         align-items: center;
         padding: .3rem;
@@ -24,6 +30,12 @@
 
         .appointment_details {
             margin-left: .3rem;
+            display: -moz-box;  /* Firefox */ 
+            display: -ms-flexbox;    /* IE10 */ 
+            display: -webkit-box;    /* Safari */  
+            display: -webkit-flex;    /* Chrome, WebKit */ 
+            display: box;  
+            display: flexbox;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -49,25 +61,43 @@
 
             .details_down {
                 .time {
+                    display: -moz-box;  /* Firefox */ 
+                    display: -ms-flexbox;    /* IE10 */ 
+                    display: -webkit-box;    /* Safari */  
+                    display: -webkit-flex;    /* Chrome, WebKit */ 
+                    display: box;  
+                    display: flexbox;
                     display: flex;
                     align-items: center;
                     margin-bottom: .1rem;
 
-                    .clock {
-                        width: .28rem;
-                        height: .28rem;
-                    }
+                    .tiemBtn {
+                        display: -moz-box;  /* Firefox */ 
+                        display: -ms-flexbox;    /* IE10 */ 
+                        display: -webkit-box;    /* Safari */  
+                        display: -webkit-flex;    /* Chrome, WebKit */ 
+                        display: box;  
+                        display: flexbox;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
 
-                    .CH {
-                        font-size: .28rem;
-                        color: #333333;
-                        margin: 0 .2rem 0 .05rem;
-                    }
+                        .clock {
+                            width: .28rem;
+                            height: .28rem;
+                        }
 
-                    .icon {
-                        transform: rotate(180deg);
-                        width: .17rem;
-                        height: .2rem;
+                        .CH {
+                            font-size: .28rem;
+                            color: #333333;
+                            margin: 0 .1rem 0 .05rem;
+                        }
+
+                        .icon {
+                            transform: rotate(180deg);
+                            width: .17rem;
+                            height: .2rem;
+                        }
                     }
                 }
 
@@ -103,6 +133,12 @@
 
     .user_name {
         height: 1.2rem;
+        display: -moz-box;  /* Firefox */ 
+        display: -ms-flexbox;    /* IE10 */ 
+        display: -webkit-box;    /* Safari */  
+        display: -webkit-flex;    /* Chrome, WebKit */ 
+        display: box;  
+        display: flexbox;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -110,6 +146,12 @@
 
     .project {
         height: 1.04rem;
+        display: -moz-box;  /* Firefox */ 
+        display: -ms-flexbox;    /* IE10 */ 
+        display: -webkit-box;    /* Safari */  
+        display: -webkit-flex;    /* Chrome, WebKit */ 
+        display: box;  
+        display: flexbox;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -117,6 +159,12 @@
 
     .phone {
         height: 1.04rem;
+        display: -moz-box;  /* Firefox */ 
+        display: -ms-flexbox;    /* IE10 */ 
+        display: -webkit-box;    /* Safari */  
+        display: -webkit-flex;    /* Chrome, WebKit */ 
+        display: box;  
+        display: flexbox;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -137,8 +185,6 @@
 }
 
 .btn_yuyue {
-    position: absolute;
-    bottom: 1.6rem;
     width: 6rem;
     height: .8rem;
     background-color: #009965;
@@ -148,8 +194,7 @@
     text-align: center;
     border-radius: .4rem;
     line-height: .8rem;
-    left: 50%;
-    margin-left: -3rem;
+    margin: 1.5rem auto;
 }
 
 // .van-popup {
@@ -176,6 +221,22 @@
 //     }
 // }
 
-.el-time-panel{
+
+.van-picker__columns{
+    width: auto;
+    li{
+        width: auto;
+        height: 44px;
+        line-height: 44px;
+    }
+}
+
+.el-time-panel {
     left: -0.4rem;
+}
+.project_bottom{
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto !important;
 }

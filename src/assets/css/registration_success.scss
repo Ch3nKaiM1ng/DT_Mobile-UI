@@ -1,0 +1,32 @@
+.registration_box {
+    display: -moz-box;  /* Firefox */ 
+    display: -ms-flexbox;    /* IE10 */ 
+    display: -webkit-box;    /* Safari */  
+    display: -webkit-flex;    /* Chrome, WebKit */ 
+    display: box;  
+    display: flexbox;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1.24rem;
+    color: #333333;
+    font-size: .3rem;
+    .img_success {
+        width: 1.28rem;
+        height: 1.28rem;
+        background: url('../../src/assets/img/index/appointment/success.png') no-repeat;
+        background-size: 100% 100%;
+    }
+    .title1 {
+        margin: .9rem 0 .24rem;
+    }
+    .title2 {
+        margin-bottom: 1.18rem;
+    }
+    .img_back {
+        width: 2.96rem;
+        height: .72rem;
+        background: url('../../src/assets/img/index/appointment/back.png') no-repeat;
+        background-size: 100% 100%;
+    }
+}

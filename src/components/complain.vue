@@ -25,7 +25,7 @@
         <el-input
           type="textarea"
           :placeholder="placeholderText"
-          v-model="data.advise"
+          v-model="data.content"
           class="textarea"
           maxlength="5000"
           show-word-limit
@@ -53,19 +53,24 @@
 </template>
 
 <script>
-import { print } from "util";
+// import { print } from "util";
+import { setTimeout } from "timers";
 export default {
   namw: "complain",
   data() {
     return {
-      data: { advise: "", phone: "", help: 1 },
+      data: { content: "", mobile: "", helpstatuts: 0 },
       phone: "",
       placeholderText:
         "吐槽内容（内容/设计风格/板块设置……）\n吐槽客服（服务满意/不满意）…\n吐槽使用体验…",
       Radio: false
     };
   },
-  mounted() {},
+  updated() {
+    if (localStorage.getItem("status") == "false") {
+      this.$t2();
+    }
+  },
   methods: {
     back() {
       this.$router.push("/");
@@ -73,64 +78,66 @@ export default {
     radio() {
       this.Radio = !this.Radio;
       if (this.Radio) {
-        this.data.help = 1;
+        this.data.helpstatuts = 1;
       } else {
-        this.data.help = 0;
+        this.data.helpstatuts = 0;
       }
     },
     suggest_btn() {
-      let vm = this;
-      var mPattern = /^1[34578]\d{9}$/; //http://caibaojian.com/regexp-example.html
-      if (vm.phone == "" || !mPattern.test(vm.phone)) {
-        vm.$Alert.info({ content: "请输入手机号码", duration: 2 });
-      } else if (vm.data.advise == "") {
-        vm.$Alert.info({ content: "内容未填写无法提交", duration: 2 });
-      } else {
-        vm.$api.article
-          .addComplain({
-            advise: vm.data.advise,
-            phone: vm.phone,
-            help: vm.data.help
-          })
-          .then(res => {
-            console.log(res);
-            if (res.data == 0) {
-              vm.$Alert.info({ content: "提交成功", duration: 2 });
-              vm.$router.go(-1); //返回上一层
-            } else {
-              vm.$router.go(0);
-            }
-          });
+      var mPattern = /^1[345678]\d{9}$/; //http://caibaojian.com/regexp-example.html
+      if (this.phone == "" || !mPattern.test(this.phone)) {
+        this.$toast({
+          duration: 2000,
+          message: "手机号码有误"
+        });
       }
-    }
-  },
-  watch: {
-    phone: function() {
-      //手机号正则
-      console.log(1);
-      var mPattern = /^1[34578]\d{9}$/; //http://caibaojian.com/regexp-example.html
-      //输出 true
-      if (mPattern.test(this.phone)) {
-        console.log(typeof parseInt(this.phone));
-        this.$api.article
-          .addPhoneRecord({
-            phone: this.phone,
-            remark: "投诉建议记录手机号码"
-          })
-          .then(res => {
-            console.log(res);
-          });
+      //  else if (this.data.content == "") {
+      //   this.$toast({
+      //     duration: 2000,
+      //     message: "内容不能为空"
+      //   });
+      // }
+      else {
+        this.data.mobile = this.phone;
+        this.$request.complaint(this.data).then(res => {
+          if (res.data.code == "200") {
+            this.$router.push("/complain_success");
+          } else {
+            this.$toast({
+              duration: 2000,
+              message: "提交失败,是什么漏填了吗?"
+            });
+          }
+        });
       }
     }
   }
+  // watch: {
+  //   phone: function() {
+  //     //手机号正则
+  //     var mPattern = /^1[34578]\d{9}$/; //http://caibaojian.com/regexp-example.html
+  //     //输出 true
+  //     if (mPattern.test(this.phone)) {
+  //       console.log(typeof parseInt(this.phone));
+  //       this.$api.article
+  //         .addPhoneRecord({
+  //           phone: this.phone,
+  //           remark: "投诉建议记录手机号码"
+  //         })
+  //         .then(res => {
+  //           console.log(res);
+  //         });
+  //     }
+  //   }
+  // }
 };
 </script>
 
 <style>
-textarea{
+textarea {
   width: 100%;
   height: 100%;
-  font-size: .3rem !important;
+  font-size: 0.3rem !important;
 }
 </style>
 <style lang='scss' scoped>

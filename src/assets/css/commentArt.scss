@@ -1,0 +1,236 @@
+#commentArt{
+    width: 100%;
+    height: 15rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    .comment_dialogue3 {
+        background-color: #ffffff;
+        width: 100%;
+        height: auto;
+        margin-bottom: 3rem;
+
+        .tip{
+            width: 100%;
+            height: 1rem;
+            line-height: 1rem;
+            text-align: center;
+            color: #a7a7a7;
+        }
+    
+        // 填写评论
+        .reply{
+            width: 100%;
+            height:auto;
+            padding: 0.2rem 0;
+            background-color: white;
+            display: -moz-box;  /* Firefox */ 
+            display: -ms-flexbox;    /* IE10 */ 
+            display: -webkit-box;    /* Safari */  
+            display: -webkit-flex;    /* Chrome, WebKit */ 
+            display: box;  
+            display: flexbox;
+            display: flex;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            .reply_input{
+                width: 76%;
+                height: 0.62rem;
+                border-radius: 0.1rem;
+                margin-left: 0.2rem;
+                background-color: #f2f2f2;
+                display: inline-block;
+                input{
+                    display: inline-block;
+                    width: 5.34rem;
+                    height: 0.62rem;
+                    padding-left: 0.8rem;
+                }
+                img{
+                    display: inline-block;
+                    position: absolute;
+                    top: 0.1rem;
+                    left: 0.2rem;
+                    margin-left: 0.2rem;
+                }
+            }
+            .reply_comment{
+                width: 1.2rem;
+                height: 0.62rem;
+                display: inline-block;
+                background-color: #dd8447;
+                margin-right: 0.2rem;
+                margin-left: 0.2rem;
+                color: white;
+                font-size: 0.3rem;
+                text-align: center;
+                line-height: 0.62rem;
+                border-radius: 0.1rem;
+                
+            }
+        }
+    
+        // 回复人
+        .comment_top2 {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #f2f2f2;
+    
+            .comment_center2 {
+                width: 100%;
+                height: auto;
+                padding: 0.28rem 0 0 0.2rem;
+                position: relative;
+    
+                .comment_img2 {
+                    display: inline-block;
+    
+                    img {
+                        width: 0.8rem;
+                        height: 0.8rem;
+                        border-radius: 50%;
+                    }
+                }
+    
+                .comment_name2 {
+                    display: inline-block;
+                    margin-left: 0.16rem;
+                    position: absolute;
+                    top: 0.35rem;
+    
+                    p {
+                        width: 100%;
+                        font: 0.26rem "微软雅黑";
+                        color: #6f6f6f;
+                    }
+    
+                    #host {
+                        width: 30%;
+                        display: inline-block;
+                        position: absolute;
+                        top: 0rem;
+                        left: 1rem;
+                        font: 0.26rem "微软雅黑";
+                        color: #6f6f6f;
+                    }
+    
+                    span {
+                        width: 100%;
+                        font: 0.26rem "微软雅黑";
+                        color: #6f6f6f;
+                    }
+                }
+    
+                .comment_loveimg2 {
+                    width: 40%;
+                    height: auto;
+                    display: inline-block;
+                    margin-left: 0.16rem;
+                    text-align: left;
+                    position: absolute;
+                    right: -1.5rem;
+    
+                    .heart_comm {
+                        width: .3rem;
+                        height: .3rem;
+                        background: url('../../src/assets/img/index/aixin1.png') no-repeat;
+                        background-size: 100% 100%;
+                        display: inline-block;
+                    }
+    
+                    .aheart_comm {
+                        width: .3rem;
+                        height: .3rem;
+                        background: url('../../src/assets/img/index/dianzan1.png') no-repeat;
+                        background-size: 100% 100%;
+                        display: inline-block;
+                    }
+    
+                    span {
+                        width: 100%;
+                        height: auto;
+                        font: 0.24rem "微软雅黑";
+                        color: #616161;
+                        margin-left: 0.05rem;
+                        position: relative;
+                        top: -0.06rem;
+                    }
+                }
+                
+            }
+    
+            h6 {
+                width: 82%;
+                height: auto;
+                font: lighter 0.32rem "微软雅黑";
+                color: #333333;
+                margin-left: 1.15rem;
+                padding-bottom: 0.2rem;
+    
+                span {
+                    color: #5996e1;
+                }
+            }
+        }
+
+        .el-loading-mask {
+            bottom: 70% !important;
+        }
+        
+    }
+}
+
+ // 填写评论
+ .reply{
+    width: 100%;
+    height:auto;
+    position: relative;
+    padding-bottom: 0.2rem;
+    padding-top:0.2rem;
+    background-color: white;
+    display: -moz-box;  /* Firefox */ 
+    display: -ms-flexbox;    /* IE10 */ 
+    display: -webkit-box;    /* Safari */  
+    display: -webkit-flex;    /* Chrome, WebKit */ 
+    display: box;  
+    display: flexbox;
+    display: flex;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    .reply_input{
+        width: 76%;
+        height: 0.62rem;
+        border-radius: 0.1rem;
+        margin-left: 0.2rem;
+        background-color: #f2f2f2;
+        display: inline-block;
+        input{
+            display: inline-block;
+            width: 5.34rem;
+            height: 0.62rem;
+            padding-left: 0.8rem;
+        }
+        img{
+            display: inline-block;
+            position: absolute;
+            top: 0.3rem;
+            left: 0.2rem;
+            margin-left: 0.2rem;
+        }
+    }
+    .reply_comment{
+        width: 1.2rem;
+        height: 0.62rem;
+        display: inline-block;
+        background-color: #dd8447;
+        margin-right: 0.2rem;
+        margin-left: 0.2rem;
+        color: white;
+        font-size: 0.3rem;
+        text-align: center;
+        line-height: 0.62rem;
+        border-radius: 0.1rem;
+        
+    }
+}

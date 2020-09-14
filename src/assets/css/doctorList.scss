@@ -4,6 +4,12 @@
     padding: 0 .2rem;
     font-size: .28rem;
     color: #333333;
+    display: -moz-box;  /* Firefox */ 
+    display: -ms-flexbox;    /* IE10 */ 
+    display: -webkit-box;    /* Safari */  
+    display: -webkit-flex;    /* Chrome, WebKit */ 
+    display: box;  
+    display: flexbox;
     display: flex;
 
     .nav_list {
@@ -37,6 +43,12 @@
 }
 
 .doctor_list {
+    display: -moz-box;  /* Firefox */ 
+    display: -ms-flexbox;    /* IE10 */ 
+    display: -webkit-box;    /* Safari */  
+    display: -webkit-flex;    /* Chrome, WebKit */ 
+    display: box;  
+    display: flexbox;
     display: flex;
     align-items: center;
     padding: .3rem .2rem .48rem;
@@ -45,6 +57,12 @@
     .doctor_synopsis {
         margin-top: .48rem;
         width: 50%;
+        display: -moz-box;  /* Firefox */ 
+        display: -ms-flexbox;    /* IE10 */ 
+        display: -webkit-box;    /* Safari */  
+        display: -webkit-flex;    /* Chrome, WebKit */ 
+        display: box;  
+        display: flexbox;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -74,6 +92,12 @@
             border-radius: .1rem;
             background-color: #9fd9c5;
             font-size: .22rem;
+            display: -moz-box;  /* Firefox */ 
+            display: -ms-flexbox;    /* IE10 */ 
+            display: -webkit-box;    /* Safari */  
+            display: -webkit-flex;    /* Chrome, WebKit */ 
+            display: box;  
+            display: flexbox;
             display: flex;
             flex-direction: column;
             justify-content: center;

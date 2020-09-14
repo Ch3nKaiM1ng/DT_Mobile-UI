@@ -21,10 +21,10 @@
       >{{item.classChName}}</div>
     </div>
 
-    <div class="select_list">
+    <div class="select_list" v-loading="loading" element-loading-text="拼命加载中...">
       <div class="presentation" v-for="(item,index) in docsDataList" :key="index">
         <div class="doc_img">
-          <img :src="item.doctorImg" alt />
+          <img :src="item.doctorHeadImg" alt />
         </div>
         <div class="doc_information">
           <div class="doc_name">{{item.doctorChName}}</div>
@@ -43,6 +43,7 @@ export default {
   name: "appointment",
   data() {
     return {
+      loading: true,
       docClassList: [],
       docsDataList: [],
       current_inx: 10
@@ -50,12 +51,17 @@ export default {
   },
   methods: {
     back() {
-      this.$router.push("/");
+      if (this.$route.query.name == "doctor") {
+        this.$router.go(-1);
+      } else {
+        this.$router.push("/");
+      }
     },
     getDocsData(id, index) {
       this.current_inx = index;
       this.$request.getDocsDatas(id).then(res => {
         this.docsDataList = res.data.data;
+        this.loading = false;
       });
     },
     getBookingDetailsId(id) {
@@ -67,6 +73,11 @@ export default {
       this.docClassList = res.data.data;
     });
     this.getDocsData("", 10);
+  },
+  updated() {
+    if (localStorage.getItem("status") == "false") {
+      this.$t2();
+    }
   }
 };
 </script>
@@ -74,7 +85,7 @@ export default {
 <style>
 #appointment {
   width: 100%;
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
 }
 </style>
 <style lang='scss' scoped>

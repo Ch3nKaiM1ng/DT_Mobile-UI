@@ -1,602 +1,743 @@
 <template>
-    <swiper :options="swiper_Option">
-        <!-- 第一 -->
-        <swiper-slide class="wen_articlebox">
-            <div class="ask_people">
-                <div class="wen_article">
-                    <div class="up_maximumbox">
-                        <!-- 问答 -->
-                        <div class="up_content">
-                            <div class="up_top">
-                                <div class="up_problem">
-                                    <span>问：牙齿矫正多少钱？</span>
-                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0MkI1NkZGMDlFMjgxMUU5QTM0M0E4ODVCNTYyQTFCRSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0MkI1NkZGMTlFMjgxMUU5QTM0M0E4ODVCNTYyQTFCRSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjQyQjU2RkVFOUUyODExRTlBMzQzQTg4NUI1NjJBMUJFIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjQyQjU2RkVGOUUyODExRTlBMzQzQTg4NUI1NjJBMUJFIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+hyBWTAAAA25JREFUeNrEV01IG1EQHtf4k5oYbYpV0QpCqRjEk6IIgkWKBy8W1IsiXjwoCMVLxUv1oD14Fk96EA9eehKRElDwUr2KIlQEUbSljTYxahJj7Hwv+7a7SZpuoIkDk03mvZ3vzcw3s5us454eYnnJ+pG1nbWQ0iM+Vjfre9avFv54xfqFtYjSKwjoLetr1iaFP6YzAKoXYE0ranozLW+UNNY0mdiUZKv5jY30YmWFns/MJFyHHeuOwcGUkRV6JLHEGSorqaA9WnaL0ymu2cXFWlTXbjdZysqip7ZatX3IjpSI30+h/f0Ugdmpo6PDaAOwagvu7VHJ2JhhvaChQaiU4NERfR8fTw04fH5O3vV1LRI4DF9e0vX2trYOx5Cc8nJS8vPF+j0rMpCjZiPlVIdPTsi7uKiRC8BwKm0QGQ3IlVddTRcLCxTY2RH7Y7NhGjgpEx2OP3X0ev8vuRIJyCWj+zk/T0W9vXR3diZ+y/QbDqiSLiVgW2cn5dXUUG5FhVYvkAsaCQQou6REOLa6XNHI2Yby6MVMneP6OKeqStRVf/MdR/RtcpJOBwboigfG2eioIJRwwOSSrYY6xw4g0xFfb2xQkHswdHgoWgtkidzexvWlPp1oNXSAZ3bWsMfR1UV2XvsxNfXviAFww+Cx6TM47OvT2uhiaUnr5SdtbVqrIVpw42/1Tkiu3NpaUmw2ylPrGMsBe2ur+C7bSAC3tIgDgwMgHaIFL4KcOdPABXxy6VwQiFMtx+nT/n7xHUNGgvpXV4WKUrHd1tysMT54cJC4U965XB/irFlZZCktFYMDJ76Ym6OHYJAiPh/dM4tDmG66gaIX7AvwWCUuRej4mHzLy+YjRiToTQf3q5dZrB8WN1tb2m+UJJcjk9EiI87hYQp7PHFEM/1YBCgIgyvEzlfx7GViSXEODYnUo+7Cmd0u5jfuk7aUgOWMxnBAxKJWu7viaq2r0/Zdud0asWRHeNfWoi9W3d0iA6aBsfnZyEjU8eam1lZwioOAqUixTDsERJIgGDBoKbQb0m4aGOmS0yqWQJjPAkiNGrW+BZGQpfp6bZ+HyYhDhk5PDQ8WA3/5hf4h0VNIKSyMGyIyKr0dNrA99mkFe7IhBGDvI7xp+hX1b0Wm5TOAJ1h/ZRAUWBMAxkxrYv0EUqYR8ErFANbBbwEGAPQrZE0qphsZAAAAAElFTkSuQmCC" alt=""> 
-                                </div>
-                            </div>
-                            <div class="up_article">
-                                从美学的角度来说，牙齿、嘴唇、牙龈，包括面下的高度、颏部的形态、鼻唇角，这些都会影响人的面部美。鼻子一下的三分之一的脸，虽...
-                                <router-link to="/crunchies/article">
-                                    <span>查看全部</span>
-                                </router-link>
-                            </div> 
-                            <div class="up_bottom">
-                                <div class="up_img">
-                                    <img src="../\assets\img\index\ask\a66f47c7f8dd5c94cdd260754d51c570a120d03a5d5c5-1tMp7Z_fw658@2x.png" alt="">
-                                </div>
-                                <div class="up_message">
-                                    <p>月野兔</p>
-                                    <span>2019-06-12</span>
-                                </div>
-                                <div class="up_folat">
-                                    <div class="up_lf">
-                                        <span @click="reply" v-show="btnText">回复</span>
-                                    </div>
-                                    <div class="up_rf" @click="reply" v-show="btnText">
-                                        <img src="../\assets\img\index\ask\ask_Message@2x.png" alt="">
-                                        <span>162</span>
-                                    </div>
-                                    <div class="share" @click="share">
-                                        <img src="../\assets\img\index\ask\share(5)@2x.png" alt="">
-                                    </div> 
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 评论人 -->
-                        <div class="commenta">
-                            <div class="commentator">
-                                <div class="commentator_img">
-                                    <img src="../\assets\img\index\ask\849404f95c0bf469a932801f6c3de88f@2x.png" alt="">
-                                </div>
-                                <div class="commen_by">
-                                    <div class="commen_name">波妞</div>
-                                    <div class="commen_age">
-                                        22岁<img src="../\assets\img\index\ask\woman@2x.png" alt="">
-                                    </div>
-                                    <div class="commen_time">65分钟前</div>
-                                </div>
-                            </div>
-                            <div class="commen_articlerf">
-                                <div class="commen_article">
-                                    从美学的角度来说，牙齿、嘴唇、牙龈，包括面下的高度、颏部的形态、鼻唇角，这些都会影响人的面部美。鼻子一下的三分之一的脸，虽然面积不大，却对
-                                    <span @click="reply" v-show="btnText">回复</span>
-                                </div>
-                                <div class="commen_bottom">
-                                    <div class="commen_messageimg" @click="reply" v-show="btnText">
-                                        <img src="../\assets\img\index\ask\ask_Message@2x.png" alt="">
-                                        <span>6463</span>
-                                    </div>
-                                    <div class="commen_loveimg">
-                                        <img src="../\assets\img\index\ask\ask_love@2x.png" alt="">
-                                        <span>1564</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 评论人 -->
-                        <div class="commenta">
-                            <div class="commentator">
-                                <div class="commentator_img">
-                                    <img src="../\assets\img\index\ask\849404f95c0bf469a932801f6c3de88f@2x.png" alt="">
-                                </div>
-                                <div class="commen_by">
-                                    <div class="commen_name">波妞</div>
-                                    <div class="commen_age">
-                                        22岁<img src="../\assets\img\index\ask\woman@2x.png" alt="">
-                                    </div>
-                                    <div class="commen_time">65分钟前</div>
-                                </div>
-                            </div>
-                            <div class="commen_articlerf">
-                                <div class="commen_articlebox">
-                                    <div class="commen_articleimg">
-                                        <img src="../\assets\img\index\ask\medical05_perio01@2x.png" alt="">
-                                    </div>
-                                    <div class="commen_articleimg">
-                                        <img src="../\assets\img\index\ask\medical05_perio02@2x.png" alt="">
-                                    </div>
-                                    <div class="commen_articleimg">
-                                        <img src="../\assets\img\index\ask\medical05_perio03@2x.png" alt="">
-                                    </div>
-                                </div>
-                                <div class="commen_article">
-                                    从美学的角度来说，牙齿、嘴唇、牙龈，包括面下的高度、颏部的形态、鼻唇角，这些都会影响人的面部美。鼻子一下的三分之一的脸，虽然面积不大，却对
-                                    <span @click="reply" v-show="btnText">回复</span>
-                                </div>
-                                <div class="commen_bottom">
-                                    <div class="commen_messageimg" @click="reply" v-show="btnText">
-                                        <img src="../\assets\img\index\ask\ask_Message@2x.png" alt="">
-                                        <span>6463</span>
-                                    </div>
-                                    <div class="commen_loveimg">
-                                        <img src="../\assets\img\index\ask\ask_love@2x.png" alt="">
-                                        <span>1564</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 评论人 -->
-                        <div class="comment_dialogue" v-show="isShow">
-                            <div class="comment_top">
-                                <div class="comment_center">
-                                    <div class="comment_img">
-                                        <img src="../\assets\img\index\ask\1a38f67b41f7d3e2723b3250ef681a9ce7c19b181bead-0BCBJh_fw658@2x.png" alt="">
-                                    </div>
-                                    <div class="comment_name">
-                                        <p>白龙</p>
-                                        <span>2019-6-12</span>
-                                    </div>
-                                    <div class="comment_loveimg">
-                                        <img src="../\assets\img\index\ask\ask_love@2x.png" alt="">
-                                        <span>1553</span>
-                                    </div>
-                                </div>
-                                <h6>可以讲中文吗?</h6>
-                            </div>
-                            <!-- 回复人 -->
-                            <div class="comment_top2" v-show="isShow">
-                                <div class="comment_center2">
-                                    <div class="comment_img2">
-                                        <img src="../\assets\img\index\ask\a66f47c7f8dd5c94cdd260754d51c570a120d03a5d5c5-1tMp7Z_fw658@2x.png" alt="">
-                                    </div>
-                                    <div class="comment_name2">
-                                        <p>月野兔</p>
-                                        <div id="host">题主</div>
-                                        <span>2019-6-12</span>
-                                    </div>
-                                    <div class="comment_loveimg2">
-                                        <img src="../\assets\img\index\ask\ask_love@2x.png" alt="">
-                                        <span>1354</span>
-                                    </div>
-                                </div>
-                                <h6>回复<span>@白龙：</span>HAHAHAHA..可以的呀</h6>
-                            </div>
-                            <div class="comment_top2">
-                                <div class="comment_center2">
-                                    <div class="comment_img2">
-                                        <img src="../\assets\img\index\ask\a66f47c7f8dd5c94cdd260754d51c570a120d03a5d5c5-1tMp7Z_fw658@2x.png" alt="">
-                                    </div>
-                                    <div class="comment_name2">
-                                        <p>月野兔</p>
-                                        <div id="host">题主</div>
-                                        <span>2019-6-12</span>
-                                    </div>
-                                    <div class="comment_loveimg2">
-                                        <img src="../\assets\img\index\ask\ask_love@2x.png" alt="">
-                                        <span>1354</span>
-                                    </div>
-                                </div>
-                                <h6>回复<span>@白龙：</span>HAHAHAHA..可以的呀</h6>
-                            </div>
-                        </div>
-                        <!-- 填写评论 -->
-                        <div class="reply" v-show="isShow">
-                            <div class="reply_input">
-                                <input type="text" placeholder="可以评论哦...">
-                                <img src="../\assets\img\index\ask\signature@2x.png" alt="">
-                            </div>
-                        <div class="reply_comment">评论</div>
+  <div>
+    <swiper :options="swiper_Option" v-if="swiper_Option !== null">
+      <swiper-slide
+        v-for="(item,index) in getWenList"
+        :key="index"
+        class="wen_articlebox"
+        v-loading="loadingMore"
+        element-loading-text="拼命加载中..."
+      >
+        <!-- 问答 -->
+        <div class="ask_people" v-if="item.askId!=null">
+          <div class="wen_label">
+            <img src="../\assets\img\index\ask\age@2x.png" v-if="item.artKeyword=='年龄'" alt />
+            <img src="../\assets\img\index\ask\caizhi@2x.png" v-else-if="item.artKeyword=='材质'" alt />
+            <img
+              src="../\assets\img\index\ask\chuantong@2x.png"
+              v-else-if="item.artKeyword=='传统'"
+              alt
+            />
+            <img
+              src="../\assets\img\index\ask\feiyong@2x.png"
+              v-else-if="item.artKeyword=='费用'"
+              alt
+            />
+            <img src="../\assets\img\index\ask\jiage@2x.png" v-else-if="item.artKeyword=='价格'" alt />
+            <img
+              src="../\assets\img\index\ask\lianxing@2x.png"
+              v-else-if="item.artKeyword=='脸型'"
+              alt
+            />
+            <img
+              src="../\assets\img\index\ask\xiaoguo@2x.png"
+              v-else-if="item.artKeyword=='效果'"
+              alt
+            />
+            <img
+              src="../\assets\img\index\ask\yinxing@2x.png"
+              v-else-if="item.artKeyword=='隐形'"
+              alt
+            />
+          </div>
+          <div class="wen_article">
+            <div class="up_maximumbox">
+              <!-- 问答 -->
+              <div class="up_content">
+                <div class="up_top">
+                  <div class="up_problem">
+                    <span>问：{{item.askTitle}}</span>
+                    <img src="../assets/img/index/new.png" v-if="item.askLabel=='新'" alt />
+                    <img src="../assets/img/index/bomb.png" v-else-if="item.askLabel=='爆'" alt />
+                    <img src="../assets/img/index/hot.png" v-else-if="item.askLabel=='热'" alt />
+                  </div>
+                </div>
+                <div class="up_article more">{{item.askContent}}</div>
+                <div class="gd" @click="show_zi($event)">查看全部</div>
+                <div class="up_bottom">
+                  <div class="up_img">
+                    <img :src="item.user.userImg" alt />
+                  </div>
+                  <div class="up_message">
+                    <p>{{item.user.userChName}}</p>
+                    <span>{{item.ctime | changeTime}}</span>
+                  </div>
+                  <div class="up_folat">
+                    <div class="up_lf">
+                      <span @click="reply1(item.askId)">回复</span>
                     </div>
-                </div>
-                </div>
-                <div class="wen_article2"></div>
-                <div class="wen_article3"></div>
-            </div>
-            
-        </swiper-slide>
-        <!-- 第二 -->
-        <swiper-slide class="wen_articlebox">
-            <div class="ask_people">
-                <div class="wen_article">
-                    <div class="up_maximumbox">
-                        <!-- 问答 -->
-                        <div class="up_content">
-                            <div class="up_top">
-                                <div class="up_problem">
-                                    问：深圳牙齿矫正全部下来要多少钱？
-                                </div>
-                                <div class="up_problemimg">
-                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0MkI1NkZGMDlFMjgxMUU5QTM0M0E4ODVCNTYyQTFCRSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0MkI1NkZGMTlFMjgxMUU5QTM0M0E4ODVCNTYyQTFCRSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjQyQjU2RkVFOUUyODExRTlBMzQzQTg4NUI1NjJBMUJFIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjQyQjU2RkVGOUUyODExRTlBMzQzQTg4NUI1NjJBMUJFIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+hyBWTAAAA25JREFUeNrEV01IG1EQHtf4k5oYbYpV0QpCqRjEk6IIgkWKBy8W1IsiXjwoCMVLxUv1oD14Fk96EA9eehKRElDwUr2KIlQEUbSljTYxahJj7Hwv+7a7SZpuoIkDk03mvZ3vzcw3s5us454eYnnJ+pG1nbWQ0iM+Vjfre9avFv54xfqFtYjSKwjoLetr1iaFP6YzAKoXYE0ranozLW+UNNY0mdiUZKv5jY30YmWFns/MJFyHHeuOwcGUkRV6JLHEGSorqaA9WnaL0ymu2cXFWlTXbjdZysqip7ZatX3IjpSI30+h/f0Ugdmpo6PDaAOwagvu7VHJ2JhhvaChQaiU4NERfR8fTw04fH5O3vV1LRI4DF9e0vX2trYOx5Cc8nJS8vPF+j0rMpCjZiPlVIdPTsi7uKiRC8BwKm0QGQ3IlVddTRcLCxTY2RH7Y7NhGjgpEx2OP3X0ev8vuRIJyCWj+zk/T0W9vXR3diZ+y/QbDqiSLiVgW2cn5dXUUG5FhVYvkAsaCQQou6REOLa6XNHI2Yby6MVMneP6OKeqStRVf/MdR/RtcpJOBwboigfG2eioIJRwwOSSrYY6xw4g0xFfb2xQkHswdHgoWgtkidzexvWlPp1oNXSAZ3bWsMfR1UV2XvsxNfXviAFww+Cx6TM47OvT2uhiaUnr5SdtbVqrIVpw42/1Tkiu3NpaUmw2ylPrGMsBe2ur+C7bSAC3tIgDgwMgHaIFL4KcOdPABXxy6VwQiFMtx+nT/n7xHUNGgvpXV4WKUrHd1tysMT54cJC4U965XB/irFlZZCktFYMDJ76Ym6OHYJAiPh/dM4tDmG66gaIX7AvwWCUuRej4mHzLy+YjRiToTQf3q5dZrB8WN1tb2m+UJJcjk9EiI87hYQp7PHFEM/1YBCgIgyvEzlfx7GViSXEODYnUo+7Cmd0u5jfuk7aUgOWMxnBAxKJWu7viaq2r0/Zdud0asWRHeNfWoi9W3d0iA6aBsfnZyEjU8eam1lZwioOAqUixTDsERJIgGDBoKbQb0m4aGOmS0yqWQJjPAkiNGrW+BZGQpfp6bZ+HyYhDhk5PDQ8WA3/5hf4h0VNIKSyMGyIyKr0dNrA99mkFe7IhBGDvI7xp+hX1b0Wm5TOAJ1h/ZRAUWBMAxkxrYv0EUqYR8ErFANbBbwEGAPQrZE0qphsZAAAAAElFTkSuQmCC" alt="">
-                                </div>
-                            </div>
-                            <div class="up_article">
-                                从美学的角度来说，牙齿、嘴唇、牙龈，包括面下的高度、颏部的形态、鼻唇角，这些都会影响人的面部美。鼻子一下的三分之一的脸，虽...
-                                <span>查看全部</span>
-                            </div> 
-                            <div class="up_bottom">
-                                <div class="up_img">
-                                    <img src="../\assets\img\index\ask\a66f47c7f8dd5c94cdd260754d51c570a120d03a5d5c5-1tMp7Z_fw658@2x.png" alt="">
-                                </div>
-                                <div class="up_message">
-                                    <p>月野兔</p>
-                                    <span>2019-06-12</span>
-                                </div>
-                                <div class="up_folat">
-                                    <div class="up_lf">
-                                        <span @click="reply" v-show="btnText">回复</span>
-                                    </div>
-                                    <div class="up_rf" @click="reply" v-show="btnText">
-                                        <img src="../\assets\img\index\ask\ask_Message@2x.png" alt="">
-                                        <span>162</span>
-                                    </div>
-                                    <div class="share">
-                                        <img src="../\assets\img\index\ask\share(5)@2x.png" alt="">
-                                    </div> 
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 评论人 -->
-                        <div class="commenta">
-                            <div class="commentator">
-                                <div class="commentator_img">
-                                    <img src="../\assets\img\index\ask\849404f95c0bf469a932801f6c3de88f@2x.png" alt="">
-                                </div>
-                                <div class="commen_by">
-                                    <div class="commen_name">波妞</div>
-                                    <div class="commen_age">
-                                        22岁<img src="../\assets\img\index\ask\woman@2x.png" alt="">
-                                    </div>
-                                    <div class="commen_time">65分钟前</div>
-                                </div>
-                            </div>
-                            <div class="commen_articlerf">
-                                <div class="commen_article">
-                                    从美学的角度来说，牙齿、嘴唇、牙龈，包括面下的高度、颏部的形态、鼻唇角，这些都会影响人的面部美。鼻子一下的三分之一的脸，虽然面积不大，却对
-                                    <span @click="reply" v-show="btnText">回复</span>
-                                </div>
-                                <div class="commen_bottom">
-                                    <div class="commen_messageimg" @click="reply" v-show="btnText">
-                                        <img src="../\assets\img\index\ask\ask_Message@2x.png" alt="">
-                                        <span>6463</span>
-                                    </div>
-                                    <div class="commen_loveimg">
-                                        <img src="../\assets\img\index\ask\ask_love@2x.png" alt="">
-                                        <span>1564</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 评论人 -->
-                        <div class="commenta">
-                            <div class="commentator">
-                                <div class="commentator_img">
-                                    <img src="../\assets\img\index\ask\849404f95c0bf469a932801f6c3de88f@2x.png" alt="">
-                                </div>
-                                <div class="commen_by">
-                                    <div class="commen_name">波妞</div>
-                                    <div class="commen_age">
-                                        22岁<img src="../\assets\img\index\ask\woman@2x.png" alt="">
-                                    </div>
-                                    <div class="commen_time">65分钟前</div>
-                                </div>
-                            </div>
-                            <div class="commen_articlerf">
-                                <div class="commen_articlebox">
-                                    <div class="commen_articleimg">
-                                        <img src="../\assets\img\index\ask\medical05_perio01@2x.png" alt="">
-                                    </div>
-                                    <div class="commen_articleimg">
-                                        <img src="../\assets\img\index\ask\medical05_perio02@2x.png" alt="">
-                                    </div>
-                                    <div class="commen_articleimg">
-                                        <img src="../\assets\img\index\ask\medical05_perio03@2x.png" alt="">
-                                    </div>
-                                </div>
-                                <div class="commen_article">
-                                    从美学的角度来说，牙齿、嘴唇、牙龈，包括面下的高度、颏部的形态、鼻唇角，这些都会影响人的面部美。鼻子一下的三分之一的脸，虽然面积不大，却对
-                                    <span @click="reply" v-show="btnText">回复</span>
-                                </div>
-                                <div class="commen_bottom">
-                                    <div class="commen_messageimg" @click="reply" v-show="btnText">
-                                        <img src="../\assets\img\index\ask\ask_Message@2x.png" alt="">
-                                        <span>6463</span>
-                                    </div>
-                                    <div class="commen_loveimg">
-                                        <img src="../\assets\img\index\ask\ask_love@2x.png" alt="">
-                                        <span>1564</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 评论人 -->
-                        <div class="comment_dialogue" v-show="isShow">
-                            <div class="comment_top">
-                                <div class="comment_center">
-                                    <div class="comment_img">
-                                        <img src="../\assets\img\index\ask\1a38f67b41f7d3e2723b3250ef681a9ce7c19b181bead-0BCBJh_fw658@2x.png" alt="">
-                                    </div>
-                                    <div class="comment_name">
-                                        <p>白龙</p>
-                                        <span>2019-6-12</span>
-                                    </div>
-                                    <div class="comment_loveimg">
-                                        <img src="../\assets\img\index\ask\ask_love@2x.png" alt="">
-                                        <span>1553</span>
-                                    </div>
-                                </div>
-                                <h6>可以讲中文吗?</h6>
-                            </div>
-                            <!-- 回复人 -->
-                            <div class="comment_top2" v-show="isShow">
-                                <div class="comment_center2">
-                                    <div class="comment_img2">
-                                        <img src="../\assets\img\index\ask\a66f47c7f8dd5c94cdd260754d51c570a120d03a5d5c5-1tMp7Z_fw658@2x.png" alt="">
-                                    </div>
-                                    <div class="comment_name2">
-                                        <p>月野兔</p>
-                                        <div id="host">题主</div>
-                                        <span>2019-6-12</span>
-                                    </div>
-                                    <div class="comment_loveimg2">
-                                        <img src="../\assets\img\index\ask\ask_love@2x.png" alt="">
-                                        <span>1354</span>
-                                    </div>
-                                </div>
-                                <h6>回复<span>@白龙：</span>HAHAHAHA..可以的呀</h6>
-                            </div>
-                            <div class="comment_top2">
-                                <div class="comment_center2">
-                                    <div class="comment_img2">
-                                        <img src="../\assets\img\index\ask\a66f47c7f8dd5c94cdd260754d51c570a120d03a5d5c5-1tMp7Z_fw658@2x.png" alt="">
-                                    </div>
-                                    <div class="comment_name2">
-                                        <p>月野兔</p>
-                                        <div id="host">题主</div>
-                                        <span>2019-6-12</span>
-                                    </div>
-                                    <div class="comment_loveimg2">
-                                        <img src="../\assets\img\index\ask\ask_love@2x.png" alt="">
-                                        <span>1354</span>
-                                    </div>
-                                </div>
-                                <h6>回复<span>@白龙：</span>HAHAHAHA..可以的呀</h6>
-                            </div>
-                        </div>
-                        <!-- 填写评论 -->
-                        <div class="reply" v-show="isShow">
-                            <div class="reply_input">
-                                <input type="text" placeholder="可以评论哦...">
-                                <img src="../\assets\img\index\ask\signature@2x.png" alt="">
-                            </div>
-                        <div class="reply_comment">评论</div>
+                    <div class="up_rf" @click="reply1(item.askId)">
+                      <img src="../\assets\img\index\pinglun1.png" alt />
+                      <span>{{changdu(item.askAnswerList) | million}}</span>
                     </div>
-                </div>
-                </div>
-                <div class="wen_article2"></div>
-                <div class="wen_article3"></div>
-            </div>
-            
-        </swiper-slide>
-        <!-- 第三 -->
-        <swiper-slide class="wen_articlebox">
-            <div class="ask_people">
-                <div class="wen_article">
-                    <div class="up_maximumbox">
-                        <!-- 问答 -->
-                        <div class="up_content">
-                            <div class="up_top">
-                                <div class="up_problem">
-                                    问：深圳牙齿矫正全部下来要多少钱？
-                                </div>
-                                <div class="up_problemimg">
-                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0MkI1NkZGMDlFMjgxMUU5QTM0M0E4ODVCNTYyQTFCRSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0MkI1NkZGMTlFMjgxMUU5QTM0M0E4ODVCNTYyQTFCRSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjQyQjU2RkVFOUUyODExRTlBMzQzQTg4NUI1NjJBMUJFIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjQyQjU2RkVGOUUyODExRTlBMzQzQTg4NUI1NjJBMUJFIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+hyBWTAAAA25JREFUeNrEV01IG1EQHtf4k5oYbYpV0QpCqRjEk6IIgkWKBy8W1IsiXjwoCMVLxUv1oD14Fk96EA9eehKRElDwUr2KIlQEUbSljTYxahJj7Hwv+7a7SZpuoIkDk03mvZ3vzcw3s5us454eYnnJ+pG1nbWQ0iM+Vjfre9avFv54xfqFtYjSKwjoLetr1iaFP6YzAKoXYE0ranozLW+UNNY0mdiUZKv5jY30YmWFns/MJFyHHeuOwcGUkRV6JLHEGSorqaA9WnaL0ymu2cXFWlTXbjdZysqip7ZatX3IjpSI30+h/f0Ugdmpo6PDaAOwagvu7VHJ2JhhvaChQaiU4NERfR8fTw04fH5O3vV1LRI4DF9e0vX2trYOx5Cc8nJS8vPF+j0rMpCjZiPlVIdPTsi7uKiRC8BwKm0QGQ3IlVddTRcLCxTY2RH7Y7NhGjgpEx2OP3X0ev8vuRIJyCWj+zk/T0W9vXR3diZ+y/QbDqiSLiVgW2cn5dXUUG5FhVYvkAsaCQQou6REOLa6XNHI2Yby6MVMneP6OKeqStRVf/MdR/RtcpJOBwboigfG2eioIJRwwOSSrYY6xw4g0xFfb2xQkHswdHgoWgtkidzexvWlPp1oNXSAZ3bWsMfR1UV2XvsxNfXviAFww+Cx6TM47OvT2uhiaUnr5SdtbVqrIVpw42/1Tkiu3NpaUmw2ylPrGMsBe2ur+C7bSAC3tIgDgwMgHaIFL4KcOdPABXxy6VwQiFMtx+nT/n7xHUNGgvpXV4WKUrHd1tysMT54cJC4U965XB/irFlZZCktFYMDJ76Ym6OHYJAiPh/dM4tDmG66gaIX7AvwWCUuRej4mHzLy+YjRiToTQf3q5dZrB8WN1tb2m+UJJcjk9EiI87hYQp7PHFEM/1YBCgIgyvEzlfx7GViSXEODYnUo+7Cmd0u5jfuk7aUgOWMxnBAxKJWu7viaq2r0/Zdud0asWRHeNfWoi9W3d0iA6aBsfnZyEjU8eam1lZwioOAqUixTDsERJIgGDBoKbQb0m4aGOmS0yqWQJjPAkiNGrW+BZGQpfp6bZ+HyYhDhk5PDQ8WA3/5hf4h0VNIKSyMGyIyKr0dNrA99mkFe7IhBGDvI7xp+hX1b0Wm5TOAJ1h/ZRAUWBMAxkxrYv0EUqYR8ErFANbBbwEGAPQrZE0qphsZAAAAAElFTkSuQmCC" alt="">
-                                </div>
-                            </div>
-                            <div class="up_article">
-                                从美学的角度来说，牙齿、嘴唇、牙龈，包括面下的高度、颏部的形态、鼻唇角，这些都会影响人的面部美。鼻子一下的三分之一的脸，虽...
-                                <span>查看全部</span>
-                            </div> 
-                            <div class="up_bottom">
-                                <div class="up_img">
-                                    <img src="../\assets\img\index\ask\a66f47c7f8dd5c94cdd260754d51c570a120d03a5d5c5-1tMp7Z_fw658@2x.png" alt="">
-                                </div>
-                                <div class="up_message">
-                                    <p>月野兔</p>
-                                    <span>2019-06-12</span>
-                                </div>
-                                <div class="up_folat">
-                                    <div class="up_lf">
-                                        <span @click="reply" v-show="btnText">回复</span>
-                                    </div>
-                                    <div class="up_rf" @click="reply" v-show="btnText">
-                                        <img src="../\assets\img\index\ask\ask_Message@2x.png" alt="">
-                                        <span>162</span>
-                                    </div>
-                                    <div class="share">
-                                        <img src="../\assets\img\index\ask\share(5)@2x.png" alt="">
-                                    </div> 
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 评论人 -->
-                        <div class="commenta">
-                            <div class="commentator">
-                                <div class="commentator_img">
-                                    <img src="../\assets\img\index\ask\849404f95c0bf469a932801f6c3de88f@2x.png" alt="">
-                                </div>
-                                <div class="commen_by">
-                                    <div class="commen_name">波妞</div>
-                                    <div class="commen_age">
-                                        22岁<img src="../\assets\img\index\ask\woman@2x.png" alt="">
-                                    </div>
-                                    <div class="commen_time">65分钟前</div>
-                                </div>
-                            </div>
-                            <div class="commen_articlerf">
-                                <div class="commen_article">
-                                    从美学的角度来说，牙齿、嘴唇、牙龈，包括面下的高度、颏部的形态、鼻唇角，这些都会影响人的面部美。鼻子一下的三分之一的脸，虽然面积不大，却对
-                                    <span @click="reply" v-show="btnText">回复</span>
-                                </div>
-                                <div class="commen_bottom">
-                                    <div class="commen_messageimg" @click="reply" v-show="btnText">
-                                        <img src="../\assets\img\index\ask\ask_Message@2x.png" alt="">
-                                        <span>6463</span>
-                                    </div>
-                                    <div class="commen_loveimg">
-                                        <img src="../\assets\img\index\ask\ask_love@2x.png" alt="">
-                                        <span>1564</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 评论人 -->
-                        <div class="commenta">
-                            <div class="commentator">
-                                <div class="commentator_img">
-                                    <img src="../\assets\img\index\ask\849404f95c0bf469a932801f6c3de88f@2x.png" alt="">
-                                </div>
-                                <div class="commen_by">
-                                    <div class="commen_name">波妞</div>
-                                    <div class="commen_age">
-                                        22岁<img src="../\assets\img\index\ask\woman@2x.png" alt="">
-                                    </div>
-                                    <div class="commen_time">65分钟前</div>
-                                </div>
-                            </div>
-                            <div class="commen_articlerf">
-                                <div class="commen_articlebox">
-                                    <div class="commen_articleimg">
-                                        <img src="../\assets\img\index\ask\medical05_perio01@2x.png" alt="">
-                                    </div>
-                                    <div class="commen_articleimg">
-                                        <img src="../\assets\img\index\ask\medical05_perio02@2x.png" alt="">
-                                    </div>
-                                    <div class="commen_articleimg">
-                                        <img src="../\assets\img\index\ask\medical05_perio03@2x.png" alt="">
-                                    </div>
-                                </div>
-                                <div class="commen_article">
-                                    从美学的角度来说，牙齿、嘴唇、牙龈，包括面下的高度、颏部的形态、鼻唇角，这些都会影响人的面部美。鼻子一下的三分之一的脸，虽然面积不大，却对
-                                    <span @click="reply" v-show="btnText">回复</span>
-                                </div>
-                                <div class="commen_bottom">
-                                    <div class="commen_messageimg" @click="reply" v-show="btnText">
-                                        <img src="../\assets\img\index\ask\ask_Message@2x.png" alt="">
-                                        <span>6463</span>
-                                    </div>
-                                    <div class="commen_loveimg">
-                                        <img src="../\assets\img\index\ask\ask_love@2x.png" alt="">
-                                        <span>1564</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 评论人 -->
-                        <div class="comment_dialogue" v-show="isShow">
-                            <div class="comment_top">
-                                <div class="comment_center">
-                                    <div class="comment_img">
-                                        <img src="../\assets\img\index\ask\1a38f67b41f7d3e2723b3250ef681a9ce7c19b181bead-0BCBJh_fw658@2x.png" alt="">
-                                    </div>
-                                    <div class="comment_name">
-                                        <p>白龙</p>
-                                        <span>2019-6-12</span>
-                                    </div>
-                                    <div class="comment_loveimg">
-                                        <img src="../\assets\img\index\ask\ask_love@2x.png" alt="">
-                                        <span>1553</span>
-                                    </div>
-                                </div>
-                                <h6>可以讲中文吗?</h6>
-                            </div>
-                            <!-- 回复人 -->
-                            <div class="comment_top2" v-show="isShow">
-                                <div class="comment_center2">
-                                    <div class="comment_img2">
-                                        <img src="../\assets\img\index\ask\a66f47c7f8dd5c94cdd260754d51c570a120d03a5d5c5-1tMp7Z_fw658@2x.png" alt="">
-                                    </div>
-                                    <div class="comment_name2">
-                                        <p>月野兔</p>
-                                        <div id="host">题主</div>
-                                        <span>2019-6-12</span>
-                                    </div>
-                                    <div class="comment_loveimg2">
-                                        <img src="../\assets\img\index\ask\ask_love@2x.png" alt="">
-                                        <span>1354</span>
-                                    </div>
-                                </div>
-                                <h6>回复<span>@白龙：</span>HAHAHAHA..可以的呀</h6>
-                            </div>
-                            <div class="comment_top2">
-                                <div class="comment_center2">
-                                    <div class="comment_img2">
-                                        <img src="../\assets\img\index\ask\a66f47c7f8dd5c94cdd260754d51c570a120d03a5d5c5-1tMp7Z_fw658@2x.png" alt="">
-                                    </div>
-                                    <div class="comment_name2">
-                                        <p>月野兔</p>
-                                        <div id="host">题主</div>
-                                        <span>2019-6-12</span>
-                                    </div>
-                                    <div class="comment_loveimg2">
-                                        <img src="../\assets\img\index\ask\ask_love@2x.png" alt="">
-                                        <span>1354</span>
-                                    </div>
-                                </div>
-                                <h6>回复<span>@白龙：</span>HAHAHAHA..可以的呀</h6>
-                            </div>
-                        </div>
-                        <!-- 填写评论 -->
-                        <div class="reply" v-show="isShow">
-                            <div class="reply_input">
-                                <input type="text" placeholder="可以评论哦...">
-                                <img src="../\assets\img\index\ask\signature@2x.png" alt="">
-                            </div>
-                        <div class="reply_comment">评论</div>
+                    <!-- 收藏 -->
+                    <div class="shoucang" @click="sc($event)">
+                      <div class="shoucang_img1"></div>
+                      <span>收藏</span>
                     </div>
+                  </div>
                 </div>
+              </div>
+              <!-- 暂无评论图片 -->
+              <div class="article_btn" v-if="changdu(item.askAnswerList) == 0">
+                <img src="../\assets\img\index\ask\text@2x (3).png" alt />
+                <p>还没有评论哦~</p>
+              </div>
+              <!-- 一级评论人 -->
+              <div class="commentBox" v-show="isShow" v-else>
+                <van-list
+                  :immediate-check="false"
+                  v-model="loading"
+                  :finished="finished"
+                  finished-text="没有更多内容了"
+                  @load="onLoad"
+                >
+                  <div class="ccc">
+                    <div class="commenta" v-for="(item,index) in getWenCommentList" :key="index">
+                      <div class="commentator">
+                        <div class="commentator_img">
+                          <img :src="item.user.userImg" alt />
+                        </div>
+                        <div class="commen_by">
+                          <div class="commen_name">{{item.user.userChName}}</div>
+                          <div class="commen_age">
+                            {{item.user.age}}
+                            <div class="man" v-if="item.user.userSex==1">男</div>
+                            <div class="women" v-else>女</div>
+                          </div>
+                          <div class="commen_time">{{item.ctime | changeOldTime}}</div>
+                        </div>
+                      </div>
+                      <div class="commen_articlerf">
+                        <div class="commen_article">
+                          <div class="commen_content">
+                            {{item.content}}
+                            <span
+                              class="commen_reply2"
+                              @click="reply2(item.id,item.userId)"
+                            >回复</span>
+                          </div>
+                        </div>
+                        <div class="commen_bottom">
+                          <div class="commen_messageimg">
+                            <img src="../\assets\img\index\pinglun1.png" alt />
+                            <span>{{item.commentNum | million}}</span>
+                          </div>
+                          <div class="commen_loveimg" @click="ask_HuiDianZan(item,$event)">
+                            <div class="heart_hui"></div>
+                            <span>{{item.thumbNum | million}}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </van-list>
+              </div>
+
+              <!-- 填写评论 -->
+              <div class="reply1" v-show="isShow">
+                <div class="reply1_input">
+                  <input type="text" v-model="AskValue" placeholder="可以评论哦..." />
+                  <img src="../\assets\img\index\ask\signature@2x.png" alt />
                 </div>
-                <div class="wen_article2"></div>
-                <div class="wen_article3"></div>
+                <div class="reply1_comment" @click="AskPingLun">评论</div>
+              </div>
             </div>
-            
-        </swiper-slide>
+          </div>
+          <!-- <div class="wen_article2"></div>
+          <div class="wen_article3"></div>-->
+        </div>
+
+        <!-- 文章 -->
+        <div class="article" v-if="item.artId!=null">
+          <div class="wen_labe2">
+            <img src="../\assets\img\index\ask\age@2x.png" v-if="item.artKeyword=='年龄'" alt />
+            <img src="../\assets\img\index\ask\caizhi@2x.png" v-else-if="item.artKeyword=='材质'" alt />
+            <img
+              src="../\assets\img\index\ask\chuantong@2x.png"
+              v-else-if="item.artKeyword=='传统'"
+              alt
+            />
+            <img
+              src="../\assets\img\index\ask\feiyong@2x.png"
+              v-else-if="item.artKeyword=='费用'"
+              alt
+            />
+            <img src="../\assets\img\index\ask\jiage@2x.png" v-else-if="item.artKeyword=='价格'" alt />
+            <img
+              src="../\assets\img\index\ask\lianxing@2x.png"
+              v-else-if="item.artKeyword=='脸型'"
+              alt
+            />
+            <img
+              src="../\assets\img\index\ask\xiaoguo@2x.png"
+              v-else-if="item.artKeyword=='效果'"
+              alt
+            />
+            <img
+              src="../\assets\img\index\ask\yinxing@2x.png"
+              v-else-if="item.artKeyword=='隐形'"
+              alt
+            />
+          </div>
+          <!-- 固定大盒子 -->
+          <div class="article_maxbox">
+            <!-- 小盒子 -->
+            <div class="article_box">
+              <!-- 文章标题 -->
+              <div class="article_head">
+                <span>{{item.artTitle}}</span>
+                <img src="../assets/img/index/new.png" v-if="item.label=='新'" alt />
+                <img src="../assets/img/index/bomb.png" v-else-if="item.label=='爆'" alt />
+                <img src="../assets/img/index/hot.png" v-else-if="item.label=='热'" alt />
+              </div>
+              <!-- 文章题主 -->
+              <div class="article_info">
+                <div class="article_img">
+                  <img :src="item.user.userImg" alt />
+                </div>
+                <div class="article_message">
+                  <p>{{item.user.userChName}}</p>
+                  <span>{{item.ctime | changeTime}}</span>
+                </div>
+                <div class="tips" v-if="showRight">
+                  <span>左滑更多</span>
+                  <img src="../assets/img/index/ask/drop-up.png" alt />
+                </div>
+              </div>
+              <!-- 文章内容 -->
+              <div class="article_content">
+                <div class="article_contentHead" v-html="item.artContent"></div>
+              </div>
+              <!-- 评论和点赞 -->
+              <div class="comment_area">
+                <div class="article_comment">
+                  <div class="article_messageimg" @click="getCom(item.artId,item)">
+                    <img src="../\assets\img\index\pinglun1.png" alt />
+                    <span>{{item.artCommentNum | million}}</span>
+                  </div>
+                  <div class="article_loveimg" @click="artDianZan(item,$event)">
+                    <div class="heart"></div>
+                    <span>{{item.thumbNum | million}}</span>
+                  </div>
+                  <!-- 收藏 -->
+                  <div class="shoucang" @click="sc($event)">
+                    <div class="shoucang_img1"></div>
+                    <span>收藏</span>
+                  </div>
+                </div>
+              </div>
+              <!-- 暂无评论图片 -->
+              <div class="article_btn" v-if="item.artCommentNum == 0">
+                <img src="../\assets\img\index\ask\text@2x (3).png" alt />
+                <p>还没有评论哦~</p>
+              </div>
+              <!-- 评论人 -->
+              <div class="comment_box" v-show="com" v-else>
+                <div class="comment_top" v-for="(item,index) in commentList3" :key="index">
+                  <div class="comment_center">
+                    <div class="comment_img">
+                      <img :src="item.user.userImg" alt />
+                    </div>
+                    <div class="comment_name">
+                      <p>{{item.user.userChName}}</p>
+                      <span>{{item.ctime | changeTime}}</span>
+                    </div>
+                    <div class="comment_loveimg" @click="art_CommDianZan(item,$event)">
+                      <div class="heart_comm"></div>
+                      <span>{{item.thumbNum | million}}</span>
+                    </div>
+                  </div>
+                  <h6>{{item.content}}</h6>
+                  <div class="huifu" @click="getCom2(index,item)">回复</div>
+                </div>
+                <div class="more" @click="more" v-show="moreBox">查看更多评论</div>
+              </div>
+              <!-- 填写评论 -->
+              <div class="article_reply" v-show="com">
+                <div class="article_input">
+                  <input type="text" v-model="value" placeholder="可以评论哦..." />
+                  <img src="../\assets\img\index\ask\signature@2x.png" alt />
+                </div>
+                <div class="article_comment2" @click="pinglun">评论</div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="article_maxbox2"></div>
+          <div class="article_maxbox3"></div>-->
+        </div>
+      </swiper-slide>
+      <div class="ask_noMore" v-if="getWenList.length==0">暂无内容哦~</div>
     </swiper>
+  </div>
 </template>
 
 <script>
-import { close } from 'fs';
+import test from "../assets/js/test.js";
+import { setTimeout } from "timers";
 export default {
-    name:'ask_people',
-    data () {
-	      return {
-            //评论输入框隐藏
-	        isShow: false,
-            btnText: "false",
-            //轮播图
-            // swiperOption: {
-            // loop: true,
-            // autoplay: 3000,
-            // autoplay: true,
-            // pagination: {
-            //     el: ".swiper-pagination"
-            //     }
-            // },
-           
-	    }
-    },
-    methods:{
-        //判断显示、隐藏
-        reply(){
-            this.isShow = !this.isShow
-            if(this.isShow){
-                this.btnText = "false"
-            }else{
-                this.btnText = "true"
-            }
+  name: "ask_people",
+  data() {
+    return {
+      showRight: true,
+      loadingMore: true,
+      //评论输入框隐藏
+      com: false,
+      moreBox: true,
+      isShow: false,
+      //轮播图
+      swiper_Option: null,
+      // 调取问答榜单数据
+      Wen: { classId: 0, offset: 1 },
+      getWenList: [],
+      // 调取问答评论数据
+      WenComment: { askId: 0, limit: 10, offset: 1 },
+      getWenCommentList: [],
+      // 加载更多
+      loading: false,
+      finished: false,
+      offset: 100,
+      // 获取所有评论数据
+      allCommentList: [],
+      commentList3: [],
+      // 获取最后一级评论数据
+      comment3List: [],
+      get3Index: 0,
+      artCom3List: [],
+      value: "",
+      reply: {
+        artId: 0,
+        content: "",
+        level: 0,
+        parentId: 0,
+        receiveUserId: 0,
+        status: 0,
+        thumbNum: 0,
+        topId: 0,
+        userId: 0
+      },
+      AskValue: "",
+      askReply: {
+        askId: 0,
+        content: "",
+        status: 0,
+        thumbNum: 0,
+        title: "问答回复标题",
+        userId: 0
+      }
+    };
+  },
+  created() {
+    if (this.$store.state.WenSonData.length == 0) return;
+    else {
+      this.loaderSwiper();
+      this.getWenDatas(this.$store.state.WenSonData[0].id);
+    }
+    if (JSON.parse(localStorage.getItem("token")) !== null) {
+      this.reply.userId = JSON.parse(localStorage.getItem("token")).userId;
+      this.askReply.userId = JSON.parse(localStorage.getItem("token")).userId;
+    }
+  },
+  updated() {
+    if (localStorage.getItem("status") == "false") {
+      this.$t2();
+    }
+  },
+  methods: {
+    loaderSwiper() {
+      var vm = this;
+      this.swiper_Option = {
+        loop: true,
+        effect: "coverflow",
+        pagination: {
+          el: ".swiper-pagination"
         },
-        share(){
-            alert("复制本链接分享呗")
-            // console.log("url--info",this.$route.path);
+        on: {
+          touchStart: function(event) {
+            if (vm.getWenList.length == this.activeIndex + 1) {
+              vm.Wen.offset++;
+              vm.$request.getWenCrunchiesList(vm.Wen).then(res => {
+                if (res.data.code == "500") return;
+                res.data.data.dataList.forEach(e => {
+                  vm.getWenList.push(e);
+                });
+              });
+            }
+          }
         }
-        
+      };
     },
-    
-    
-    
-}
+    getAllComm(id) {
+      this.$request.getWenArtComment(id).then(res => {
+        this.allCommentList = res.data.data;
+        if (this.commentList3.length !== this.allCommentList.length) {
+          this.commentList3 = this.allCommentList;
+        }
+      });
+    },
+    //判断一级评论 显示 隐藏
+    reply1(id) {
+      this.askReply.askId = id;
+      if (window.localStorage.getItem("token") == null) {
+        if (this.$store.state.show) {
+          this.$store.state.show = false;
+        } else {
+          this.$store.state.show = true;
+        }
+        return;
+      }
+      this.isShow = !this.isShow;
+      if (this.WenComment.askId == id) return;
+      this.WenComment.askId = id;
+      this.getWenCommentDatas();
+    },
+    //判断二级评论 显示 隐藏
+    reply2(id, userId) {
+      // this.$request.getComment2(id).then(res => {
+      //   this.comment2List = [];
+
+      //   res.data.data.forEach(item=>{
+      //     if(item.askAnswerId==id){
+      //       this.comment2List.push(item);
+      //     }
+      //   })
+      //   console.log(this.comment2List);
+      //   this.comment2List.forEach(e => {
+      //     if (e.sonComment.length != 0) {
+      //       this.comment3List.push(e.sonComment);
+      //     }
+      //   });
+      // });
+      this.$router.push({
+        path: "/comment",
+        query: { id: id, userId: userId }
+      });
+    },
+    share() {
+      alert("复制本链接分享呗");
+    },
+    // 获取问大家轮播图数据
+    getWenDatas(id) {
+      this.Wen.classId = id;
+      this.$request.getWenCrunchiesList(this.Wen).then(res => {
+        this.getWenList = [];
+        if (res.data.code == "500") return;
+        this.getWenList = res.data.data.dataList;
+        this.loadingMore = false;
+      });
+    },
+    // 获取问大家评论数据
+    getWenCommentDatas() {
+      this.$request.getWenComment(this.WenComment).then(res => {
+        // this.getWenCommentList = res.data.data.dataList;
+        if (res.data.data.dataList.length == 0) return;
+        // res.data.data.dataList.forEach(e => {
+        //   this.getWenCommentList.push(e);
+        // });
+        this.getWenCommentList = res.data.data.dataList;
+        this.loading = false;
+        if (
+          res.data.data.countNum <=
+          res.data.data.limit * res.data.data.currpage
+        ) {
+          this.finished = true;
+          this.loading = false;
+          return;
+        }
+      });
+    },
+    changdu(value) {
+      const chang = value.length;
+      return chang;
+    },
+    // 加载更多
+    onLoad() {
+      // console.log(this.getCaseData.offset);
+      this.WenComment.offset++;
+      this.getWenCommentDatas(this.WenComment);
+    },
+    getCom(id, i) {
+      // console.log(i);
+
+      this.reply.artId = id;
+      this.com = !this.com;
+      if (!this.moreBox) {
+        this.moreBox = true;
+      }
+      this.$request.getWenArtComment(id).then(res => {
+        this.allCommentList = res.data.data;
+        // this.allCommentList.forEach(ele => {
+        //   this.artCom3List.push(ele.sonArticle);
+        //   this.$store.commit("getArtCom2Datas", this.artCom3List);
+        // });
+        if (this.allCommentList == null) {
+          return;
+        }
+        this.commentList3 = this.allCommentList.slice(0, 3);
+        // this.commentList3.forEach(e => {
+        //   if (e.sonArticle.length != 0) {
+        //     this.comment3List.push(e.sonArticle);
+        //   }
+        // });
+      });
+    },
+    getCom2(index, data) {
+      if (window.localStorage.getItem("token") == null) {
+        this.$parent.$data.show = true;
+        return;
+      }
+      this.get3Index = index;
+      this.$router.push({
+        path: "/commentArt",
+        query: {
+          i: index,
+          artId: data.artId,
+          topId: data.id,
+          receiveUserId: data.userId
+        }
+      });
+    },
+    more() {
+      this.commentList3 = this.allCommentList;
+      this.moreBox = !this.moreBox;
+    },
+    artDianZan(data, e) {
+      const ar = e.currentTarget.firstChild;
+      if (ar.getAttribute("class").indexOf("heart") == 0) {
+        ar.classList.remove("heart");
+        ar.classList.add("aheart");
+        this.$request.art_Zan(data.artId).then(res => {
+          if (res.data.code == 200) {
+            data.thumbNum = parseInt(data.thumbNum) + 1;
+          }
+        });
+      } else {
+        ar.classList.remove("aheart");
+        ar.classList.add("heart");
+        data.thumbNum = parseInt(data.thumbNum) - 1;
+      }
+    },
+    art_CommDianZan(data, e) {
+      const ar_com = e.currentTarget.firstChild;
+      if (ar_com.getAttribute("class").indexOf("heart_comm") == 0) {
+        ar_com.classList.remove("heart_comm");
+        ar_com.classList.add("aheart_comm");
+        this.$request.artCom_Zan(data.id).then(res => {
+          if (res.data.code == 200) {
+            data.thumbNum = parseInt(data.thumbNum) + 1;
+          }
+        });
+      } else {
+        ar_com.classList.remove("aheart_comm");
+        ar_com.classList.add("heart_comm");
+        data.thumbNum = parseInt(data.thumbNum) - 1;
+      }
+    },
+    ask_HuiDianZan(data, e) {
+      const ak_com = e.currentTarget.firstChild;
+      if (ak_com.getAttribute("class").indexOf("heart_hui") == 0) {
+        ak_com.classList.remove("heart_hui");
+        ak_com.classList.add("aheart_hui");
+        this.$request.askHui_Zan(data.id).then(res => {
+          if (res.data.code == 200) {
+            data.thumbNum = parseInt(data.thumbNum) + 1;
+          }
+        });
+      } else {
+        ak_com.classList.remove("aheart_hui");
+        ak_com.classList.add("heart_hui");
+        data.thumbNum = parseInt(data.thumbNum) - 1;
+      }
+    },
+    ask_CommDianZan(data, e) {
+      const ak_com = e.currentTarget.firstChild;
+      if (ak_com.getAttribute("class").indexOf("heart_comm") == 0) {
+        ak_com.classList.remove("heart_comm");
+        ak_com.classList.add("aheart_comm");
+        this.$request.artCom_Zan(data.id).then(res => {
+          if (res.data.code == 200) {
+            data.thumbNum = parseInt(data.thumbNum) + 1;
+          }
+        });
+      } else {
+        ak_com.classList.remove("aheart_comm");
+        ak_com.classList.add("heart_comm");
+        data.thumbNum = parseInt(data.thumbNum) - 1;
+      }
+    },
+    sc(e) {
+      if (window.localStorage.getItem("token") == null) {
+        if (this.$store.state.show) {
+          this.$store.state.show = false;
+        } else {
+          this.$store.state.show = true;
+        }
+        return;
+      }
+      const s = e.currentTarget.firstChild;
+      if (s.getAttribute("class").indexOf("shoucang_img1") == 0) {
+        s.classList.remove("shoucang_img1");
+        s.classList.add("shoucang_img2");
+      } else {
+        s.classList.remove("shoucang_img2");
+        s.classList.add("shoucang_img1");
+      }
+    },
+    show_zi(e) {
+      const zi = e.currentTarget;
+      $(zi)
+        .siblings()
+        .removeClass("more");
+      zi.classList.add("none");
+    },
+    pinglun() {
+      if (window.localStorage.getItem("token") == null) {
+        this.$parent.$data.show = true;
+        return;
+      }
+      if (this.value !== "") {
+        this.reply.content = this.value;
+        this.value = "";
+        this.$request.artDetailReply(this.reply).then(res => {
+          this.getAllComm(this.reply.artId);
+          this.$nextTick(() => {
+            setTimeout(() => {
+              let h = $(".article_box")[0].scrollHeight;
+              $(".article_box").scrollTop(h);
+            }, 300);
+          });
+        });
+      } else {
+        this.$toast({
+          duration: 2000,
+          message: "赶紧写点什么呗"
+        });
+      }
+    },
+    AskPingLun() {
+      if (this.AskValue !== "") {
+        this.askReply.content = this.AskValue;
+        this.AskValue = "";
+        this.$request.askAddReply(this.askReply).then(res => {
+          this.getWenCommentDatas();
+          this.$nextTick(() => {
+            setTimeout(() => {
+              let h = $(".up_maximumbox")[0].scrollHeight;
+              $(".up_maximumbox").scrollTop(h);
+            }, 300);
+          });
+        });
+      } else {
+        this.$toast({
+          duration: 2000,
+          message: "赶紧写点什么呗"
+        });
+      }
+    }
+  },
+  computed: {
+    isFollow() {
+      return this.$store.state.WenSonData; //需要监听的数据
+    }
+  },
+  watch: {
+    isFollow(newData) {
+      if (this.$store.state.WenSonData.length == 0) {
+        this.getWenList = [];
+      } else {
+        this.loaderSwiper();
+        this.getWenDatas(this.$store.state.WenSonData[0].id);
+      }
+      if (JSON.parse(localStorage.getItem("token")) !== null) {
+        this.reply.userId = JSON.parse(localStorage.getItem("token")).userId;
+        this.askReply.userId = JSON.parse(localStorage.getItem("token")).userId;
+      }
+    }
+  },
+  filters: {
+    changeTime(value) {
+      const time = value.split(" ")[0];
+      return time;
+    },
+    changeOldTime(e) {
+      const dateStr = e;
+      const dateTime = new Date(dateStr).getTime() / 1000;
+      const now = parseInt(new Date().getTime() / 1000);
+      const date = new Date(dateTime * 1000);
+      let Y = date.getFullYear();
+      let M = date.getMonth() + 1;
+      let D = date.getDate();
+      let H = date.getHours();
+      let m = date.getMinutes();
+      let s = date.getSeconds();
+      // 小于10的在前面补0
+      if (M < 10) {
+        M = "0" + M;
+      }
+      if (D < 10) {
+        D = "0" + D;
+      }
+      if (H < 10) {
+        H = "0" + H;
+      }
+      if (m < 10) {
+        m = "0" + m;
+      }
+      if (s < 10) {
+        s = "0" + s;
+      }
+      const d = now - dateTime;
+      const d_days = parseInt(d / 86400);
+      const d_hours = parseInt(d / 3600);
+      const d_minutes = parseInt(d / 60);
+      const d_seconds = parseInt(d);
+      if (d_days > 0 && d_days < 3) {
+        return d_days + "天前";
+      } else if (d_days <= 0 && d_hours > 0) {
+        return d_hours + "小时前";
+      } else if (d_hours <= 0 && d_minutes > 0) {
+        return d_minutes + "分钟前";
+      } else if (d_seconds < 60) {
+        if (d_seconds <= 0) {
+          return "刚刚发表";
+        } else {
+          return d_seconds + "秒前";
+        }
+      } else if (d_days >= 3 && d_days < 30) {
+        return M + "-" + D + " " + H + ":" + m;
+      } else if (d_days >= 30) {
+        return Y + "-" + M + "-" + D + " " + H + ":" + m;
+      }
+    },
+    million(value) {
+      var num;
+      if (value > 9999) {
+        //大于9999显示x.xx万
+        num = Math.trunc(value / 1000) / 10 + "万";
+      } else if (value < 9999 && value > -9999) {
+        num = value;
+      } else if (value < -9999) {
+        //小于-9999显示-x.xx万
+        num = -(Math.floor(Math.abs(value) / 1000) / 10) + "万";
+      }
+      return num;
+    }
+  },
+  mounted() {
+    var that = this;
+    test.$on("getId", function(id) {
+      that.Wen.offset = 1;
+      that.getWenDatas(id);
+    });
+    setTimeout(() => {
+      this.showRight = false;
+    }, 8000);
+  }
+};
 </script>
 
 <style>
 </style>
-<style lang='scss'>
+<style lang='scss' scoped>
 @import "../assets/css/ask_people.scss";
 </style>

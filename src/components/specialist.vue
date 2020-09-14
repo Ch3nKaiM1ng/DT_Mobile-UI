@@ -20,11 +20,9 @@
           <div class="doc_name">{{item.doctorChName}}</div>
           <div class="doc_title">{{item.doctorChPosition}}</div>
         </div>
-        <router-link to="/registration">
-          <div class="particulars_img">
-            <img src="../assets/img/index/appointment/appointment.png" alt />
-          </div>
-        </router-link>
+        <div class="particulars_img" @click="tiaozhuan(item.doctorId)">
+          <img src="../assets/img/index/appointment/appointment.png" alt />
+        </div>
       </div>
     </div>
   </div>
@@ -48,16 +46,22 @@ export default {
       this.current_inx = index;
       this.$request.getDocsDatas(id).then(res => {
         this.docsDataList = res.data.data;
-        console.log(this.docsDataList);
-        
       });
+    },
+    tiaozhuan(id) {
+      this.$router.push({ path: "/registration", query: { id: id } });
     }
   },
   created() {
     this.$request.getDocClassList().then(res => {
       this.docClassList = res.data.data;
     });
-    this.getDocsData('',10);
+    this.getDocsData("", 10);
+  },
+  updated() {
+    if (localStorage.getItem("status") == "false") {
+      this.$t2();
+    }
   }
 };
 </script>
